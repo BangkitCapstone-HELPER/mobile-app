@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/nunito_sans_bold"
-            android:text="Hello, Alamsyah"
+            android:text="Hello, Alamsyah 👋🏻"
             android:textColor="@color/black"
             android:textSize="24sp"/>
 
@@ -31,11 +31,13 @@
             android:textColor="@color/black"
             android:textSize="16sp"/>
 
-        <androidx.appcompat.widget.SearchView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_search_view"
-            android:layout_marginTop="8dp"/>
+            android:text="   Cisitu Lama, Bandung"
+            android:textSize="16sp"
+            android:paddingVertical="10dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -52,6 +54,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_catering"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -84,6 +87,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_kost"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -122,6 +126,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_shop"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -154,6 +159,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_chatbot"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -189,13 +195,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Article"
+            android:text="Artikel"
             android:textSize="16sp"
             android:fontFamily="@font/nunito_sans"
             android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/article_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:itemCount="10"
