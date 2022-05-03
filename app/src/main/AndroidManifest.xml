@@ -16,6 +16,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.HandlingError.PageNotFound"
             android:exported="false" />
         <activity
