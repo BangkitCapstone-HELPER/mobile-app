@@ -1,4 +1,4 @@
-package com.example.helperstartup.view.customview
+package com.example.helperstartup.View.customview
 
 import android.content.Context
 import android.graphics.Canvas

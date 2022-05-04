@@ -1,4 +1,4 @@
-package com.example.helperstartup.model
+package com.example.helperstartup.Model
 
 import android.content.Context
 

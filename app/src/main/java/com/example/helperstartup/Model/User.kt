@@ -1,4 +1,4 @@
-package com.example.helperstartup.model
+package com.example.helperstartup.Model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

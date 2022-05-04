@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.helperstartup.R
-import com.example.helperstartup.model.User
-import com.example.helperstartup.model.UserPreference
-import com.example.helperstartup.view.activity.LoginActivity
+import com.example.helperstartup.Model.User
+import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.View.activity.LoginActivity
 
 class Dashboard : AppCompatActivity() {
     private lateinit var mUserPreference: UserPreference

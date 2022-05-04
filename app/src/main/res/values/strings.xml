@@ -11,12 +11,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="signup_text">Sign up here</string>
+    <string name="signup_text">Daftar disini</string>
     <string name="login_text">Login</string>
     <string name="password_text">Password</string>
     <string name="email_text">Email</string>
-    <string name="login_please">Login please</string>
-    <string name="welcome_text">Welcome to Helper</string>
+    <string name="login_please">Silakan login dulu ya</string>
+    <string name="welcome_text">Selamat Datang di Helper</string>
     <string name="welcome_image">Welcome image</string>
     <string name="empty_field">Field cannot be empty</string>
 </resources>
