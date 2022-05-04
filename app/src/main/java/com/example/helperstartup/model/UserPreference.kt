@@ -2,10 +2,10 @@ package com.example.helperstartup.model
 
 import android.content.Context
 
-class UserPreferenceShared(context: Context) {
+class UserPreference(context: Context) {
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    fun setUser(value: UserModel) {
+    fun setUser(value: User) {
         val editor = preferences.edit()
         editor.putString(NAME, value.name)
         editor.putString(EMAIL, value.email)
@@ -13,8 +13,8 @@ class UserPreferenceShared(context: Context) {
         editor.putBoolean(IS_LOGIN, value.isLogin)
         editor.apply()
     }
-    fun getUser(): UserModel {
-        val model = UserModel("", "", "", false)
+    fun getUser(): User {
+        val model = User("", "", "", false)
         model.name = preferences.getString(NAME, "").toString()
         model.email = preferences.getString(EMAIL, "").toString()
         model.token = preferences.getString(TOKEN, "").toString()

@@ -1,18 +1,26 @@
 package com.example.helperstartup.View.Dashboard
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
 import com.example.helperstartup.R
+import com.example.helperstartup.model.User
+import com.example.helperstartup.model.UserPreference
+import com.example.helperstartup.view.activity.LoginActivity
 
 class Dashboard : AppCompatActivity() {
+    private lateinit var mUserPreference: UserPreference
+    private lateinit var userModel: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-
+        mUserPreference = UserPreference(this)
         setupView()
+        showExistingPreference()
     }
 
     private fun setupView() {
@@ -26,5 +34,17 @@ class Dashboard : AppCompatActivity() {
             )
         }
         supportActionBar?.hide()
+    }
+
+    private fun showExistingPreference() {
+        userModel = mUserPreference.getUser()
+        if (!userModel.isLogin) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun deleteUser() {
+        mUserPreference.setUser(User("", "", "", false))
     }
 }

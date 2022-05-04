@@ -14,9 +14,9 @@
         <activity
             android:name=".view.activity.LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".MainActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".View.HandlingError.PageNotFound"
             android:exported="false" />

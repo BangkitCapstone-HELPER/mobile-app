@@ -8,12 +8,12 @@ import android.view.WindowManager
 import android.widget.EditText
 import com.example.helperstartup.R
 import com.example.helperstartup.databinding.ActivityLoginBinding
-import com.example.helperstartup.model.UserModel
-import com.example.helperstartup.model.UserPreferenceShared
+import com.example.helperstartup.model.User
+import com.example.helperstartup.model.UserPreference
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var user: UserModel
+    private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +39,11 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun setupAction() {
-        binding.loginButton.setOnClickListener {
-            val email = binding.emailEditText.text
-            val password = binding.passwordEditText.text
-
-        }
+//        binding.loginButton.setOnClickListener {
+//            val email = binding.emailEditText.text
+//            val password = binding.passwordEditText.text
+//
+//        }
 
 //        binding.signupPage.setOnClickListener {
 //            val intent =
@@ -61,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun saveUser(name: String, email: String, token: String) {
-        val userPreference = UserPreferenceShared(this)
+        val userPreference = UserPreference(this)
         user.name = name
         user.email = email
         user.token = token

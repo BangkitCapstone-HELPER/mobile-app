@@ -72,11 +72,12 @@ tools:context=".view.activity.LoginActivity">
     app:layout_constraintTop_toBottomOf="@+id/emailTextView"
     app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-    <com.example.helperstartup.view.customview.EditTextEmail
+    <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:autofillHints="emailAddress"
         android:inputType="textEmailAddress"
         tools:ignore="SpeakableTextPresentCheck" />
 </com.google.android.material.textfield.TextInputLayout>
@@ -105,11 +106,12 @@ tools:context=".view.activity.LoginActivity">
     app:passwordToggleEnabled="true"
     app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
-    <com.example.helperstartup.view.customview.EditTextPassword
+    <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:autofillHints="password"
         android:inputType="textPassword"
         app:passwordToggleEnabled="true"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -136,6 +138,7 @@ tools:context=".view.activity.LoginActivity">
     android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:clickable="true"
+    android:focusable="true"
     android:gravity="center_horizontal"
     android:text="@string/signup_text"
     android:textColor="@color/teal_700"
