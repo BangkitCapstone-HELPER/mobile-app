@@ -18,7 +18,7 @@
     <string name="login_please">Silakan login dulu ya</string>
     <string name="welcome_text">Selamat Datang di Helper</string>
     <string name="welcome_image">Welcome image</string>
-    <string name="empty_field">Field cannot be empty</string>
+    <string name="empty_field">Tidak boleh kosong</string>
 
     <!-- Register -->
     <string name="logo_helper_desc">Logo helper</string>
@@ -27,4 +27,7 @@
     <string name="signup_btn">Daftar</string>
     <string name="already_have_account">Sudah punya akun ?</string>
     <string name="nomor_telepon_text">Nomor Telepon</string>
+    <string name="min_chars_password">Minimal 8 karakter</string>
+    <string name="phone_hint">62123456789</string>
+    <string name="login_here">login disini</string>
 </resources>

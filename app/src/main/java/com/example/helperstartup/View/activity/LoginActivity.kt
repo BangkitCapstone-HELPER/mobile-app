@@ -126,6 +126,11 @@ class LoginActivity : AppCompatActivity() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
+                                else -> Toast.makeText(
+                                    this@LoginActivity,
+                                    "Terjadi kesalahan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
 
@@ -133,7 +138,7 @@ class LoginActivity : AppCompatActivity() {
                             showLoading(false)
                             Toast.makeText(
                                 this@LoginActivity,
-                                "Terjadi kesalahan pada server",
+                                "Terjadi kesalahan pada server / jaringan",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
