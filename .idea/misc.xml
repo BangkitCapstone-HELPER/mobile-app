@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/rounded_button.xml" value="0.189" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_dashboard.xml" value="0.38697916666666665" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_login.xml" value="0.29891304347826086" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1245" />
         <entry key="app/src/main/res/drawable/card_component.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/custom_search_view.xml" value="0.1245" />
