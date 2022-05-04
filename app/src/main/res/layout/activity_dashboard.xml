@@ -37,6 +37,7 @@
             android:background="@drawable/custom_search_view"
             android:text="   Cisitu Lama, Bandung"
             android:textSize="16sp"
+            android:layout_marginTop="8dp"
             android:paddingVertical="10dp"/>
 
         <TextView

@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ArticleModel(
     var title: String?,
-    var desc: String?,
     val url: String?,
     var photo: String?
 ) : Parcelable
