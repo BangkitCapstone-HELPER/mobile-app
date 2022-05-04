@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.WindowInsets
@@ -26,7 +25,7 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var mUserPreference: UserPreference
-    private var user: User = User("", "","", false)
+    private var user: User = User("", "", "", false)
     private val service = ApiConfig.getApiService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +62,10 @@ class LoginActivity : AppCompatActivity() {
             ) {
                 showLoading(true)
                 service.login(
-                    UserInfo(email = emailEditText.text.toString(), password = passwordEditText.text.toString())
+                    UserInfo(
+                        email = emailEditText.text.toString(),
+                        password = passwordEditText.text.toString()
+                    )
                 )
                     .enqueue(object : Callback<LoginApiResponse> {
                         override fun onResponse(
@@ -82,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
 
                                     Toast.makeText(
                                         this@LoginActivity,
-                                        "Selamat datang " +  responseBody?.data?.user?.name.toString(),
+                                        "Selamat datang " + responseBody?.data?.user?.name.toString(),
                                         Toast.LENGTH_SHORT
                                     ).show()
                                     val intent =
@@ -136,9 +138,13 @@ class LoginActivity : AppCompatActivity() {
                             ).show()
                         }
                     })
-
-
             }
+        }
+
+        binding.signupPage.setOnClickListener {
+            val intent =
+                Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 

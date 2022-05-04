@@ -19,4 +19,12 @@
     <string name="welcome_text">Selamat Datang di Helper</string>
     <string name="welcome_image">Welcome image</string>
     <string name="empty_field">Field cannot be empty</string>
+
+    <!-- Register -->
+    <string name="logo_helper_desc">Logo helper</string>
+    <string name="signup_welcome">Daftar dulu yuk!</string>
+    <string name="name_text">Nama</string>
+    <string name="signup_btn">Daftar</string>
+    <string name="already_have_account">Sudah punya akun ?</string>
+    <string name="nomor_telepon_text">Nomor Telepon</string>
 </resources>
