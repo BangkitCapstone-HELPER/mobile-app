@@ -39,9 +39,9 @@ class Dashboard : AppCompatActivity() {
 
         listArticle = findViewById(R.id.article_rv)
         buttonCatering = findViewById(R.id.card_catering)
-        buttonCatering = findViewById(R.id.card_kost)
-        buttonCatering = findViewById(R.id.card_shop)
-        buttonCatering = findViewById(R.id.card_chatbot)
+        buttonKost = findViewById(R.id.card_kost)
+        buttonShop = findViewById(R.id.card_shop)
+        buttonChatbot = findViewById(R.id.card_chatbot)
 
         setupView()
         setListenerButton()
@@ -50,21 +50,21 @@ class Dashboard : AppCompatActivity() {
 
     private fun setListenerButton() {
         buttonCatering.setOnClickListener {
-            Toast.makeText(this, "dor", Toast.LENGTH_LONG).show()
-            Log.i("data", "masuk")
+            val intent = Intent(this, MenuCateringActivity::class.java)
+            startActivity(intent)
         }
-//        buttonKost.setOnClickListener {
-//            val intent = Intent(this, PageNotFound::class.java)
-//            startActivity(intent)
-//        }
-//        buttonShop.setOnClickListener {
-//            val intent = Intent(this, PageNotFound::class.java)
-//            startActivity(intent)
-//        }
-//        buttonChatbot.setOnClickListener {
-//            val intent = Intent(this, PageNotFound::class.java)
-//            startActivity(intent)
-//        }
+        buttonKost.setOnClickListener {
+            val intent = Intent(this, PageNotFound::class.java)
+            startActivity(intent)
+        }
+        buttonShop.setOnClickListener {
+            val intent = Intent(this, PageNotFound::class.java)
+            startActivity(intent)
+        }
+        buttonChatbot.setOnClickListener {
+            val intent = Intent(this, PageNotFound::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupView() {
