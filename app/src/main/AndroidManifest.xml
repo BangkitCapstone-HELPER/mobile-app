@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
+            android:name=".View.activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.activity.LoginActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".MainActivity" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name=".View.Dashboard.ArticleActivity"
+            android:exported="false"
+            android:parentActivityName=".View.Dashboard.Dashboard" />
+        <activity
+            android:name=".View.Catering.Menu.MenuCateringActivity"
+            android:exported="false" />
+        <activity
             android:name=".View.HandlingError.PageNotFound"
             android:exported="false" />
         <activity

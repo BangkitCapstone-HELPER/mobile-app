@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/miHome"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24" />
+
+    <item android:id="@+id/miKeranjang"
+        android:title="Keranjang"
+        android:icon="@drawable/ic_baseline_shopping_cart_24" />
+
+    <item android:id="@+id/placeholder"
+        android:title="" />
+
+    <item android:id="@+id/miRiwayat"
+        android:title="Riwayat"
+        android:icon="@drawable/ic_baseline_assignment_24" />
+
+    <item android:id="@+id/miProfile"
+        android:title="Profile"
+        android:icon="@drawable/ic_baseline_account_circle_24" />
+</menu>
