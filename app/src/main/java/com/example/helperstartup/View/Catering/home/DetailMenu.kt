@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
+import com.example.helperstartup.Model.Service.ResponseApi.DataItem
 import com.example.helperstartup.R
 
 class DetailMenu : AppCompatActivity() {
@@ -13,11 +14,13 @@ class DetailMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
 
+        val data = intent.getParcelableExtra<DataItem>("DATA")
+
         imageSlider = findViewById(R.id.imageSlider)
-        slideModel.add(SlideModel("https://picsum.photos/200/300"))
-        slideModel.add(SlideModel("https://picsum.photos/200/300"))
-        slideModel.add(SlideModel("https://picsum.photos/200/300"))
-        slideModel.add(SlideModel("https://picsum.photos/200/300"))
+
+        data?.dayMenus?.map { i ->
+            slideModel.add(SlideModel(i?.image.toString()))
+        }
         imageSlider.setImageList(slideModel, true)
     }
 }
