@@ -5,10 +5,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +15,9 @@ import com.example.helperstartup.Model.Data.ArticleModel
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.ResponseArticle
 import com.example.helperstartup.R
+import com.example.helperstartup.Model.User
+import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.View.Adapter.ArticleAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.HandlingError.PageNotFound
@@ -25,7 +26,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Dashboard : AppCompatActivity() {
-
+    private lateinit var mUserPreference: UserPreference
+    private lateinit var userModel: User
     private lateinit var listArticle : RecyclerView
     private var listData = ArrayList<ArticleModel>()
     private lateinit var buttonCatering : CardView
@@ -36,6 +38,9 @@ class Dashboard : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+        mUserPreference = UserPreference(this)
+        setupView()
+        showExistingPreference()
 
         listArticle = findViewById(R.id.article_rv)
         buttonCatering = findViewById(R.id.card_catering)
@@ -80,6 +85,18 @@ class Dashboard : AppCompatActivity() {
         supportActionBar?.hide()
     }
 
+    private fun showExistingPreference() {
+        userModel = mUserPreference.getUser()
+        if (!userModel.isLogin) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun deleteUser() {
+        mUserPreference.setUser(User("", "", "", false))
+    }
+
     private fun fetchListStories() {
         val client = ApiConfig.getApiService().getArticle()
         client.enqueue(object : Callback<ResponseArticle> {
@@ -109,7 +126,7 @@ class Dashboard : AppCompatActivity() {
             Toast.makeText(this, "Data null", Toast.LENGTH_LONG).show()
         }
         else {
-            listArticle?.data.forEach { i ->
+            listArticle.data.forEach { i ->
                 val stories = ArticleModel(i?.title, i?.guid, i?.enclosure?._url)
                 listData.add(stories)
             }
