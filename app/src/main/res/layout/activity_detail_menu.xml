@@ -6,9 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".View.Catering.home.DetailMenu">
 
-    <TextView
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/imageSlider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="detail_menu"/>
+        android:layout_height="210dp"
+        app:auto_cycle="true"
+        app:error_image="@drawable/meta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:period="999999999"
+        app:placeholder="@drawable/meta" />
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabs"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/view_pager"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageSlider"-->
+<!--        app:tabTextColor="@android:color/white"-->
+<!--        tools:ignore="SpeakableTextPresentCheck" />-->
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/view_pager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="260dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tabs" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
