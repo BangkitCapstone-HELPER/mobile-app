@@ -1,9 +1,6 @@
 package com.example.helperstartup.Model.Service
 
-import com.example.helperstartup.Model.Service.ResponseApi.LoginApiResponse
-import com.example.helperstartup.Model.Service.ResponseApi.RegisterResponse
-import com.example.helperstartup.Model.Service.ResponseApi.UserInfo
-import com.example.helperstartup.Model.Service.ResponseApi.ResponseArticle
+import com.example.helperstartup.Model.Service.ResponseApi.*
 import com.example.helperstartup.Model.Service.request.UserRegister
 import retrofit2.Call
 import retrofit2.http.*
@@ -23,7 +20,12 @@ interface ApiService {
         @Body userData : UserRegister
     ) : Call<RegisterResponse>
 
+    // article
     @GET("article/")
     fun getArticle(): Call<ResponseArticle>
+
+    // menu - home
+    @GET("menu/")
+    fun getMenu(): Call<ResponseMenu>
 
 }
