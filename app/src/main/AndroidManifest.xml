@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
+            android:name=".View.Catering.home.DetailMenu"
+            android:exported="false" />
+        <activity
             android:name=".View.activity.RegisterActivity"
             android:exported="false" />
         <activity

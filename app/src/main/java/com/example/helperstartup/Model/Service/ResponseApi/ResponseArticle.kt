@@ -5,13 +5,13 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class ResponseArticle(
-	val data: List<DataItem?>? = null,
+	val data: List<DataItem2?>? = null,
 	val message: String? = null,
 	val status: Int? = null
 ) : Parcelable
 
 @Parcelize
-data class DataItem(
+data class DataItem2(
 	val enclosure: Enclosure? = null,
 	val link: List<String?>? = null,
 	val guid: String? = null,

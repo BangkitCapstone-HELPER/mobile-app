@@ -1,15 +1,11 @@
 package com.example.helperstartup.View.Adapter
 
-import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Data.ArticleModel
 import com.example.helperstartup.R
