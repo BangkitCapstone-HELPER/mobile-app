@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1245" />
         <entry key="app/src/main/res/layout/activity_article.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1965789794921875" />
+        <entry key="app/src/main/res/layout/activity_detail_menu.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/layout/activity_menu_catering.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_page_not_found.xml" value="0.15384615384615385" />
         <entry key="app/src/main/res/layout/article_component.xml" value="0.14583333333333334" />

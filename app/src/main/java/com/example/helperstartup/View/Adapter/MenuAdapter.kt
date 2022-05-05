@@ -11,6 +11,7 @@ import com.example.helperstartup.Model.Data.ArticleModel
 import com.example.helperstartup.Model.Service.ResponseApi.DataItem
 import com.example.helperstartup.Model.Service.ResponseApi.ResponseMenu
 import com.example.helperstartup.R
+import com.example.helperstartup.View.Catering.home.DetailMenu
 import com.example.helperstartup.View.Dashboard.ArticleActivity
 import com.squareup.picasso.Picasso
 
@@ -40,7 +41,7 @@ class MenuAdapter(private val listMenu: ResponseMenu) : RecyclerView.Adapter<Men
             priceHome.text = "Rp " + dataMenu.price.toString()
 
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, ArticleActivity::class.java)
+                val intent = Intent(itemView.context, DetailMenu::class.java)
                 intent.putExtra("DATA", dataMenu)
                 itemView.context.startActivity(intent)
             }
