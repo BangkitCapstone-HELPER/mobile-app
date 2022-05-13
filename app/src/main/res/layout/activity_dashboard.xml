@@ -20,6 +20,8 @@
             android:fontFamily="@font/nunito_sans_bold"
             android:text="Hello, Alamsyah 👋🏻"
             android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_baseline_account_circle_24_green"
+            android:drawablePadding="5dp"
             android:textSize="24sp"/>
 
         <TextView
