@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_account_circle_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_edit_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.369" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_email_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_phone_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/font/nunito_sans.xml" value="0.23177083333333334" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_dashboard.xml" value="0.2871376811594203" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_login.xml" value="0.2871376811594203" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_page_not_found.xml" value="0.2015625" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_result_scanning.xml" value="0.38697916666666665" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/article_component.xml" value="0.38697916666666665" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_riwayat.xml" value="0.38697916666666665" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/menu_home_component.xml" value="0.38697916666666665" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/result_scanning_component.xml" value="0.38697916666666665" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1245" />
         <entry key="app/src/main/res/drawable/card_component.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/custom_search_view.xml" value="0.1245" />

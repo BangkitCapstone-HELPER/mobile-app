@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.activity.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/img_placeholder" />
+
+        <TextView
+            android:id="@+id/name_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:letterSpacing="0.1"
+            android:text="@string/name_text"
+            android:textColor="@color/font_blue"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="300dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="?colorPrimary" />
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:drawablePadding="5dp"
+            android:letterSpacing="0.1"
+            android:text="email@email.com"
+            android:textColor="@color/font_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_baseline_email_24_green" />
+
+        <TextView
+            android:id="@+id/phoneNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:drawablePadding="5dp"
+            android:letterSpacing="0.1"
+            android:text="6285659123325"
+            android:textColor="@color/font_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:drawableStartCompat="@drawable/ic_baseline_phone_24_green" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/updateProfileButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/white"
+            android:text="Ubah Profil"
+            android:textAllCaps="false"
+            android:textColor="@color/font_blue"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_edit_24_green"
+            app:iconGravity="textStart"
+            app:iconTint="@color/font_blue"
+            app:strokeColor="@color/font_blue"
+            app:strokeWidth="1.3dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/changePasswordButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/white"
+            android:text="Ubah Password"
+            android:textAllCaps="false"
+            android:textColor="@color/font_blue"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_lock_24_green"
+            app:iconGravity="textStart"
+            app:iconTint="@color/font_blue"
+            app:strokeColor="@color/font_blue"
+            app:strokeWidth="1.3dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logoutButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/white"
+            android:text="Keluar"
+            android:textAllCaps="false"
+            android:textColor="@color/red_button"
+            android:textStyle="bold"
+            app:cornerRadius="20dp"
+            app:icon="@drawable/ic_baseline_login_24_red"
+            app:iconGravity="textStart"
+            app:iconTint="@color/red_button"
+            app:strokeColor="@color/red_button"
+            app:strokeWidth="1.3dp" />
+    </LinearLayout>
+</ScrollView>

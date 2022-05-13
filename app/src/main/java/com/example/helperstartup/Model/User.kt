@@ -8,5 +8,7 @@ data class User(
     var name: String,
     var email: String,
     var token: String,
-    var isLogin: Boolean = false
+    var isLogin: Boolean = false,
+    var image: String,
+    var phoneNumber : String
 ) : Parcelable

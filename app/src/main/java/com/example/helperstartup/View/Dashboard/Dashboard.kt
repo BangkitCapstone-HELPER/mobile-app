@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.View.Adapter.ArticleAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.HandlingError.PageNotFound
+import com.example.helperstartup.View.activity.ProfileActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,6 +36,7 @@ class Dashboard : AppCompatActivity() {
     private lateinit var buttonKost : CardView
     private lateinit var buttonShop : CardView
     private lateinit var buttonChatbot : CardView
+    private lateinit var textViewProfile : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +50,8 @@ class Dashboard : AppCompatActivity() {
         buttonKost = findViewById(R.id.card_kost)
         buttonShop = findViewById(R.id.card_shop)
         buttonChatbot = findViewById(R.id.card_chatbot)
+        textViewProfile = findViewById(R.id.textGreeting)
+
 
         setupView()
         setListenerButton()
@@ -70,6 +75,10 @@ class Dashboard : AppCompatActivity() {
             val intent = Intent(this, PageNotFound::class.java)
             startActivity(intent)
         }
+        // dummy ke profile
+        textViewProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
     }
 
     private fun setupView() {
@@ -91,10 +100,6 @@ class Dashboard : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
-    }
-
-    private fun deleteUser() {
-        mUserPreference.setUser(User("", "", "", false))
     }
 
     private fun fetchListStories() {

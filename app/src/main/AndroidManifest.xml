@@ -15,9 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
-            android:name=".View.camera.ResultScanning"
+            android:name=".View.activity.ProfileActivity"
             android:exported="false"
             android:parentActivityName=".View.Dashboard.Dashboard"/>
+        <activity
+            android:name=".View.camera.ResultScanning"
+            android:exported="false"
+            android:parentActivityName=".View.Dashboard.Dashboard" />
         <activity
             android:name=".View.camera.AddStoryActivity"
             android:exported="false"
