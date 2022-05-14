@@ -174,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dont_have_acc"
-            android:textColor="@color/font_blue_light"
+            android:textColor="@color/font_blue"
             android:textSize="14sp"
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/signup_page"
