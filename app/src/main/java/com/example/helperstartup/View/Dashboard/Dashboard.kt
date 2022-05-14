@@ -42,8 +42,9 @@ class Dashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         mUserPreference = UserPreference(this)
-        setupView()
         showExistingPreference()
+        setupView()
+
 
         listArticle = findViewById(R.id.article_rv)
         buttonCatering = findViewById(R.id.card_catering)
