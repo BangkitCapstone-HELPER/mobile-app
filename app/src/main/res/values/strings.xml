@@ -1,7 +1,7 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="app_name" translatable="false">HelperStartup</string>
+    <string name="app_name" translatable="false">Serantau</string>
     <string name="title_activity_login" translatable="false">LoginActivity</string>
 
     <!--  Login-->
@@ -13,23 +13,28 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="signup_text">Daftar disini</string>
-    <string name="login_text">Login</string>
+    <string name="signup_text">Daftar</string>
+    <string name="login_text">Masuk</string>
     <string name="password_text">Password</string>
     <string name="email_text">Email</string>
-    <string name="login_please">Silakan login dulu ya</string>
-    <string name="welcome_text">Selamat Datang di Helper</string>
+    <string name="login_please">Masuk untuk lanjutin perjalananmu</string>
+    <string name="welcome_text">Selamat Datang Kembali</string>
     <string name="welcome_image">Welcome image</string>
     <string name="empty_field">Tidak boleh kosong</string>
+    <string name="forgot_password">Lupa password</string>
+    <string name="dont_have_acc">Belum punya akun?</string>
 
     <!-- Register -->
     <string name="logo_helper_desc">Logo helper</string>
     <string name="signup_welcome">Daftar dulu yuk!</string>
     <string name="name_text">Nama</string>
     <string name="signup_btn">Daftar</string>
-    <string name="already_have_account">Sudah punya akun ?</string>
+    <string name="already_have_account">Sudah punya akun?</string>
     <string name="nomor_telepon_text">Nomor Telepon</string>
     <string name="min_chars_password">Minimal 8 karakter</string>
     <string name="phone_hint">62123456789</string>
-    <string name="login_here">login disini</string>
+    <string name="login_here">Masuk</string>
+    <string name="signup_msg">Buat akun untuk memulai perjalananmu</string>
+
+
 </resources>
