@@ -17,7 +17,7 @@
         <activity
             android:name=".View.activity.ProfileActivity"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard"/>
+            android:parentActivityName=".View.Dashboard.Dashboard" />
         <activity
             android:name=".View.camera.ResultScanning"
             android:exported="false"
@@ -50,14 +50,23 @@
             android:exported="false" />
         <activity
             android:name=".View.Dashboard.Dashboard"
-            android:exported="true">
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".View.activity.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/splashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
