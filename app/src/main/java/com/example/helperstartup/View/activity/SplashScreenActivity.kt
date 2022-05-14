@@ -7,7 +7,7 @@ import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.View.Dashboard.Dashboard
 
-class SplashScreen : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
 
