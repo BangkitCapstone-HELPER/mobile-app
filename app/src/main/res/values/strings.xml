@@ -40,6 +40,7 @@
     <string name="gambar_riwayat_transaksi">Gambar riwayat transaksi</string>
     <string name="example_paket">Paket A</string>
     <string name="dummy_text_status">Diproses</string>
+    <string name="no_history">Kamu belum pernah\n memesan makanan</string>
 
 
 </resources>

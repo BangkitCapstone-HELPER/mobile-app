@@ -22,6 +22,7 @@
 
         <!-- Media -->
         <ImageView
+            android:id="@+id/history_imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1.8"
