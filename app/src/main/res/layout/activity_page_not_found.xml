@@ -8,38 +8,36 @@
 
     <TextView
         android:id="@+id/textView"
+        style="@style/textBlueTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:text="This feature is under maintaining"
+        android:text="Coming Soon"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
-        android:src="@drawable/coming_soon"
+        android:src="@drawable/monster_sad"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.262"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/back_to_dashboard"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/textViewDesc"
+        style="@style/textDesc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/blue"
-        android:text="Back to Dashboard"
+        android:text="Sorry, This feature is under construction"
+        android:textAlignment="center"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
