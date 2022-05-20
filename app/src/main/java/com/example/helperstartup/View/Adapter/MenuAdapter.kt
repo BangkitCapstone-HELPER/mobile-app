@@ -15,7 +15,7 @@ import com.example.helperstartup.View.Catering.home.DetailMenu
 import com.example.helperstartup.View.Dashboard.ArticleActivity
 import com.squareup.picasso.Picasso
 
-class MenuAdapter(private val listMenu: ResponseMenu) : RecyclerView.Adapter<MenuAdapter.ListViewHolder>() {
+class MenuAdapter(private val listMenu: ResponseMenu?) : RecyclerView.Adapter<MenuAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.menu_home_component, parent, false)
@@ -23,10 +23,17 @@ class MenuAdapter(private val listMenu: ResponseMenu) : RecyclerView.Adapter<Men
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        listMenu.data?.get(position)?.let { holder.bind(it) }
+        listMenu?.data?.get(position)?.let { holder.bind(it) }
     }
 
-    override fun getItemCount(): Int = listMenu.data!!.size
+    override fun getItemCount(): Int {
+        if (listMenu?.data?.size == null) {
+            return 0
+        }
+        else {
+            return listMenu.data.size
+        }
+    }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var photoHome: ImageView = itemView.findViewById(R.id.photoHome)
