@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/layout/activity_camera.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.26838378906250004" />
         <entry key="app/src/main/res/layout/activity_detail_menu.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_menu_catering.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_page_not_found.xml" value="0.15384615384615385" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.39114583333333336" />
@@ -55,7 +56,7 @@
         <entry key="app/src/main/res/layout/fragment_view_pager_menu.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/list_item_menu_component.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/menu_home_card.xml" value="0.14010416666666667" />
-        <entry key="app/src/main/res/layout/menu_home_component.xml" value="0.15462962962962962" />
+        <entry key="app/src/main/res/layout/menu_home_component.xml" value="0.29335491039134837" />
         <entry key="app/src/main/res/layout/result_scanning_component.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/menu/botnav_menu.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/menu/navbot_item.xml" value="0.14010416666666667" />

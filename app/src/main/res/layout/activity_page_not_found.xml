@@ -34,7 +34,7 @@
         style="@style/textDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sorry, This feature is under construction"
+        android:text="Sorry, fitur ini sedang dalam pengembangan"
         android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
