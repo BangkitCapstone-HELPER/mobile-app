@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
 
     private lateinit var listMenu : RecyclerView
+    private lateinit var textNoData : TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +37,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listMenu = view.findViewById(R.id.home_rv)
+        textNoData = view.findViewById(R.id.textNoData)
         fetchListStories()
+        textNoData.setVisibility(View.INVISIBLE)
+
     }
 
     private fun fetchListStories() {
@@ -49,9 +54,14 @@ class HomeFragment : Fragment() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         Log.i("data", responseBody.toString())
-                        listMenu.layoutManager = LinearLayoutManager(context)
-                        val listMenuAdapter = MenuAdapter(responseBody)
-                        listMenu.adapter = listMenuAdapter
+                        if (responseBody.data?.size == null) {
+                            textNoData.setVisibility(View.VISIBLE)
+                        }
+                        else {
+                            listMenu.layoutManager = LinearLayoutManager(context)
+                            val listMenuAdapter = MenuAdapter(responseBody)
+                            listMenu.adapter = listMenuAdapter
+                        }
                     }
                 }
                 else {
