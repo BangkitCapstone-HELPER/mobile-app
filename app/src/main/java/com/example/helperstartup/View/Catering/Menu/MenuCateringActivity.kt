@@ -5,56 +5,49 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.helperstartup.R
+import com.example.helperstartup.View.Catering.camera.CameraFragment
 import com.example.helperstartup.View.Catering.home.HomeFragment
-import com.example.helperstartup.View.Catering.keranjang.KeranjangFragment
-import com.example.helperstartup.View.Catering.profile.ProfileFragment
 import com.example.helperstartup.View.Catering.riwayat.RiwayatFragment
-import com.example.helperstartup.View.camera.AddStoryActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class MenuCateringActivity : AppCompatActivity() {
-    private lateinit var bottomNavigationView : BottomNavigationView
-    private lateinit var cameraButton : FloatingActionButton
+    private lateinit var bottomNavigationView : ChipNavigationBar
+    val fragment_home= HomeFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_catering)
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView)
-        cameraButton = findViewById(R.id.fab)
+        bottomNavigationView = findViewById(R.id.bottom_nav_bar)
 
-        bottomNavigationView.background = null
-        bottomNavigationView.menu.getItem(2).isEnabled = false
+        openMainFragment()
 
-        val fragment_home= HomeFragment()
-        val fragment_keranjang= KeranjangFragment()
-        val fragment_riwayat= RiwayatFragment()
-        val fragment_profile= ProfileFragment()
+        bottomNavigationView.setItemSelected(R.id.miHome)
 
-        if (savedInstanceState == null) {
-            setCurrentFragment(fragment_home)
-        }
-        val bottom_navigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottom_navigation.setOnNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.miHome -> setCurrentFragment(fragment_home)
-                R.id.miKeranjang -> setCurrentFragment(fragment_keranjang)
-                R.id.miRiwayat -> setCurrentFragment(fragment_riwayat)
-                R.id.miProfile -> setCurrentFragment(fragment_profile)
+        bottomNavigationView.setOnItemSelectedListener {
+            when (it) {
 
+                R.id.miHome -> {
+                    openMainFragment()
+                }
+
+                R.id.miScanning -> {
+                    val scanningFragment = CameraFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, scanningFragment).commit()
+
+                }
+                R.id.miRiwayat -> {
+                    val riwayatFragment = RiwayatFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, riwayatFragment).commit()
+                }
             }
-            true
-        }
-
-        cameraButton.setOnClickListener {
-            val intent = Intent(this, AddStoryActivity::class.java)
-            startActivity(intent)
         }
     }
 
-    private fun setCurrentFragment(fragment: Fragment)=
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.flFragment,fragment)
-            commit()
-        }
+    private fun openMainFragment() {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.flFragment, fragment_home)
+        transaction.commit()
+    }
 }
