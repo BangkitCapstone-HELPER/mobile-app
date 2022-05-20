@@ -47,7 +47,8 @@
             android:exported="false" />
         <activity
             android:name=".View.HandlingError.PageNotFound"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".View.Dashboard.Dashboard"/>
         <activity
             android:name=".View.Dashboard.Dashboard"
             android:exported="false">
@@ -67,6 +68,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
