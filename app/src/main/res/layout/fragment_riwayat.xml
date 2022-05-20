@@ -34,13 +34,12 @@
     <TextView
         android:id="@+id/no_item_text"
         android:visibility="gone"
+        style="@style/textBlueTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:visibility="visible"
-        android:textSize="16sp"
-        android:textColor="@color/font_blue_light"
         android:text="@string/no_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

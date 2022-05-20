@@ -8,7 +8,8 @@ data class HistoryModel(
     val imageUrl: String?,
     val title: String?,
     val status: String?,
-    val description : String?,
+    val description: String?,
+    val expiredTime : String?,
     val date: String?,
-    val price: Integer?
+    val price: Int?
 ) : Parcelable

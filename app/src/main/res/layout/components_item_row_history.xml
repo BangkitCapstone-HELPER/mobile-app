@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginBottom="12dp"
-    app:strokeColor="@drawable/stroke_color"
-    android:elevation="4dp"
-    android:clickable="true"
-    android:focusable="true"
     android:checkable="true"
-    app:strokeWidth="1dp"
-    app:cardElevation="0dp">
+    android:clickable="true"
+    android:elevation="4dp"
+    android:focusable="true"
+    app:cardElevation="4dp"
+    app:strokeColor="@drawable/stroke_color"
+    app:strokeWidth="0.5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,30 +46,27 @@
 
                 <TextView
                     android:id="@+id/card_title"
+                    style="@style/textBlueTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginEnd="2dp"
                     android:layout_weight="1"
                     android:maxLines="1"
-                    android:text="@string/example_paket"
-                    android:textColor="@color/font_blue"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:text="@string/example_paket" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_status"
-                    style="@style/MaterialAlertDialog.Material3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    app:cardBackgroundColor="@color/yellow">
+                    app:cardBackgroundColor="@color/yellow"
+                    app:cardCornerRadius="8dp">
 
                     <TextView
                         android:id="@+id/card_text_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/poppins"
                         android:gravity="center"
-                        android:hint="@string/dummy_text_status"
                         android:text="Diproses"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -80,16 +76,13 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/history_description"
+                style="@style/textDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
-                android:hint="Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum"
-                android:justificationMode="inter_word"
                 android:maxLines="1"
-                android:textColor="@color/font_blue_light"
-                android:textColorHint="@color/font_blue_light"
-                android:textSize="12sp"
+                android:text="@string/dummy_text_status"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linear_history_title" />
@@ -99,10 +92,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:hint="Sudah Selesai"
+                android:fontFamily="@font/poppins"
                 android:maxLines="1"
+                android:text="Sudah selesai"
                 android:textColor="@color/primary_green"
-                android:textColorHint="@color/primary_green"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -113,10 +106,9 @@
                 android:id="@+id/history_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="2022-12-31"
-                android:letterSpacing="0.05"
+                android:fontFamily="@font/poppins"
+                android:text="2022-12-30"
                 android:textColor="@color/font_blue_light"
-                android:textColorHint="@color/font_blue_light"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/history_price"
@@ -126,11 +118,10 @@
                 android:id="@+id/history_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
                 android:gravity="end"
-                android:hint="Rp30.000"
-                android:letterSpacing="0.05"
+                android:text="Rp30.000"
                 android:textColor="@color/primary_green"
-                android:textColorHint="@color/primary_green"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/history_date" />

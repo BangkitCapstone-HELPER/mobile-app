@@ -12,7 +12,10 @@
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/stroke_color.xml" value="0.208" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/font/nunito_sans.xml" value="0.23177083333333334" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/font/nunito_sans_bold.xml" value="0.23177083333333334" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_add_story.xml" value="0.2558876811594203" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_article.xml" value="0.2558876811594203" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_dashboard.xml" value="0.2871376811594203" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_detail_menu.xml" value="0.2558876811594203" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_page_not_found.xml" value="0.2015625" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_profile.xml" value="0.25" />
@@ -20,7 +23,9 @@
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_result_scanning.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_splash_screen.xml" value="0.2015625" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/article_component.xml" value="0.38697916666666665" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.33" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.5" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_keranjang.xml" value="0.24003623188405798" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_riwayat.xml" value="0.403125" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/item_row_history.xml" value="0.33" />
@@ -33,33 +38,28 @@
         <entry key="app/src/main/res/drawable/custom_search_view.xml" value="0.1245" />
         <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.117" />
         <entry key="app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.1055" />
-        <entry key="app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.145" />
         <entry key="app/src/main/res/drawable/ic_baseline_restaurant_24.xml" value="0.1555" />
-        <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.145" />
         <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_24.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_baseline_support_agent_24.xml" value="0.1555" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1245" />
         <entry key="app/src/main/res/layout/activity_add_story.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/activity_article.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_camera.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.26838378906250004" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1965789794921875" />
         <entry key="app/src/main/res/layout/activity_detail_menu.xml" value="0.17395833333333333" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/activity_menu_catering.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_menu_catering.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_page_not_found.xml" value="0.15384615384615385" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/layout/activity_result_scanning.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/article_component.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/card_component.xml" value="0.14583333333333334" />
-        <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_keranjang.xml" value="0.14010416666666667" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.33445383707682297" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/layout/fragment_riwayat.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/layout/fragment_view_pager_menu.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/list_item_menu_component.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/menu_home_card.xml" value="0.14010416666666667" />
-        <entry key="app/src/main/res/layout/menu_home_component.xml" value="0.29335491039134837" />
+        <entry key="app/src/main/res/layout/menu_home_component.xml" value="0.15462962962962962" />
         <entry key="app/src/main/res/layout/result_scanning_component.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/menu/botnav_menu.xml" value="0.14010416666666667" />
         <entry key="app/src/main/res/menu/navbot_item.xml" value="0.14010416666666667" />

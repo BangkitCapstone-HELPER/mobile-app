@@ -19,6 +19,7 @@ class MenuCateringActivity : AppCompatActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_nav_bar)
 
+        setupActionBar()
         openMainFragment()
 
         bottomNavigationView.setItemSelected(R.id.miHome)
@@ -43,6 +44,11 @@ class MenuCateringActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Catering"
     }
 
     private fun openMainFragment() {
