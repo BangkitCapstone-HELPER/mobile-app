@@ -5,11 +5,14 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Data.ArticleModel
@@ -23,6 +26,7 @@ import com.example.helperstartup.View.Adapter.ArticleAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.HandlingError.PageNotFound
 import com.example.helperstartup.View.activity.ProfileActivity
+import de.hdodenhof.circleimageview.CircleImageView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -37,6 +41,9 @@ class Dashboard : AppCompatActivity() {
     private lateinit var buttonShop : CardView
     private lateinit var buttonChatbot : CardView
     private lateinit var textViewProfile : TextView
+    private lateinit var progressBar : ProgressBar
+    private lateinit var textGreeting : TextView
+    private lateinit var profileImage : CircleImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +59,11 @@ class Dashboard : AppCompatActivity() {
         buttonShop = findViewById(R.id.card_shop)
         buttonChatbot = findViewById(R.id.card_chatbot)
         textViewProfile = findViewById(R.id.textGreeting)
+        progressBar = findViewById(R.id.progresbar)
+        textGreeting = findViewById(R.id.textGreeting)
+        profileImage = findViewById(R.id.profilPicture)
+
+        progressBar.setVisibility(View.VISIBLE);
 
 
         setupView()
@@ -76,9 +88,13 @@ class Dashboard : AppCompatActivity() {
             val intent = Intent(this, PageNotFound::class.java)
             startActivity(intent)
         }
-        // dummy ke profile
-        textViewProfile.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+        textGreeting.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+        profileImage.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -114,6 +130,7 @@ class Dashboard : AppCompatActivity() {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         Log.i("data", responseBody.status.toString())
+                        progressBar.setVisibility(View.GONE);
                         setListArticle(responseBody)
                     }
                 }
@@ -143,7 +160,7 @@ class Dashboard : AppCompatActivity() {
     }
 
     private fun showRecyclerList() {
-        listArticle.layoutManager = LinearLayoutManager(this)
+        listArticle.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val listArticleAdapter = ArticleAdapter(listData)
         listArticle.adapter = listArticleAdapter
     }
