@@ -21,6 +21,7 @@ import com.example.helperstartup.Model.Service.ResponseApi.FileUploadResponse
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.uriToFile
+import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.Dashboard.Dashboard
 import com.example.helperstartup.View.camera.ResultScanning
 import com.example.helperstartup.databinding.FragmentCameraBinding
@@ -50,6 +51,7 @@ class CameraFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MenuCateringActivity).supportActionBar?.title = "Scan Makanan"
         binding.progresbar.visibility = View.GONE
 
         if (!allPermissionsGranted()) {

@@ -17,6 +17,7 @@ import com.example.helperstartup.Model.Service.ResponseApi.ResponseMenu
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.ArticleAdapter
 import com.example.helperstartup.View.Adapter.MenuAdapter
+import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,7 +36,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as MenuCateringActivity).supportActionBar?.title = "Menu"
         listMenu = view.findViewById(R.id.home_rv)
         textNoData = view.findViewById(R.id.textNoData)
         fetchListStories()

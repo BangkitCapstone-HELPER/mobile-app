@@ -16,6 +16,7 @@ import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.View.Adapter.HistoryAdapter
+import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.databinding.FragmentRiwayatBinding
 import retrofit2.Call
@@ -43,30 +44,6 @@ class RiwayatFragment : Fragment() {
         showExistingPreference()
         setupView()
         fetchTransactions()
-//        showData(
-//            listOf(
-//                HistoryModel(
-//                    1,
-//                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-//                    "Paket A",
-//                    "completed",
-//                    "Lorem ipsum",
-//                    null,
-//                    "2022-12-31T09:55:00",
-//                    30000
-//                ),
-//                HistoryModel(
-//                    2,
-//                    null,
-//                    "Paket B",
-//                    "cancelled",
-//                    "Lorem ipsum",
-//                    null,
-//                    "2022-10-20T09:55:00",
-//                    40000
-//                )
-//            )
-//        )
     }
 
     override fun onDestroyView() {
@@ -83,6 +60,8 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun setupView() {
+        (activity as MenuCateringActivity).supportActionBar?.title = "Riwayat Transaksi"
+
         historyAdapter = HistoryAdapter()
         val recyclerView: RecyclerView = binding.rvHistory
         recyclerView.apply {
