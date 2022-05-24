@@ -63,8 +63,6 @@ class Dashboard : AppCompatActivity() {
         profileImage = findViewById(R.id.profilPicture)
 
         progressBar.setVisibility(View.VISIBLE);
-
-        setupView()
         setListenerButton()
         fetchListStories()
     }

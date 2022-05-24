@@ -1,6 +1,7 @@
 package com.example.helperstartup.Model.Service
 
 import com.example.helperstartup.Model.Service.ResponseApi.*
+import com.example.helperstartup.Model.Service.request.PasswordChange
 import com.example.helperstartup.Model.Service.request.UserRegister
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -20,6 +21,14 @@ interface ApiService {
     fun register(
         @Body userData : UserRegister
     ) : Call<RegisterResponse>
+
+    // change password
+    @Headers("Content-Type: application/json")
+    @POST("user/password/change")
+    fun changePassword(
+        @Header("Authorization") auth: String,
+        @Body passwordData : PasswordChange
+    ) : Call<ChangePasswordResponse>
 
     // article
     @GET("article/")

@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.R
+import com.example.helperstartup.View.HandlingError.PageNotFound
 import com.example.helperstartup.databinding.ActivityProfileBinding
 import com.squareup.picasso.Picasso
 
@@ -67,6 +68,11 @@ class ProfileActivity : AppCompatActivity(){
             deleteUser()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
+        }
+
+        binding.changePasswordButton.setOnClickListener {
+            val intent = Intent(this, ChangePasswordActivity::class.java)
+            startActivity(intent)
         }
     }
 
