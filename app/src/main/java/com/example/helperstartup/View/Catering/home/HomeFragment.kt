@@ -58,18 +58,18 @@ class HomeFragment : Fragment() {
                             textNoData.setVisibility(View.VISIBLE)
                         }
                         else {
-                            listMenu.layoutManager = LinearLayoutManager(context)
+                            listMenu.layoutManager = LinearLayoutManager(activity)
                             val listMenuAdapter = MenuAdapter(responseBody)
                             listMenu.adapter = listMenuAdapter
                         }
                     }
                 }
                 else {
-                    Toast.makeText(context, "Error" , Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "Error" , Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<ResponseMenu>, t: Throwable) {
-                Toast.makeText(context, "Error" , Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, "Error" , Toast.LENGTH_SHORT).show()
             }
         })
     }

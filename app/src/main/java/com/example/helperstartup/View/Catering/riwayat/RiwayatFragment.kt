@@ -28,7 +28,7 @@ import retrofit2.Response
 @RequiresApi(Build.VERSION_CODES.O)
 class RiwayatFragment : Fragment() {
     private var _binding: FragmentRiwayatBinding? = null
-    private lateinit var historyAdapter : HistoryAdapter
+    private lateinit var historyAdapter: HistoryAdapter
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
 
@@ -46,8 +46,30 @@ class RiwayatFragment : Fragment() {
         mUserPreference = UserPreference(requireContext())
         showExistingPreference()
         setupView()
-        showData(listOf(HistoryModel(null, "Paket A", "completed", "Lorem ipsum", null,"2022-12-31T09:55:00", 30000),
-            HistoryModel(null, "Paket B", "cancelled", "Lorem ipsum", null,"2022-10-20T09:55:00", 40000)))
+        showData(
+            listOf(
+                HistoryModel(
+                    1,
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+                    "Paket A",
+                    "completed",
+                    "Lorem ipsum",
+                    null,
+                    "2022-12-31T09:55:00",
+                    30000
+                ),
+                HistoryModel(
+                    2,
+                    null,
+                    "Paket B",
+                    "cancelled",
+                    "Lorem ipsum",
+                    null,
+                    "2022-10-20T09:55:00",
+                    40000
+                )
+            )
+        )
     }
 
     override fun onDestroyView() {
@@ -90,7 +112,7 @@ class RiwayatFragment : Fragment() {
         })
     }
 
-    private fun showData (listHistory : List<HistoryModel>?) {
+    private fun showData(listHistory: List<HistoryModel>?) {
         Log.d("riwayatList", listHistory.toString())
         if (listHistory != null && listHistory.isNotEmpty()) {
             historyAdapter.setListHistories(listHistory)

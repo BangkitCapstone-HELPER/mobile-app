@@ -5,6 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class HistoryModel(
+    val id : Int,
     val imageUrl: String?,
     val title: String?,
     val status: String?,

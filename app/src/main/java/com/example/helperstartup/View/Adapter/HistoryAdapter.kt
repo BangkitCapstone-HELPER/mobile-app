@@ -50,6 +50,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
                 Picasso.get().load(historyModel.imageUrl)
                     .placeholder(com.denzcoskun.imageslider.R.drawable.placeholder)
                     .error(com.denzcoskun.imageslider.R.drawable.placeholder)
+                    .resize(300,300 )
                     .centerCrop()
                     .into(historyImageView)
                 historyDate.text = historyModel.date?.let { formatDate(it) } ?: ""
