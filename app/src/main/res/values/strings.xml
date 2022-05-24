@@ -32,7 +32,7 @@
     <string name="already_have_account">Sudah punya akun?</string>
     <string name="nomor_telepon_text">Nomor Telepon</string>
     <string name="min_chars_password">Minimal 8 karakter</string>
-    <string name="phone_hint">62123456789</string>
+    <string name="phone_hint">08123456789</string>
     <string name="login_here">Masuk</string>
     <string name="signup_msg">Buat akun untuk memulai perjalananmu</string>
 
