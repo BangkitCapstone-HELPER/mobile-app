@@ -6,8 +6,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class TransactionResponse(
-    @field:SerializedName("TransactionResponse")
-    val transactionResponse: List<TransactionResponseItem?>? = null
+    val data: List<TransactionResponseItem>? = null,
+    val message: String? = null,
+    val status: Int? = null
 ) : Parcelable
 
 @Parcelize
@@ -23,7 +24,7 @@ data class TransactionResponseItem(
     val menuId: Int,
 
     @field:SerializedName("status")
-    val status: String? = null,
+    val status: String,
 
     @field:SerializedName("address")
     val address: String? = null,
@@ -71,17 +72,17 @@ data class TransactionResponseItem(
 data class Menu(
 
     @field:SerializedName("price")
-    val price: Int? = null,
+    val price: Int,
 
     @field:SerializedName("description")
     val description: String? = null,
 
     @field:SerializedName("day_menus")
-    val dayMenus: List<DayMenusItem?>? = null,
+    val dayMenus: List<DayMenusItem>,
 
     @field:SerializedName("id")
-    val id: Int? = null,
+    val id: Int,
 
     @field:SerializedName("title")
-    val title: String? = null
+    val title: String
 ) : Parcelable

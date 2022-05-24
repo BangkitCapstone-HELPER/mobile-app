@@ -5,5 +5,5 @@ data class UserRegister(
     var email: String,
     var password: String,
     var address: String,
-    var phoneNumber: String
+    var phone_number: String
 )

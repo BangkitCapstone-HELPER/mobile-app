@@ -65,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
                         password = passwordEditText.text.toString(),
                         name = nameEditText.text.toString(),
                         address = "Default address",
-                        phoneNumber = phoneNumberEditText.text.toString()
+                        phone_number = phoneNumberEditText.text.toString()
                     )
                 ).enqueue(object : Callback<RegisterResponse> {
                     override fun onResponse(
