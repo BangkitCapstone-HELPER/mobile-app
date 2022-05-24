@@ -1,7 +1,6 @@
 package com.example.helperstartup.View.Catering.riwayat
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,12 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Data.HistoryModel
 import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.ResponseArticle
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
@@ -25,7 +22,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-@RequiresApi(Build.VERSION_CODES.O)
 class RiwayatFragment : Fragment() {
     private var _binding: FragmentRiwayatBinding? = null
     private lateinit var historyAdapter: HistoryAdapter
@@ -46,30 +42,31 @@ class RiwayatFragment : Fragment() {
         mUserPreference = UserPreference(requireContext())
         showExistingPreference()
         setupView()
-        showData(
-            listOf(
-                HistoryModel(
-                    1,
-                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
-                    "Paket A",
-                    "completed",
-                    "Lorem ipsum",
-                    null,
-                    "2022-12-31T09:55:00",
-                    30000
-                ),
-                HistoryModel(
-                    2,
-                    null,
-                    "Paket B",
-                    "cancelled",
-                    "Lorem ipsum",
-                    null,
-                    "2022-10-20T09:55:00",
-                    40000
-                )
-            )
-        )
+        fetchTransactions()
+//        showData(
+//            listOf(
+//                HistoryModel(
+//                    1,
+//                    "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+//                    "Paket A",
+//                    "completed",
+//                    "Lorem ipsum",
+//                    null,
+//                    "2022-12-31T09:55:00",
+//                    30000
+//                ),
+//                HistoryModel(
+//                    2,
+//                    null,
+//                    "Paket B",
+//                    "cancelled",
+//                    "Lorem ipsum",
+//                    null,
+//                    "2022-10-20T09:55:00",
+//                    40000
+//                )
+//            )
+//        )
     }
 
     override fun onDestroyView() {
@@ -96,20 +93,72 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun fetchTransactions() {
-        val client = ApiConfig.getApiService().getTransactions(auth = "Bearer " + userModel.token)
+        showLoading(true)
+        val client = ApiConfig.getApiService().getTransactions(auth = "bearer " + userModel.token)
         client.enqueue(object : Callback<TransactionResponse> {
             override fun onResponse(
                 call: Call<TransactionResponse>,
                 response: Response<TransactionResponse>
             ) {
-                TODO("Not yet implemented")
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    Log.d("RESPOSNE BODY", responseBody.toString())
+                    if (responseBody != null) {
+                        setListTransaction(responseBody)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Terjadi kesalahan dalam memuat data",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Terjadi kesalahan dalam memuat data",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                showLoading(false)
             }
 
             override fun onFailure(call: Call<TransactionResponse>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(
+                    requireContext(),
+                    "Terjadi kesalahan pada jaringan",
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
         })
+    }
+
+    private fun setListTransaction(transactionResponse: TransactionResponse) {
+        if (transactionResponse.data == null || transactionResponse.data.isEmpty()) {
+            binding.noItemText.visibility = View.VISIBLE
+            Log.d("HISTORYADAPTER", "MASUK situ")
+        } else {
+            val listHistory = arrayListOf<HistoryModel>()
+            transactionResponse.data.forEach {
+                val remaining =
+                    if (it.remaining == 0) "Sudah selesai" else "${it.remaining} hari tersisa"
+                listHistory.add(
+                    HistoryModel(
+                        it.id,
+                        it.menu.dayMenus[0].image,
+                        it.menu.title,
+                        it.status,
+                        it.menu.description,
+                        remaining,
+                        it.createdAt,
+                        it.amount
+                    )
+                )
+            }
+            historyAdapter.setListHistories(listHistory)
+            Log.d("HISTORYADAPTER", "MASUK SINI")
+            binding.noItemText.visibility = View.GONE
+        }
     }
 
     private fun showData(listHistory: List<HistoryModel>?) {

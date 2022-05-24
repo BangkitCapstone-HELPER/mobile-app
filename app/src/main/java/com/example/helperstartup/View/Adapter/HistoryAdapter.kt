@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
     private val listHistory = ArrayList<HistoryModel>()
-    private lateinit var context : Context
+    private lateinit var context: Context
 
     fun setListHistories(listHistory: List<HistoryModel>) {
         val diffCallback = HistoryDiffCallback(this.listHistory, listHistory)
@@ -28,7 +28,11 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val binding = ComponentsItemRowHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ComponentsItemRowHistoryBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         context = parent.context
         return HistoryViewHolder(binding)
     }
@@ -50,7 +54,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
                 Picasso.get().load(historyModel.imageUrl)
                     .placeholder(com.denzcoskun.imageslider.R.drawable.placeholder)
                     .error(com.denzcoskun.imageslider.R.drawable.placeholder)
-                    .resize(300,300 )
+                    .resize(300, 300)
                     .centerCrop()
                     .into(historyImageView)
                 historyDate.text = historyModel.date?.let { formatDate(it) } ?: ""
@@ -65,16 +69,16 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
         }
     }
 
-    fun changeStatus(status : String?, binding : ComponentsItemRowHistoryBinding) {
-        when(status) {
+    fun changeStatus(status: String?, binding: ComponentsItemRowHistoryBinding) {
+        when (status) {
             "pending" -> {
                 binding.cardStatus.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
-                        R.color.young_pink
+                        R.color.yellow
                     )
                 )
-                binding.cardTextName.text = "Ditunda"
+                binding.cardTextName.text = "Pembayaran"
             }
             "completed" -> {
                 binding.cardStatus.setBackgroundColor(
@@ -83,7 +87,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
                         R.color.primary_green
                     )
                 )
-                binding.cardTextName.text = "Berhasil"
+                binding.cardTextName.text = "Selesai"
             }
             "cancelled" -> {
                 binding.cardStatus.setBackgroundColor(
@@ -98,20 +102,20 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
                 binding.cardStatus.setBackgroundColor(
                     ContextCompat.getColor(
                         context,
-                        R.color.yellow
+                        R.color.young_green
                     )
                 )
-                binding.cardTextName.text = "Diproses"
+                binding.cardTextName.text = "Aktif"
             }
-                else -> {
-                    binding.cardStatus.setBackgroundColor(
-                        ContextCompat.getColor(
-                            context,
-                            R.color.gray_soft
-                        )
+            else -> {
+                binding.cardStatus.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.gray_soft
                     )
-                    binding.cardTextName.text = status ?: ""
-                }
+                )
+                binding.cardTextName.text = status ?: ""
+            }
         }
 
     }
