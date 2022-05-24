@@ -36,5 +36,11 @@
     <string name="login_here">Masuk</string>
     <string name="signup_msg">Buat akun untuk memulai perjalananmu</string>
 
+    <!-- Riwayat Fragment -->
+    <string name="gambar_riwayat_transaksi">Gambar riwayat transaksi</string>
+    <string name="example_paket">Paket A</string>
+    <string name="dummy_text_status">Diproses</string>
+    <string name="no_history">Kamu belum pernah\n memesan makanan</string>
+
 
 </resources>

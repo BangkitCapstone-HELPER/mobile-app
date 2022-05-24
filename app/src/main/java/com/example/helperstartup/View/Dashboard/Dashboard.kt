@@ -52,7 +52,6 @@ class Dashboard : AppCompatActivity() {
         showExistingPreference()
         setupView()
 
-
         listArticle = findViewById(R.id.article_rv)
         buttonCatering = findViewById(R.id.card_catering)
         buttonKost = findViewById(R.id.card_kost)
@@ -64,7 +63,6 @@ class Dashboard : AppCompatActivity() {
         profileImage = findViewById(R.id.profilPicture)
 
         progressBar.setVisibility(View.VISIBLE);
-
 
         setupView()
         setListenerButton()
