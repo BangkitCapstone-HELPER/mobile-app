@@ -52,7 +52,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         val validNewPassword = binding.newPasswordEditTextLayout.helperText == null && !binding.newPasswordEditText.text.toString().isEmpty()
         if (validOldPassword && validNewPassword) {
             val client = ApiConfig.getApiService().changePassword(
-                auth = userModel.token,
+                auth = "bearer " + userModel.token,
                 passwordData = PasswordChange(
                     binding.newPasswordEditText.text.toString(),
                     binding.oldPasswordEditText.text.toString(),
@@ -71,6 +71,8 @@ class ChangePasswordActivity : AppCompatActivity() {
                             "Berhasil mengubah password",
                             Toast.LENGTH_SHORT
                         ).show()
+                        startActivity(Intent(this@ChangePasswordActivity, ProfileActivity::class.java))
+                        finish()
                     } else {
                         showLoading(false)
                         Toast.makeText(
@@ -89,8 +91,6 @@ class ChangePasswordActivity : AppCompatActivity() {
                     ).show()
                 }
             })
-            startActivity(Intent(this@ChangePasswordActivity, ProfileActivity::class.java))
-            finish()
         } else {
             Toast.makeText(this, "Periksa kembali masukan", Toast.LENGTH_SHORT).show()
         }

@@ -66,6 +66,7 @@ class ProfileActivity : AppCompatActivity(){
     private fun setupAction() {
         binding.logoutButton.setOnClickListener {
             deleteUser()
+            finishAffinity()
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
