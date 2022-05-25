@@ -2,24 +2,25 @@ package com.example.helperstartup.View.Catering.riwayat
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ListView
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helperstartup.Model.Data.BankAccount
 import com.example.helperstartup.Model.Data.HistoryModel
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.R
+import com.example.helperstartup.View.Adapter.BankAdapter
 import com.example.helperstartup.View.Adapter.HistoryAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
@@ -75,6 +76,7 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun showBottomSheet(historyModel: HistoryModel) {
+
         val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         val bottomSheetView =
@@ -82,10 +84,28 @@ class RiwayatFragment : Fragment() {
                 R.layout.component_bottom_sheet_transaction,
                 view?.findViewById(R.id.bottomSheetTransaction) as ScrollView?
             )
+
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
 
-        val closeIcon =  bottomSheetView.findViewById<TextView>(R.id.closeDialogIcon)
+        val bankArraylist = arrayListOf<BankAccount>()
+        bankArraylist.add(BankAccount(1, null, "BRI", "034 101 000 743 303", "a.n Rahmat Wibowo"))
+        bankArraylist.add(
+            BankAccount(
+                2,
+                "https://www.freepnglogos.com/uploads/logo-bca-png/bank-central-asia-logo-bank-central-asia-bca-format-cdr-png-gudril-1.png",
+                "BCA",
+                "123 456 789 102 123",
+                "a.n Alamsyah"
+            )
+        )
+
+        bottomSheetView.findViewById<TextView>(R.id.amount_price).text = "Jumlah Rp${historyModel.price.toString()}"
+
+        val listView = bottomSheetView.findViewById<ListView>(R.id.bankAccountsList)
+        listView.adapter = BankAdapter(requireActivity(), bankArraylist)
+
+        val closeIcon = bottomSheetView.findViewById<TextView>(R.id.closeDialogIcon)
         closeIcon?.setOnClickListener {
             bottomSheetDialog.dismiss()
         }

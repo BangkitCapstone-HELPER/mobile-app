@@ -42,10 +42,6 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.bind(listHistory[position])
-
-//        holder.itemView.setOnClickListener {
-//            onItemClicked(listHistory[position])
-//        }
     }
 
     override fun getItemCount() = listHistory.size
