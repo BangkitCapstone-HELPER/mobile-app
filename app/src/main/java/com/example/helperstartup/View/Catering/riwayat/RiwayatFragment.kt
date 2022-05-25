@@ -2,11 +2,15 @@ package com.example.helperstartup.View.Catering.riwayat
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,10 +19,12 @@ import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.HistoryAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.databinding.FragmentRiwayatBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,23 +57,45 @@ class RiwayatFragment : Fragment() {
         _binding = null
     }
 
-    private fun showExistingPreference() {
-        userModel = mUserPreference.getUser()
-        if (!userModel.isLogin) {
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.finish()
-        }
-    }
-
     private fun setupView() {
         (activity as MenuCateringActivity).supportActionBar?.title = "Riwayat Transaksi"
 
-        historyAdapter = HistoryAdapter()
+        historyAdapter = HistoryAdapter {
+            if (it.status == "pending") {
+                showBottomSheet(it)
+            }
+
+        }
         val recyclerView: RecyclerView = binding.rvHistory
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = historyAdapter
             setHasFixedSize(true)
+        }
+    }
+
+    private fun showBottomSheet(historyModel: HistoryModel) {
+        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+
+        val bottomSheetView =
+            LayoutInflater.from(context).inflate(
+                R.layout.component_bottom_sheet_transaction,
+                view?.findViewById(R.id.bottomSheetTransaction) as ScrollView?
+            )
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+
+        val closeIcon =  bottomSheetView.findViewById<TextView>(R.id.closeDialogIcon)
+        closeIcon?.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+    }
+
+    private fun showExistingPreference() {
+        userModel = mUserPreference.getUser()
+        if (!userModel.isLogin) {
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
         }
     }
 
@@ -115,7 +143,6 @@ class RiwayatFragment : Fragment() {
     private fun setListTransaction(transactionResponse: TransactionResponse) {
         if (transactionResponse.data == null || transactionResponse.data.isEmpty()) {
             binding.noItemText.visibility = View.VISIBLE
-            Log.d("HISTORYADAPTER", "MASUK situ")
         } else {
             val listHistory = arrayListOf<HistoryModel>()
             transactionResponse.data.forEach {
@@ -135,18 +162,7 @@ class RiwayatFragment : Fragment() {
                 )
             }
             historyAdapter.setListHistories(listHistory)
-            Log.d("HISTORYADAPTER", "MASUK SINI")
             binding.noItemText.visibility = View.GONE
-        }
-    }
-
-    private fun showData(listHistory: List<HistoryModel>?) {
-        Log.d("riwayatList", listHistory.toString())
-        if (listHistory != null && listHistory.isNotEmpty()) {
-            historyAdapter.setListHistories(listHistory)
-            binding.noItemText.visibility = View.GONE
-        } else {
-            binding.noItemText.visibility = View.VISIBLE
         }
     }
 
