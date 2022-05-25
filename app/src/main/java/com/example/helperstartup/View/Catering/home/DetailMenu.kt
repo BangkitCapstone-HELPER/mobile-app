@@ -25,6 +25,8 @@ class DetailMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         data = intent.getParcelableExtra("DATA")!!
 
         Log.i("Datanya gimana", data.toString())
