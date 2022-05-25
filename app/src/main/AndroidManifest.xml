@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
+            android:name=".View.Catering.home.MenuDetail"
+            android:exported="false"
+            android:label="@string/title_activity_menu_detail"
+            android:theme="@style/Theme.HelperStartup.NoActionBar" />
+        <activity
             android:name=".View.activity.ProfileActivity"
             android:exported="false"
             android:parentActivityName=".View.Dashboard.Dashboard" />

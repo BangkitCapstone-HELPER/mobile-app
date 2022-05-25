@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var listMenu : RecyclerView
     private lateinit var textNoData : TextView
+    private lateinit var progressBar: ProgressBar
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,8 +41,10 @@ class HomeFragment : Fragment() {
         (activity as MenuCateringActivity).supportActionBar?.title = "Menu"
         listMenu = view.findViewById(R.id.home_rv)
         textNoData = view.findViewById(R.id.textNoData)
+        progressBar = view.findViewById(R.id.progresbar)
         fetchListStories()
         textNoData.setVisibility(View.INVISIBLE)
+        progressBar.setVisibility(View.VISIBLE)
 
     }
 
@@ -57,9 +61,11 @@ class HomeFragment : Fragment() {
                         Log.i("data", responseBody.toString())
                         if (responseBody.data?.size == null) {
                             textNoData.setVisibility(View.VISIBLE)
+                            progressBar.setVisibility(View.GONE)
                         }
                         else {
-                            listMenu.layoutManager = LinearLayoutManager(activity)
+                            progressBar.setVisibility(View.GONE)
+                            listMenu.layoutManager = LinearLayoutManager(context)
                             val listMenuAdapter = MenuAdapter(responseBody)
                             listMenu.adapter = listMenuAdapter
                         }
