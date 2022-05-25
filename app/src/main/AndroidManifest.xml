@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
+            android:name=".View.Catering.home.MenuDetail"
+            android:exported="false"
+            android:label="@string/title_activity_menu_detail"
+            android:theme="@style/Theme.HelperStartup.NoActionBar" />
+        <activity
             android:name=".View.activity.ProfileActivity"
             android:exported="false"
             android:parentActivityName=".View.Dashboard.Dashboard" />
@@ -48,15 +53,17 @@
         <activity
             android:name=".View.HandlingError.PageNotFound"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard"/>
+            android:parentActivityName=".View.Dashboard.Dashboard" />
         <activity
             android:name=".View.Dashboard.Dashboard"
             android:exported="false">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".View.activity.SplashScreenActivity"

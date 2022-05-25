@@ -69,4 +69,13 @@
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/font_blue</item>
     </style>
+
+    <style name="Theme.HelperStartup.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.HelperStartup.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.HelperStartup.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
