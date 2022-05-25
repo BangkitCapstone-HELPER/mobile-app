@@ -15,7 +15,7 @@ import com.example.helperstartup.View.Adapter.HistoryAdapter.HistoryViewHolder
 import com.example.helperstartup.databinding.ComponentsItemRowHistoryBinding
 import com.squareup.picasso.Picasso
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
+class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : RecyclerView.Adapter<HistoryViewHolder>() {
     private val listHistory = ArrayList<HistoryModel>()
     private lateinit var context: Context
 
@@ -34,7 +34,9 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
             false
         )
         context = parent.context
-        return HistoryViewHolder(binding)
+        return HistoryViewHolder(binding) {
+            onItemClicked(listHistory[it])
+        }
     }
 
 
@@ -45,8 +47,14 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
     override fun getItemCount() = listHistory.size
 
 
-    inner class HistoryViewHolder(private val binding: ComponentsItemRowHistoryBinding) :
+    inner class HistoryViewHolder(private val binding: ComponentsItemRowHistoryBinding, onItemClicked: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            itemView.setOnClickListener {
+                onItemClicked(adapterPosition)
+            }
+        }
+
         fun bind(historyModel: HistoryModel) {
             with(binding) {
                 cardTitle.text = historyModel.title ?: ""
@@ -117,7 +125,5 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryViewHolder>() {
                 binding.cardTextName.text = status ?: ""
             }
         }
-
     }
-
 }

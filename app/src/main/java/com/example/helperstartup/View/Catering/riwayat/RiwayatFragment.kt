@@ -7,18 +7,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
+import android.widget.ScrollView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.helperstartup.Model.Data.BankAccount
 import com.example.helperstartup.Model.Data.HistoryModel
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.R
+import com.example.helperstartup.View.Adapter.BankAdapter
 import com.example.helperstartup.View.Adapter.HistoryAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.databinding.FragmentRiwayatBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,23 +58,64 @@ class RiwayatFragment : Fragment() {
         _binding = null
     }
 
-    private fun showExistingPreference() {
-        userModel = mUserPreference.getUser()
-        if (!userModel.isLogin) {
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.finish()
-        }
-    }
-
     private fun setupView() {
         (activity as MenuCateringActivity).supportActionBar?.title = "Riwayat Transaksi"
 
-        historyAdapter = HistoryAdapter()
+        historyAdapter = HistoryAdapter {
+            if (it.status == "pending") {
+                showBottomSheet(it)
+            }
+
+        }
         val recyclerView: RecyclerView = binding.rvHistory
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = historyAdapter
             setHasFixedSize(true)
+        }
+    }
+
+    private fun showBottomSheet(historyModel: HistoryModel) {
+
+        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+
+        val bottomSheetView =
+            LayoutInflater.from(context).inflate(
+                R.layout.component_bottom_sheet_transaction,
+                view?.findViewById(R.id.bottomSheetTransaction) as ScrollView?
+            )
+
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+
+        val bankArraylist = arrayListOf<BankAccount>()
+        bankArraylist.add(BankAccount(1, null, "BRI", "034 101 000 743 303", "a.n Rahmat Wibowo"))
+        bankArraylist.add(
+            BankAccount(
+                2,
+                "https://www.freepnglogos.com/uploads/logo-bca-png/bank-central-asia-logo-bank-central-asia-bca-format-cdr-png-gudril-1.png",
+                "BCA",
+                "123 456 789 102 123",
+                "a.n Alamsyah"
+            )
+        )
+
+        bottomSheetView.findViewById<TextView>(R.id.amount_price).text = "Jumlah Rp${historyModel.price.toString()}"
+
+        val listView = bottomSheetView.findViewById<ListView>(R.id.bankAccountsList)
+        listView.adapter = BankAdapter(requireActivity(), bankArraylist)
+
+        val closeIcon = bottomSheetView.findViewById<TextView>(R.id.closeDialogIcon)
+        closeIcon?.setOnClickListener {
+            bottomSheetDialog.dismiss()
+        }
+    }
+
+    private fun showExistingPreference() {
+        userModel = mUserPreference.getUser()
+        if (!userModel.isLogin) {
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
         }
     }
 
@@ -115,7 +163,6 @@ class RiwayatFragment : Fragment() {
     private fun setListTransaction(transactionResponse: TransactionResponse) {
         if (transactionResponse.data == null || transactionResponse.data.isEmpty()) {
             binding.noItemText.visibility = View.VISIBLE
-            Log.d("HISTORYADAPTER", "MASUK situ")
         } else {
             val listHistory = arrayListOf<HistoryModel>()
             transactionResponse.data.forEach {
@@ -135,18 +182,7 @@ class RiwayatFragment : Fragment() {
                 )
             }
             historyAdapter.setListHistories(listHistory)
-            Log.d("HISTORYADAPTER", "MASUK SINI")
             binding.noItemText.visibility = View.GONE
-        }
-    }
-
-    private fun showData(listHistory: List<HistoryModel>?) {
-        Log.d("riwayatList", listHistory.toString())
-        if (listHistory != null && listHistory.isNotEmpty()) {
-            historyAdapter.setListHistories(listHistory)
-            binding.noItemText.visibility = View.GONE
-        } else {
-            binding.noItemText.visibility = View.VISIBLE
         }
     }
 

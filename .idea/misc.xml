@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.349" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/button_background.xml" value="0.349" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_account_circle_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.349" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_edit_24_green.xml" value="0.209" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.369" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_email_24_green.xml" value="0.209" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_login_24_red.xml" value="0.349" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/ic_baseline_phone_24_green.xml" value="0.209" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/rounded_border.xml" value="0.349" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/drawable/splash_image.xml" value="0.22" />
@@ -27,8 +31,11 @@
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_result_scanning.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_splash_screen.xml" value="0.2015625" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/article_component.xml" value="0.38697916666666665" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.1" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_bottom_sheet_transaction.xml" value="0.21" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.264" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_list_item_bank_accounts.xml" value="0.22" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_camera.xml" value="0.18819655521783182" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_home.xml" value="0.176" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_keranjang.xml" value="0.24003623188405798" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_riwayat.xml" value="0.403125" />
@@ -77,5 +84,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>

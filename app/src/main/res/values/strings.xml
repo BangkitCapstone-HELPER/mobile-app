@@ -41,6 +41,11 @@
     <string name="example_paket">Paket A</string>
     <string name="dummy_text_status">Diproses</string>
     <string name="no_history">Kamu belum pernah\n memesan makanan</string>
+    <string name="upload_payment_msg">Unggah Bukti Bayar</string>
+    <string name="logo_bank">Logo bank</string>
+    <string name="example_bank_number">034 101 000 743 303</string>
+    <string name="example_bank_acc_name">a.n. Rahmat Wibowo</string>
+    <string name="unggah_bukti">Unggah Bukti</string>
 
 
 </resources>

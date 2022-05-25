@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottomSheetTransaction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_background"
+    android:padding="16dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:context=".View.Catering.riwayat.RiwayatFragment">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/closeDialogIcon"
+            android:layout_width="24sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="8dp"
+            android:drawableStart="@drawable/ic_baseline_close_24" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins"
+            android:gravity="start"
+            android:letterSpacing="0.05"
+            android:padding="16dp"
+            android:text="@string/upload_payment_msg"
+            android:textColor="@color/font_blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividenBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDividerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutBottomSheet" />
+
+    <TextView
+        android:id="@+id/amount_price"
+        style="@style/textBlueDescLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:text=""
+        android:textColor="@color/primary_green"
+        android:textStyle="bold"
+        android:letterSpacing="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividenBottomSheet" />
+
+    <ListView
+        android:id="@+id/bankAccountsList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount_price"
+        app:layout_constraintBottom_toTopOf="@+id/unggahBukti"
+        tools:listitem="@layout/components_list_item_bank_accounts" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/unggahBukti"
+        style="@style/ButtonGeneral"
+        android:layout_marginTop="24dp"
+        android:text="@string/unggah_bukti"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

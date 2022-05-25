@@ -71,9 +71,19 @@
         <item name="android:textColor">@color/font_blue</item>
     </style>
 
+    <!-- Text Gray Desc Large  -->
+    <style name="textBlueDescLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/font_blue</item>
+    </style>
+
     <!-- Card -->
     <style name="MyCardView" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut
+        </item>
     </style>
 
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
@@ -84,4 +94,12 @@
         <item name="cornerSizeBottomLeft">8dp</item>
     </style>
 
+    <!-- Bottom sheet -->
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>
