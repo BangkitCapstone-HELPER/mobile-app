@@ -12,20 +12,9 @@ data class ResponseMenu(
 ) : Parcelable
 
 @Parcelize
-data class ItemsItem(
-	val name: String? = null
-) : Parcelable
-
-@Parcelize
-data class ContentsItem(
-	val kind: String? = null,
-	val items: List<ItemsItem?>? = null
-) : Parcelable
-
-@Parcelize
 data class DayMenusItem(
 	val image: String? = null,
-	val contents: List<ContentsItem?>? = null,
+	val items: List<String?>? = null,
 	val day: String? = null
 ) : Parcelable
 
