@@ -17,7 +17,7 @@ class ListMenuAdapter(private val listMenu: List<String?>?) : RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.textMenu.text = "-  " + listMenu?.get(position)
+        holder.textMenu.text = "- " + listMenu?.get(position)
     }
 
     override fun getItemCount(): Int = listMenu!!.size
