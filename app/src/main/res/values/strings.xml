@@ -35,9 +35,6 @@
     <string name="phone_hint">08123456789</string>
     <string name="login_here">Masuk</string>
     <string name="signup_msg">Buat akun untuk memulai perjalananmu</string>
-    <string name="title_activity_menu_detail">MenuDetail</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
 
     <!-- Riwayat Fragment -->
     <string name="gambar_riwayat_transaksi">Gambar riwayat transaksi</string>
