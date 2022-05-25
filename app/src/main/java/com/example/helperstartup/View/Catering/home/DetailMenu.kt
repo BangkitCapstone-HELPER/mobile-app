@@ -1,8 +1,12 @@
 package com.example.helperstartup.View.Catering.home
 
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -20,7 +24,9 @@ class DetailMenu : AppCompatActivity() {
     private lateinit var priceText : TextView
     var tabLayout: TabLayout? = null
     var viewPager: ViewPager? = null
+    private lateinit var buttonPesan : Button
     private lateinit var data : DataItem
+    private lateinit var mDialog : Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
@@ -30,6 +36,7 @@ class DetailMenu : AppCompatActivity() {
         data = intent.getParcelableExtra("DATA")!!
 
         Log.i("Datanya gimana", data.toString())
+        buttonPesan = findViewById(R.id.BtnPesan)
 
         imageSlider = findViewById(R.id.imageSlider)
 
@@ -64,6 +71,14 @@ class DetailMenu : AppCompatActivity() {
             }
         })
 
+        mDialog = Dialog(this)
+
+        buttonPesan.setOnClickListener {
+            Log.i("data", "click")
+            mDialog.setContentView(R.layout.component_popup)
+            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            mDialog.show()
+        }
 
     }
 
