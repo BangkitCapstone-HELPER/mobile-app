@@ -27,7 +27,7 @@
             android:layout_height="match_parent"
             android:contentDescription="@string/gambar_riwayat_transaksi"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/placeholder" />
+            app:srcCompat="@drawable/loading_image" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

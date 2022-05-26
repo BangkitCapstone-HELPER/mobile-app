@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="210dp"
         app:auto_cycle="true"
-        app:error_image="@drawable/meta"
+        app:error_image="@drawable/img_placeholder"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:period="999999999"

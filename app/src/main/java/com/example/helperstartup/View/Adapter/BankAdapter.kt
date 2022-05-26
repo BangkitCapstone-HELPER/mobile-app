@@ -25,8 +25,8 @@ class BankAdapter(private val context: Activity, private val arrayList: ArrayLis
 
         val item = arrayList[position]
         Picasso.get().load(item.imageUrl)
-            .placeholder(R.drawable.bri)
-            .error(com.denzcoskun.imageslider.R.drawable.placeholder)
+            .placeholder(R.drawable.loading_image)
+            .error(R.drawable.img_placeholder)
             .resize(150, 150)
             .centerCrop()
             .into(imgView)

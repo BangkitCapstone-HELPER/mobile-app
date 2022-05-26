@@ -60,8 +60,8 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
                 cardTitle.text = historyModel.title ?: ""
                 historyDescription.text = historyModel.description ?: ""
                 Picasso.get().load(historyModel.imageUrl)
-                    .placeholder(com.denzcoskun.imageslider.R.drawable.placeholder)
-                    .error(com.denzcoskun.imageslider.R.drawable.placeholder)
+                    .placeholder(R.drawable.loading_image)
+                    .error(R.drawable.img_placeholder)
                     .resize(300, 300)
                     .centerCrop()
                     .into(historyImageView)

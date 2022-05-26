@@ -21,7 +21,7 @@
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/logo_bank"
             android:scaleType="centerInside"
-            app:srcCompat="@drawable/bri" />
+            app:srcCompat="@drawable/loading_image" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
