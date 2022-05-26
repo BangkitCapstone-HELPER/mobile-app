@@ -4,16 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="4dp"
-        app:cardElevation="4dp"
-        app:cardMaxElevation="4dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
@@ -27,49 +23,70 @@
                 android:contentDescription="photo"
                 android:scaleType="centerCrop"
                 android:src="@drawable/meta" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/vitaminScan"
+                    android:id="@+id/namaScan"
+                    style="@style/textGreenTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:lines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Vitamin" />
+                    tools:text="Nama" />
 
                 <TextView
-                    android:id="@+id/nutrisiScan"
+                    android:id="@+id/proteinScan"
+                    style="@style/textDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:gravity="start"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/vitaminScan"
-                    tools:text="Nutrisi" />
+                    app:layout_constraintTop_toBottomOf="@id/namaScan"
+                    tools:text="Protein" />
 
                 <TextView
                     android:id="@+id/kaloriScan"
+                    style="@style/textDesc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:gravity="start"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/nutrisiScan"
+                    app:layout_constraintTop_toBottomOf="@+id/proteinScan"
                     tools:text="Kalori" />
+
+                <TextView
+                    android:id="@+id/karbohidratScan"
+                    style="@style/textDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/kaloriScan"
+                    tools:text="Karbohidrat" />
+
+                <TextView
+                    android:id="@+id/fatScan"
+                    style="@style/textDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/karbohidratScan"
+                    tools:text="Fat" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

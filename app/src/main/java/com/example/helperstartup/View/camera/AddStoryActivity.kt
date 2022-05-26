@@ -20,6 +20,7 @@ import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModelProvider
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.FileUploadResponse
+import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.uriToFile
@@ -150,23 +151,22 @@ class AddStoryActivity : AppCompatActivity() {
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
+                "file",
                 file.name,
                 requestImageFile
             )
                     val client = ApiConfig.getApiService().uploadImage(
-                        imageMultipart,
-                        "Bearer "
+                        imageMultipart
                     )
                     binding.progresbar.visibility = View.VISIBLE
-                    client.enqueue(object : Callback<FileUploadResponse> {
+                    client.enqueue(object : Callback<ResponseUploadScanner> {
                         override fun onResponse(
-                            call: Call<FileUploadResponse>,
-                            response: Response<FileUploadResponse>
+                            call: Call<ResponseUploadScanner>,
+                            response: Response<ResponseUploadScanner>
                         ) {
                             if (response.isSuccessful) {
                                 val responseBody = response.body()
-                                if (responseBody != null && !responseBody.error) {
+                                if (responseBody != null) {
                                     binding.progresbar.visibility = View.GONE
                                     Toast.makeText(
                                         this@AddStoryActivity,
@@ -188,7 +188,7 @@ class AddStoryActivity : AppCompatActivity() {
                             }
                         }
 
-                        override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
+                        override fun onFailure(call: Call<ResponseUploadScanner>, t: Throwable) {
                             binding.progresbar.visibility = View.GONE
                             Toast.makeText(
                                 this@AddStoryActivity,

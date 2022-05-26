@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.ResponseMenu
+import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.MenuAdapter
 import com.example.helperstartup.View.Adapter.ScanningAdapter
@@ -18,6 +19,7 @@ import retrofit2.Response
 class ResultScanning : AppCompatActivity() {
 
     private lateinit var listMenu : RecyclerView
+    private lateinit var dataMenu : ResponseUploadScanner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,33 +27,14 @@ class ResultScanning : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        listMenu = findViewById(R.id.scanning_rv)
-        fetchListStories()
-    }
+        dataMenu = intent.getParcelableExtra<ResponseUploadScanner>("message")!!
 
-    private fun fetchListStories() {
-        val client = ApiConfig.getApiService().getMenu()
-        client.enqueue(object : Callback<ResponseMenu> {
-            override fun onResponse(
-                call: Call<ResponseMenu>,
-                response: Response<ResponseMenu>
-            ) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        Log.i("data", responseBody.toString())
-                        listMenu.layoutManager = LinearLayoutManager(this@ResultScanning)
-                        val listMenuAdapter = ScanningAdapter(responseBody)
-                        listMenu.adapter = listMenuAdapter
-                    }
-                }
-                else {
-                    Toast.makeText(this@ResultScanning, "Error" , Toast.LENGTH_LONG).show()
-                }
-            }
-            override fun onFailure(call: Call<ResponseMenu>, t: Throwable) {
-                Toast.makeText(this@ResultScanning, "Error" , Toast.LENGTH_LONG).show()
-            }
-        })
+        Log.i("datamenu", dataMenu.message.toString())
+
+        listMenu = findViewById(R.id.scanning_rv)
+
+        listMenu.layoutManager = LinearLayoutManager(this@ResultScanning)
+        val listMenuAdapter = ScanningAdapter(dataMenu)
+        listMenu.adapter = listMenuAdapter
     }
 }
