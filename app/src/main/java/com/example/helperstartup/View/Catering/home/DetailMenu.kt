@@ -76,7 +76,9 @@ class DetailMenu : AppCompatActivity() {
         mDialog = Dialog(this)
 
         buttonPesan.setOnClickListener {
-            startActivity(Intent(this, OrderConfirmationActivity::class.java))
+            val intent = Intent(this, OrderConfirmationActivity::class.java)
+            intent.putExtra("dataItem", data)
+            startActivity(intent)
 //            Log.i("data", "click")
 //            mDialog.setContentView(R.layout.component_popup)
 //            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

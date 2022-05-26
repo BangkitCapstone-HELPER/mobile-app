@@ -47,5 +47,18 @@
     <string name="example_bank_acc_name">a.n. Rahmat Wibowo</string>
     <string name="unggah_bukti">Unggah Bukti</string>
 
+    <!-- Order Confirmation -->
+    <string name="jam_antar">Jam Antar</string>
+    <string name="pagi">Pagi</string>
+    <string name="siang">Siang</string>
+    <string name="malam">Malam</string>
+    <string name="jumlah_hari">Jumlah Hari</string>
+    <string name="counter">1</string>
+    <string name="alamat">Alamat</string>
+    <string name="pilih_lokasi_pengiriman">Pilih lokasi pengiriman</string>
+    <string name="catatan">Catatan</string>
+    <string name="example_total_price">Total : Rp50.000</string>
+    <string name="order">Pesan</string>
+
 
 </resources>

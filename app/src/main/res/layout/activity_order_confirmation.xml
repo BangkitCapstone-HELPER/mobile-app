@@ -1,214 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.Catering.keranjang.OrderConfirmationActivity">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/containerInfo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <include layout="@layout/menu_home_component" />
-
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/textBlueTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Jam Antar" />
-
-
-        <LinearLayout
-            android:id="@+id/toggleButtonGroup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonPagi"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins"
-                android:text="Pagi"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                app:cornerRadius="10dp"
-                app:strokeColor="@color/primary_green" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonSiang"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins"
-                android:text="Siang"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                app:cornerRadius="10dp"
-                app:strokeColor="@color/primary_green" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonMalam"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/poppins"
-                android:text="Malam"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                app:cornerRadius="10dp"
-                app:strokeColor="@color/primary_green" />
-        </LinearLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/textBlueTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Jumlah Hari" />
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/minusitemBtn"
-                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/poppins"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/ic_baseline_horizontal_rule_24"
-                app:strokeColor="@color/primary_green" />
+            <include
+                android:id="@+id/cardMenu"
+                layout="@layout/menu_home_component" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tvCounter"
                 style="@style/textBlueTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center_vertical"
-                android:text="1"
-                android:textColor="@color/primary_green"
-                android:textSize="24sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/additemBtn"
-                style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:fontFamily="@font/poppins"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                app:cornerRadius="10dp"
-                app:icon="@drawable/ic_baseline_add_24"
-                app:strokeColor="@color/primary_green" />
-        </LinearLayout>
-
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/textBlueTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Alamat" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/selectLocationBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/gray_soft"
-            android:elevation="2dp"
-            android:fontFamily="@font/poppins"
-            android:gravity="center_vertical"
-            android:text="Pilih lokasi pengiriman"
-            android:textAllCaps="false"
-            android:textColor="@color/font_blue"
-            android:textSize="12sp"
-            app:cornerRadius="4dp"
-            app:icon="@drawable/ic_baseline_location_on_24"
-            app:iconTint="@color/font_blue" />
-
-        <com.google.android.material.textview.MaterialTextView
-            style="@style/textBlueTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            android:text="Catatan" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutCatatan"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextCatatan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:lines="5"
-                android:overScrollMode="always"
-                android:scrollbarStyle="insideInset"
-                android:scrollbars="vertical"
-                android:scrollHorizontally="false" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/jam_antar" />
 
-        <View
-            android:id="@+id/dividenBottomSheet"
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/colorDividerView" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/toggleButtonGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonPagi"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/pagi"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/primary_green" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSiang"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/siang"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/primary_green" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonMalam"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/malam"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:strokeColor="@color/primary_green" />
+            </LinearLayout>
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/textBlueTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="Total : Rp50.000" />
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/jumlah_hari" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/minusitemBtn"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_baseline_horizontal_rule_24"
+                    app:strokeColor="@color/primary_green" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvCounter"
+                    style="@style/textBlueTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/counter"
+                    android:textColor="@color/primary_green"
+                    android:textSize="24sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/additemBtn"
+                    style="@style/Widget.App.Button.OutlinedButton.IconOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/poppins"
+                    android:textAllCaps="false"
+                    android:textSize="12sp"
+                    app:cornerRadius="10dp"
+                    app:icon="@drawable/ic_baseline_add_24"
+                    app:strokeColor="@color/primary_green" />
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/textBlueTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/alamat" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/checkoutButton"
-                style="@style/ButtonGeneral"
-                android:layout_width="120dp"
+                android:id="@+id/selectLocationBtn"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:text="Pesan" />
+                android:backgroundTint="@color/gray_soft"
+                android:elevation="2dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:text="@string/pilih_lokasi_pengiriman"
+                android:textAllCaps="false"
+                android:textColor="@color/font_blue"
+                android:textSize="12sp"
+                app:cornerRadius="4dp"
+                app:icon="@drawable/ic_baseline_location_on_24"
+                app:iconTint="@color/font_blue" />
 
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/textBlueTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/catatan" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutCatatan"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="255">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextCatatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:lines="6"
+                    android:maxLength="255"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:scrollHorizontally="false" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/dividenBottomSheet1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
         </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/dividenBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorDividerView"
+        app:layout_constraintBottom_toTopOf="@+id/footerConfirmation"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/footerConfirmation"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray_soft"
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotalPrice"
+            style="@style/textBlueTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:text="@string/example_total_price" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/checkoutButton"
+            style="@style/ButtonGeneral"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="@string/order" />
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

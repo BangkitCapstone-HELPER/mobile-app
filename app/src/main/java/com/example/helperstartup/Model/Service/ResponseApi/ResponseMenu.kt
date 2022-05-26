@@ -22,10 +22,8 @@ data class DayMenusItem(
 data class DataItem(
 	val price: Int? = null,
 	val description: String? = null,
-
 	@SerializedName("day_menus")
 	val dayMenus: List<DayMenusItem?>? = null,
-
 	val id: Int? = null,
 	val title: String? = null
 ) : Parcelable
