@@ -26,6 +26,7 @@ import com.example.helperstartup.View.Adapter.ArticleAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.HandlingError.PageNotFound
 import com.example.helperstartup.View.activity.ProfileActivity
+import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import retrofit2.Call
 import retrofit2.Callback
@@ -61,6 +62,17 @@ class Dashboard : AppCompatActivity() {
         progressBar = findViewById(R.id.progresbar)
         textGreeting = findViewById(R.id.textGreeting)
         profileImage = findViewById(R.id.profilPicture)
+
+        if ( !userModel.image.isEmpty()) {
+            Picasso.get().load(userModel.image)
+                .placeholder(R.drawable.img_placeholder)
+                .error(R.drawable.img_placeholder)
+                .centerCrop()
+                .into(profileImage)
+        } else {
+            profileImage.setImageResource(R.drawable.img_placeholder)
+        }
+        textGreeting.text = "Hi, " + userModel.name
 
         progressBar.setVisibility(View.VISIBLE);
         setListenerButton()
