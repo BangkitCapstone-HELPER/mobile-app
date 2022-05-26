@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.FileUploadResponse
+import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.uriToFile
@@ -133,31 +135,30 @@ class CameraFragment : Fragment() {
             val file = reduceFileImage(getFile as File)
             val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-                "photo",
+                "file",
                 file.name,
                 requestImageFile
             )
             val client = ApiConfig.getApiService().uploadImage(
-                imageMultipart,
-                "Bearer "
+                imageMultipart
             )
             binding.progresbar.visibility = View.VISIBLE
-            client.enqueue(object : Callback<FileUploadResponse> {
+            client.enqueue(object : Callback<ResponseUploadScanner> {
                 override fun onResponse(
-                    call: Call<FileUploadResponse>,
-                    response: Response<FileUploadResponse>
+                    call: Call<ResponseUploadScanner>,
+                    response: Response<ResponseUploadScanner>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
-                        if (responseBody != null && !responseBody.error) {
+                        if (responseBody != null) {
                             binding.progresbar.visibility = View.GONE
                             Toast.makeText(
                                 context,
-                                "Success",
+                                "Success ke kirim",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val intent =
-                                Intent(context, Dashboard::class.java)
+                            val intent = Intent(context, ResultScanning::class.java)
+                            intent.putExtra("message", responseBody)
                             startActivity(intent)
                             requireActivity().finish()
                         }
@@ -165,29 +166,32 @@ class CameraFragment : Fragment() {
                         binding.progresbar.visibility = View.GONE
                         Toast.makeText(
                             context,
-                            "error",
+                            "error gak kekirim",
                             Toast.LENGTH_SHORT
                         ).show()
+                        Log.i("data foto", "gak kekirim")
                     }
                 }
 
-                override fun onFailure(call: Call<FileUploadResponse>, t: Throwable) {
+                override fun onFailure(call: Call<ResponseUploadScanner>, t: Throwable) {
                     binding.progresbar.visibility = View.GONE
                     Toast.makeText(
                         context,
-                        "error",
+                        "error gak kekirim 2",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Log.i("data foto", "gak kekirim 2")
                 }
             })
         }
         else {
             Toast.makeText(
                 context,
-                "getString(R.string.uploadfoto)",
+                "gak ada foto",
                 Toast.LENGTH_SHORT
             ).show()
-            val intent = Intent(context, ResultScanning::class.java)
+            Log.i("data foto", "gak ada foto")
+            val intent = Intent(context, MenuCateringActivity::class.java)
             startActivity(intent)
         }
     }
