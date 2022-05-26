@@ -2,6 +2,7 @@ package com.example.helperstartup.View.Catering.home
 
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.helperstartup.Model.Service.ResponseApi.DataItem
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.TabLayoutAdapter
+import com.example.helperstartup.View.Catering.keranjang.OrderConfirmationActivity
 import com.google.android.material.tabs.TabLayout
 
 
@@ -74,10 +76,11 @@ class DetailMenu : AppCompatActivity() {
         mDialog = Dialog(this)
 
         buttonPesan.setOnClickListener {
-            Log.i("data", "click")
-            mDialog.setContentView(R.layout.component_popup)
-            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mDialog.show()
+            startActivity(Intent(this, OrderConfirmationActivity::class.java))
+//            Log.i("data", "click")
+//            mDialog.setContentView(R.layout.component_popup)
+//            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            mDialog.show()
         }
 
     }

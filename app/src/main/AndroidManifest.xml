@@ -36,7 +36,11 @@
         <activity
             android:name=".View.Catering.home.DetailMenu"
             android:exported="false"
-            android:parentActivityName=".View.Catering.Menu.MenuCateringActivity"/>
+            android:parentActivityName=".View.Catering.Menu.MenuCateringActivity" />
+        <activity
+            android:name=".View.Catering.keranjang.OrderConfirmationActivity"
+            android:exported="false"
+            android:parentActivityName=".View.Catering.home.DetailMenu" />
         <activity
             android:name=".View.activity.RegisterActivity"
             android:exported="false" />
@@ -57,8 +61,7 @@
             android:parentActivityName=".View.Dashboard.Dashboard" />
         <activity
             android:name=".View.Dashboard.Dashboard"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".View.activity.SplashScreenActivity"
             android:exported="true"

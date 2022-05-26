@@ -19,6 +19,7 @@ import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.Model.helper.formatRupiah
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.BankAdapter
 import com.example.helperstartup.View.Adapter.HistoryAdapter
@@ -100,7 +101,7 @@ class RiwayatFragment : Fragment() {
             )
         )
 
-        bottomSheetView.findViewById<TextView>(R.id.amount_price).text = "Jumlah Rp${historyModel.price.toString()}"
+        bottomSheetView.findViewById<TextView>(R.id.amount_price).text = "Jumlah Rp${formatRupiah(historyModel.price)}"
 
         val listView = bottomSheetView.findViewById<ListView>(R.id.bankAccountsList)
         listView.adapter = BankAdapter(requireActivity(), bankArraylist)
