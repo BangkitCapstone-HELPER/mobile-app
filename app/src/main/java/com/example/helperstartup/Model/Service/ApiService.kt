@@ -40,11 +40,10 @@ interface ApiService {
 
     // camera - post
     @Multipart
-    @POST("stories")
+    @POST("/function-1")
     fun uploadImage(
-        @Part file: MultipartBody.Part,
-        @Header("Authorization") auth: String
-    ): Call<FileUploadResponse>
+        @Part file: MultipartBody.Part
+    ): Call<ResponseUploadScanner>
 
     // transaction
     @GET("transaction/")
