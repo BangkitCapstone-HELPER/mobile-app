@@ -19,8 +19,8 @@ fun formatDate (date : String): String {
     return formatter.format(localDateTime).toString()
 }
 
-fun formatRupiah(number: Int): String? {
+fun formatRupiah(number: Int): String {
     val localeID = Locale("in", "ID")
     val formatRupiah: NumberFormat = NumberFormat.getCurrencyInstance(localeID)
-    return formatRupiah.format(number)
+    return formatRupiah.format(number).replace(",00", "")
 }

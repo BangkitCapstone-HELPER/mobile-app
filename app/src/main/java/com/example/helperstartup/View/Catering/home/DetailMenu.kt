@@ -2,6 +2,7 @@ package com.example.helperstartup.View.Catering.home
 
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.example.helperstartup.Model.Service.ResponseApi.DataItem
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.TabLayoutAdapter
+import com.example.helperstartup.View.Catering.keranjang.OrderConfirmationActivity
 import com.google.android.material.tabs.TabLayout
 
 
@@ -26,7 +28,6 @@ class DetailMenu : AppCompatActivity() {
     var viewPager: ViewPager? = null
     private lateinit var buttonPesan : Button
     private lateinit var data : DataItem
-    private lateinit var mDialog : Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
@@ -71,13 +72,10 @@ class DetailMenu : AppCompatActivity() {
             }
         })
 
-        mDialog = Dialog(this)
-
         buttonPesan.setOnClickListener {
-            Log.i("data", "click")
-            mDialog.setContentView(R.layout.component_popup)
-            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mDialog.show()
+            val intent = Intent(this, OrderConfirmationActivity::class.java)
+            intent.putExtra("dataItem", data)
+            startActivity(intent)
         }
 
     }
