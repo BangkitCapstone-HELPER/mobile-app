@@ -1,16 +1,16 @@
 package com.example.helperstartup.View.Catering.riwayat
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.ScrollView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Data.BankAccount
@@ -25,38 +25,37 @@ import com.example.helperstartup.View.Adapter.BankAdapter
 import com.example.helperstartup.View.Adapter.HistoryAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
-import com.example.helperstartup.databinding.FragmentRiwayatBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class RiwayatFragment : Fragment() {
-    private var _binding: FragmentRiwayatBinding? = null
     private lateinit var historyAdapter: HistoryAdapter
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
+    private lateinit var mDialog: Dialog
+    private lateinit var tvItemText: TextView
+    private lateinit var progressBar: ProgressBar
 
-    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRiwayatBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_riwayat, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mUserPreference = UserPreference(requireContext())
         showExistingPreference()
+        tvItemText = view.findViewById(R.id.no_item_text)
+        progressBar = view.findViewById(R.id.progress_bar)
         setupView()
         fetchTransactions()
-    }
+        getBundleFromOrderConfirmation()
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setupView() {
@@ -66,14 +65,14 @@ class RiwayatFragment : Fragment() {
             if (it.status == "pending") {
                 showBottomSheet(it)
             }
-
         }
-        val recyclerView: RecyclerView = binding.rvHistory
-        recyclerView.apply {
+        val recyclerView: RecyclerView? = view?.findViewById(R.id.rv_history)
+        recyclerView?.apply {
             layoutManager = LinearLayoutManager(requireActivity().applicationContext)
             adapter = historyAdapter
             setHasFixedSize(true)
         }
+
     }
 
     private fun showBottomSheet(historyModel: HistoryModel) {
@@ -101,7 +100,8 @@ class RiwayatFragment : Fragment() {
             )
         )
 
-        bottomSheetView.findViewById<TextView>(R.id.amount_price).text = "Jumlah Rp${formatRupiah(historyModel.price)}"
+        bottomSheetView.findViewById<TextView>(R.id.amount_price).text =
+            "Jumlah Rp${formatRupiah(historyModel.price)}"
 
         val listView = bottomSheetView.findViewById<ListView>(R.id.bankAccountsList)
         listView.adapter = BankAdapter(requireActivity(), bankArraylist)
@@ -163,7 +163,7 @@ class RiwayatFragment : Fragment() {
 
     private fun setListTransaction(transactionResponse: TransactionResponse) {
         if (transactionResponse.data == null || transactionResponse.data.isEmpty()) {
-            binding.noItemText.visibility = View.VISIBLE
+            tvItemText.visibility = View.VISIBLE
         } else {
             val listHistory = arrayListOf<HistoryModel>()
             transactionResponse.data.forEach {
@@ -183,11 +183,28 @@ class RiwayatFragment : Fragment() {
                 )
             }
             historyAdapter.setListHistories(listHistory)
-            binding.noItemText.visibility = View.GONE
+            tvItemText.visibility = View.GONE
+
         }
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun getBundleFromOrderConfirmation() {
+        val isSuccess = arguments?.getBoolean("isSuccess")
+        if (isSuccess != null) {
+            mDialog = Dialog(requireContext())
+            if (isSuccess == true) {
+                mDialog.setContentView(R.layout.component_popup)
+                mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                mDialog.show()
+            } else {
+                mDialog.setContentView(R.layout.component_popup_fail)
+                mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                mDialog.show()
+            }
+        }
     }
 }

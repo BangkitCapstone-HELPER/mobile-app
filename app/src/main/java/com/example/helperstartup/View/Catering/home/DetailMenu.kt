@@ -28,7 +28,6 @@ class DetailMenu : AppCompatActivity() {
     var viewPager: ViewPager? = null
     private lateinit var buttonPesan : Button
     private lateinit var data : DataItem
-    private lateinit var mDialog : Dialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_menu)
@@ -73,16 +72,10 @@ class DetailMenu : AppCompatActivity() {
             }
         })
 
-        mDialog = Dialog(this)
-
         buttonPesan.setOnClickListener {
             val intent = Intent(this, OrderConfirmationActivity::class.java)
             intent.putExtra("dataItem", data)
             startActivity(intent)
-//            Log.i("data", "click")
-//            mDialog.setContentView(R.layout.component_popup)
-//            mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//            mDialog.show()
         }
 
     }

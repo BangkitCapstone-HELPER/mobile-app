@@ -2,6 +2,7 @@ package com.example.helperstartup.Model.Service
 
 import com.example.helperstartup.Model.Service.ResponseApi.*
 import com.example.helperstartup.Model.Service.request.PasswordChange
+import com.example.helperstartup.Model.Service.request.PostTransaction
 import com.example.helperstartup.Model.Service.request.UserRegister
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -45,6 +46,14 @@ interface ApiService {
         @Part file: MultipartBody.Part,
         @Header("Authorization") auth: String
     ): Call<FileUploadResponse>
+
+    // new Transaction
+    @Headers("Content-Type: application/json")
+    @POST("transaction/")
+    fun postTransaction(
+        @Header("Authorization") auth: String,
+        @Body data : PostTransaction
+    ) : Call<PostTransactionResponse>
 
     // transaction
     @GET("transaction/")

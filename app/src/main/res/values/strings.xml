@@ -1,5 +1,4 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="app_name" translatable="false">Serantau</string>
     <string name="title_activity_login" translatable="false">LoginActivity</string>
@@ -60,5 +59,8 @@
     <string name="example_total_price">Total : Rp50.000</string>
     <string name="order">Pesan</string>
 
+    <!-- Popup modal -->
+    <string name="success_order">Yeay, Pesananmu Berhasil. Silakan Lakukan Konfirmasi Pembayaran!</string>
+    <string name="fail_order">Oops, Pesananmu gagal</string>
 
 </resources>

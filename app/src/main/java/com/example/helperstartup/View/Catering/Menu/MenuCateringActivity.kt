@@ -50,6 +50,9 @@ class MenuCateringActivity : AppCompatActivity() {
                 }
             }
         }
+
+        // if action after new order
+        getDataFromOrderConfirmation()
     }
 
     private fun showExistingPreference() {
@@ -69,5 +72,20 @@ class MenuCateringActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.flFragment, fragmentHome)
         transaction.commit()
+    }
+
+    private fun getDataFromOrderConfirmation() {
+        val data = intent.extras?.getBoolean("isSuccess")
+        if (data != null) {
+            bottomNavigationView.setItemSelected(R.id.miRiwayat)
+            val mFragment = RiwayatFragment()
+            val mBundle = Bundle()
+            mBundle.putBoolean("isSuccess", data)
+            mFragment.arguments = mBundle
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, mFragment).commit()
+        }
+
     }
 }
