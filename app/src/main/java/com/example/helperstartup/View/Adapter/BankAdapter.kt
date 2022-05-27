@@ -27,8 +27,7 @@ class BankAdapter(private val context: Activity, private val arrayList: ArrayLis
         Picasso.get().load(item.imageUrl)
             .placeholder(R.drawable.loading_image)
             .error(R.drawable.img_placeholder)
-            .resize(150, 150)
-            .centerCrop()
+            .resize(100,100)
             .into(imgView)
         bankName.text = item.bankName
         bankNumber.text = item.bankNumber

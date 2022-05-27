@@ -72,7 +72,6 @@ class RiwayatFragment : Fragment() {
             adapter = historyAdapter
             setHasFixedSize(true)
         }
-
     }
 
     private fun showBottomSheet(historyModel: HistoryModel) {
@@ -89,7 +88,15 @@ class RiwayatFragment : Fragment() {
         bottomSheetDialog.show()
 
         val bankArraylist = arrayListOf<BankAccount>()
-        bankArraylist.add(BankAccount(1, null, "BRI", "034 101 000 743 303", "a.n Rahmat Wibowo"))
+        bankArraylist.add(
+            BankAccount(
+                1,
+                "https://rekreartive.com/wp-content/uploads/2019/04/Logo-BRI-Bank-Rakyat-Indonesia-PNG-Terbaru.png",
+                "BRI",
+                "034 101 000 743 303",
+                "a.n Rahmat Wibowo"
+            )
+        )
         bankArraylist.add(
             BankAccount(
                 2,
@@ -101,7 +108,7 @@ class RiwayatFragment : Fragment() {
         )
 
         bottomSheetView.findViewById<TextView>(R.id.amount_price).text =
-            "Jumlah Rp${formatRupiah(historyModel.price)}"
+            "Jumlah ${formatRupiah(historyModel.price)}"
 
         val listView = bottomSheetView.findViewById<ListView>(R.id.bankAccountsList)
         listView.adapter = BankAdapter(requireActivity(), bankArraylist)

@@ -20,7 +20,7 @@
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/logo_bank"
-            android:scaleType="centerInside"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/loading_image" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
