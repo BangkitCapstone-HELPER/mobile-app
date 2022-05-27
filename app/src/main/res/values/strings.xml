@@ -48,9 +48,9 @@
 
     <!-- Order Confirmation -->
     <string name="jam_antar">Jam Antar</string>
-    <string name="pagi">Pagi</string>
-    <string name="siang">Siang</string>
-    <string name="malam">Malam</string>
+    <string name="pagi">07.00</string>
+    <string name="siang">13.00</string>
+    <string name="malam">17.00</string>
     <string name="jumlah_hari">Jumlah Hari</string>
     <string name="counter">1</string>
     <string name="alamat">Alamat</string>
