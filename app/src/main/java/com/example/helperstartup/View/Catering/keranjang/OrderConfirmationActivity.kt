@@ -191,6 +191,5 @@ class OrderConfirmationActivity : AppCompatActivity() {
         val intent = Intent(this@OrderConfirmationActivity, MenuCateringActivity::class.java)
         intent.putExtra("isSuccess", isSuccess)
         startActivity(intent)
-        finishAffinity()
     }
 }
