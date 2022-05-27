@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_soft"
     tools:context=".View.Catering.home.HomeFragment">
 
     <ProgressBar
@@ -28,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="16dp"
         android:id="@+id/home_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
