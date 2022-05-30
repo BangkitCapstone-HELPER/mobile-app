@@ -71,6 +71,11 @@ class ProfileActivity : AppCompatActivity(){
             finish()
         }
 
+        binding.updateProfileButton.setOnClickListener {
+            val intent = Intent(this, UpdateProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.changePasswordButton.setOnClickListener {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)

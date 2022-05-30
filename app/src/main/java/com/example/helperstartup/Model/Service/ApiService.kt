@@ -3,6 +3,7 @@ package com.example.helperstartup.Model.Service
 import com.example.helperstartup.Model.Service.ResponseApi.*
 import com.example.helperstartup.Model.Service.request.PasswordChange
 import com.example.helperstartup.Model.Service.request.PostTransaction
+import com.example.helperstartup.Model.Service.request.ProfileChange
 import com.example.helperstartup.Model.Service.request.UserRegister
 import okhttp3.MultipartBody
 import retrofit2.Call
@@ -30,6 +31,14 @@ interface ApiService {
         @Header("Authorization") auth: String,
         @Body passwordData : PasswordChange
     ) : Call<ChangePasswordResponse>
+
+    // patch profile phone Number only
+    @Headers("Content-Type: application/json")
+    @PATCH("user/")
+    fun changeProfile (
+        @Header("Authorization") auth: String,
+        @Body data : ProfileChange
+    ) : Call<ChangeProfileResponse>
 
     // article
     @GET("article/")

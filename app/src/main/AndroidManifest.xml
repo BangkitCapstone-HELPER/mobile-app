@@ -15,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HelperStartup">
         <activity
+            android:name=".View.activity.UpdateProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".View.activity.ProfileActivity" />
+        <activity
             android:name=".View.activity.ProfileActivity"
             android:exported="false"
             android:parentActivityName=".View.Dashboard.Dashboard" />
@@ -60,7 +64,7 @@
             android:parentActivityName=".View.Dashboard.Dashboard" />
         <activity
             android:name=".View.Dashboard.Dashboard"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".View.activity.SplashScreenActivity"
             android:exported="true"
