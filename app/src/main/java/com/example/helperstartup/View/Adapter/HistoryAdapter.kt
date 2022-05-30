@@ -15,7 +15,8 @@ import com.example.helperstartup.View.Adapter.HistoryAdapter.HistoryViewHolder
 import com.example.helperstartup.databinding.ComponentsItemRowHistoryBinding
 import com.squareup.picasso.Picasso
 
-class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : RecyclerView.Adapter<HistoryViewHolder>() {
+class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
+    RecyclerView.Adapter<HistoryViewHolder>() {
     private val listHistory = ArrayList<HistoryModel>()
     private lateinit var context: Context
 
@@ -47,7 +48,10 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
     override fun getItemCount() = listHistory.size
 
 
-    inner class HistoryViewHolder(private val binding: ComponentsItemRowHistoryBinding, onItemClicked: (Int) -> Unit) :
+    inner class HistoryViewHolder(
+        private val binding: ComponentsItemRowHistoryBinding,
+        onItemClicked: (Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         init {
             itemView.setOnClickListener {
@@ -66,11 +70,9 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
                     .centerCrop()
                     .into(historyImageView)
                 historyDate.text = historyModel.date?.let { formatDate(it) } ?: ""
-                if (historyModel.price != null) {
-                    historyPrice.text = formatRupiah(historyModel.price)
-                } else {
-                    historyPrice.text = ""
-                }
+
+                historyPrice.text = formatRupiah(historyModel.price)
+
                 historyExpiredText.text = historyModel.expiredTime ?: ""
             }
             changeStatus(historyModel.status, binding)
@@ -115,6 +117,15 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
                 )
                 binding.cardTextName.text = "Aktif"
             }
+            "waiting" -> {
+                binding.cardStatus.setBackgroundColor(
+                    ContextCompat.getColor(
+                        context,
+                        R.color.brown
+                    )
+                )
+                binding.cardTextName.text = "Diproses"
+            }
             else -> {
                 binding.cardStatus.setBackgroundColor(
                     ContextCompat.getColor(
@@ -123,7 +134,12 @@ class HistoryAdapter(private val onItemClicked : (HistoryModel) -> Unit) : Recyc
                     )
                 )
                 binding.cardTextName.text = status ?: ""
+                binding.cardTextName.setTextColor(ContextCompat.getColor(context, R.color.black))
             }
+        }
+
+        if (status != "pending") {
+            binding.card.isClickable = false
         }
     }
 }

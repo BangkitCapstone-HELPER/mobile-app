@@ -73,7 +73,6 @@
         app:layout_constraintBottom_toTopOf="@+id/unggahBukti"
         tools:listitem="@layout/components_list_item_bank_accounts" />
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/unggahBukti"
         style="@style/ButtonGeneral"
@@ -82,6 +81,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

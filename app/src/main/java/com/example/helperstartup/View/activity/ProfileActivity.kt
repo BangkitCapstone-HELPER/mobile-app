@@ -6,7 +6,6 @@ import android.os.Bundle
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.R
-import com.example.helperstartup.View.HandlingError.PageNotFound
 import com.example.helperstartup.databinding.ActivityProfileBinding
 import com.squareup.picasso.Picasso
 
@@ -83,6 +82,6 @@ class ProfileActivity : AppCompatActivity(){
     }
 
     private fun deleteUser() {
-        mUserPreference.setUser(User("", "", "", false, "", ""))
+        mUserPreference.setUser(User("", "", "", false, "", "", 0))
     }
 }

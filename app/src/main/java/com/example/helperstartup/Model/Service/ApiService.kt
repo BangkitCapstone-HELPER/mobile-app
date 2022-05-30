@@ -1,11 +1,9 @@
 package com.example.helperstartup.Model.Service
 
 import com.example.helperstartup.Model.Service.ResponseApi.*
-import com.example.helperstartup.Model.Service.request.PasswordChange
-import com.example.helperstartup.Model.Service.request.PostTransaction
-import com.example.helperstartup.Model.Service.request.ProfileChange
-import com.example.helperstartup.Model.Service.request.UserRegister
+import com.example.helperstartup.Model.Service.request.*
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -68,4 +66,19 @@ interface ApiService {
     fun getTransactions(
         @Header("Authorization") auth: String
     ): Call<TransactionResponse>
+
+    // patch transaction
+    @PATCH("transaction/")
+    fun updateTransaction(
+        @Header("Authorization") auth: String,
+        @Body data : PatchTransaction
+    ) : Call<PatchTransactionResponse>
+
+    // upload file to storage
+    @Multipart
+    @POST("file/")
+    fun uploadFile(
+        @Part file: MultipartBody.Part,
+        @Part("folder") folder: RequestBody,
+    ): Call<UploadFileToStorageResponse>
 }

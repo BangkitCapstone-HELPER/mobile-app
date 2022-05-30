@@ -25,7 +25,7 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var mUserPreference: UserPreference
-    private var user: User = User("", "", "", false,"", "")
+    private var user: User = User("", "", "", false,"", "", 0)
     private val service = ApiConfig.getApiService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +81,8 @@ class LoginActivity : AppCompatActivity() {
                                         responseBody?.data?.user?.email.toString(),
                                         responseBody?.data?.token.toString(),
                                         responseBody?.data?.user?.image.toString(),
-                                        responseBody?.data?.user?.phoneNumber.toString()
+                                        responseBody?.data?.user?.phoneNumber.toString(),
+                                        responseBody?.data?.user?.id ?: 0
                                     )
 
                                     Toast.makeText(
@@ -168,7 +169,7 @@ class LoginActivity : AppCompatActivity() {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
-    private fun saveUser(name: String, email: String, token: String, image : String, phoneNumber : String) {
+    private fun saveUser(name: String, email: String, token: String, image : String, phoneNumber : String, id : Int) {
         val userPreference = UserPreference(this)
         user.name = name
         user.email = email
@@ -176,6 +177,7 @@ class LoginActivity : AppCompatActivity() {
         user.isLogin = true
         user.image = image
         user.phoneNumber = phoneNumber
+        user.id = id
         userPreference.setUser(user)
     }
 }
