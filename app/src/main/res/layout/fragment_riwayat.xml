@@ -7,7 +7,6 @@
     tools:context=".View.Catering.riwayat.RiwayatFragment"
     android:background="@color/gray_soft">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
         android:layout_width="0dp"

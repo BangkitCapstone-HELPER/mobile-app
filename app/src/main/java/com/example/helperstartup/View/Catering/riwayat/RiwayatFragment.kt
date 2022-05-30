@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,11 +16,14 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.helperstartup.Model.Data.BankAccount
 import com.example.helperstartup.Model.Data.HistoryModel
 import com.example.helperstartup.Model.Service.ApiConfig
+import com.example.helperstartup.Model.Service.ResponseApi.PatchTransactionResponse
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
 import com.example.helperstartup.Model.Service.ResponseApi.UploadFileToStorageResponse
+import com.example.helperstartup.Model.Service.request.PatchTransaction
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.Model.helper.formatRupiah
@@ -52,6 +54,7 @@ class RiwayatFragment : Fragment() {
     private lateinit var tvItemText: TextView
     private lateinit var progressBar: ProgressBar
     private var getFile: File? = null
+    private var clickedTransaction: HistoryModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,9 +97,15 @@ class RiwayatFragment : Fragment() {
             adapter = historyAdapter
             setHasFixedSize(true)
         }
+//        val swipeRefreshLayout = view?.findViewById<SwipeRefreshLayout>(R.id.swiperefresh)
+//        swipeRefreshLayout?.setOnRefreshListener {
+//            fetchTransactions()
+//            swipeRefreshLayout.isRefreshing = false
+//        }
     }
 
     private fun showBottomSheet(historyModel: HistoryModel) {
+        clickedTransaction = historyModel
         val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         val bottomSheetView =
@@ -142,6 +151,7 @@ class RiwayatFragment : Fragment() {
         val uploadBtn = bottomSheetView.findViewById<MaterialButton>(R.id.unggahBukti)
         uploadBtn.setOnClickListener {
             startGallery()
+            bottomSheetDialog.dismiss()
         }
     }
 
@@ -167,7 +177,6 @@ class RiwayatFragment : Fragment() {
     private fun uploadImage() {
         if (getFile != null) {
             val file = reduceFileImage(getFile as File)
-            Log.d("tespreviewimage", file.toString())
             val folder =
                 "transactions/${userModel.id}".toRequestBody("text/plain".toMediaType())
             val requestImageFile = file.asRequestBody("image/*".toMediaTypeOrNull())
@@ -178,6 +187,7 @@ class RiwayatFragment : Fragment() {
             )
 
             val client = ApiConfig.getApiService().uploadFile(imageMultipart, folder)
+            showLoading(true)
             client.enqueue(object : Callback<UploadFileToStorageResponse> {
                 override fun onResponse(
                     call: Call<UploadFileToStorageResponse>,
@@ -187,17 +197,19 @@ class RiwayatFragment : Fragment() {
                         val responseBody = response.body()
                         if (responseBody != null) {
                             val url = responseBody.data.url
-                            Log.d("urlupload", url)
-                            Toast.makeText(context, responseBody.message, Toast.LENGTH_SHORT).show()
+                            patchTransaction(url)
+                            showLoading(false)
                         }
                     } else {
                         Toast.makeText(context, response.message().toString(), Toast.LENGTH_SHORT)
                             .show()
+                        showLoading(false)
                     }
                 }
 
                 override fun onFailure(call: Call<UploadFileToStorageResponse>, t: Throwable) {
-                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show()
+                    showLoading(false)
                 }
             })
 
@@ -211,6 +223,46 @@ class RiwayatFragment : Fragment() {
         }
     }
 
+    private fun patchTransaction(url: String) {
+        if (clickedTransaction != null) {
+            val service = ApiConfig.getApiService()
+                .updateTransaction(
+                    auth = "bearer ${userModel.token}",
+                    PatchTransaction(clickedTransaction!!.id, STATUS, url)
+                )
+            service.enqueue(object : Callback<PatchTransactionResponse> {
+                override fun onResponse(
+                    call: Call<PatchTransactionResponse>,
+                    response: Response<PatchTransactionResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            Toast.makeText(context, "Berhasil mengunggah bukti, dalam verifikasi", Toast.LENGTH_SHORT).show()
+                        }
+                        showLoading(false)
+                    } else {
+                        Toast.makeText(
+                            context,
+                            "Terjadi kesalahan dalam mengunggah bukti",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                        showLoading(false)
+                    }
+                }
+
+                override fun onFailure(call: Call<PatchTransactionResponse>, t: Throwable) {
+                    Toast.makeText(context, "Terdapat kesalahan jaringan", Toast.LENGTH_SHORT)
+                        .show()
+                    showLoading(false)
+                }
+
+            })
+        }
+
+    }
+
     private fun fetchTransactions() {
         showLoading(true)
         val client = ApiConfig.getApiService().getTransactions(auth = "bearer " + userModel.token)
@@ -221,7 +273,6 @@ class RiwayatFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
-                    Log.d("RESPOSNE BODY", responseBody.toString())
                     if (responseBody != null) {
                         setListTransaction(responseBody)
                     } else {
@@ -297,5 +348,9 @@ class RiwayatFragment : Fragment() {
                 mDialog.show()
             }
         }
+    }
+
+    companion object {
+        private const val STATUS = "waiting"
     }
 }
