@@ -16,6 +16,12 @@ class UserPreference(context: Context) {
         editor.apply()
     }
 
+    fun updatePhone(phone : String) {
+        val editor = preferences.edit()
+        editor.putString(PHONE_NUMBER, phone)
+        editor.apply()
+    }
+
     fun getUser(): User {
         val model = User("", "", "", false, "", "")
         model.name = preferences.getString(NAME, "").toString()
