@@ -1,12 +1,10 @@
 package com.example.helperstartup.View.camera
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
-import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,22 +15,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.lifecycle.ViewModelProvider
 import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.FileUploadResponse
 import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.uriToFile
-import com.example.helperstartup.R
-import com.example.helperstartup.View.Adapter.ScanningAdapter
 import com.example.helperstartup.View.Dashboard.Dashboard
 import com.example.helperstartup.databinding.ActivityAddStoryBinding
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
