@@ -40,7 +40,7 @@ data class UserLogin(
     val phoneNumber: String? = null,
 
     @field:SerializedName("id")
-    val id: Int? = null,
+    val id: Int,
 
     @field:SerializedName("isAdmin")
     val isAdmin: Boolean? = null,

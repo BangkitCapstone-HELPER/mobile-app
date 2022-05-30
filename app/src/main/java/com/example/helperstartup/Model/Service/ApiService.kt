@@ -31,6 +31,14 @@ interface ApiService {
         @Body passwordData : PasswordChange
     ) : Call<ChangePasswordResponse>
 
+    // patch profile phone Number only
+    @Headers("Content-Type: application/json")
+    @PATCH("user/")
+    fun changeProfile (
+        @Header("Authorization") auth: String,
+        @Body phone_number : String
+    ) : Call<ChangeProfileResponse>
+
     // article
     @GET("article/")
     fun getArticle(): Call<ResponseArticle>
