@@ -10,5 +10,6 @@ data class User(
     var token: String,
     var isLogin: Boolean = false,
     var image: String,
-    var phoneNumber : String
+    var phoneNumber : String,
+    var id : Int
 ) : Parcelable

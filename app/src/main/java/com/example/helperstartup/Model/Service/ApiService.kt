@@ -6,6 +6,7 @@ import com.example.helperstartup.Model.Service.request.PostTransaction
 import com.example.helperstartup.Model.Service.request.ProfileChange
 import com.example.helperstartup.Model.Service.request.UserRegister
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -68,4 +69,12 @@ interface ApiService {
     fun getTransactions(
         @Header("Authorization") auth: String
     ): Call<TransactionResponse>
+
+    // upload file to storage
+    @Multipart
+    @POST("file/")
+    fun uploadFile(
+        @Part file: MultipartBody.Part,
+        @Part("folder") folder: RequestBody,
+    ): Call<UploadFileToStorageResponse>
 }

@@ -1,9 +1,12 @@
 package com.example.helperstartup.View.Catering.riwayat
 
+import android.app.Activity.RESULT_OK
 import android.app.Dialog
 import android.content.Intent
+import android.content.Intent.ACTION_GET_CONTENT
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,24 +14,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.Data.BankAccount
 import com.example.helperstartup.Model.Data.HistoryModel
 import com.example.helperstartup.Model.Service.ApiConfig
 import com.example.helperstartup.Model.Service.ResponseApi.TransactionResponse
+import com.example.helperstartup.Model.Service.ResponseApi.UploadFileToStorageResponse
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.Model.helper.formatRupiah
+import com.example.helperstartup.Model.reduceFileImage
+import com.example.helperstartup.Model.uriToFile
 import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.BankAdapter
 import com.example.helperstartup.View.Adapter.HistoryAdapter
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.activity.LoginActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.button.MaterialButton
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class RiwayatFragment : Fragment() {
     private lateinit var historyAdapter: HistoryAdapter
@@ -37,6 +51,7 @@ class RiwayatFragment : Fragment() {
     private lateinit var mDialog: Dialog
     private lateinit var tvItemText: TextView
     private lateinit var progressBar: ProgressBar
+    private var getFile: File? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +70,14 @@ class RiwayatFragment : Fragment() {
         setupView()
         fetchTransactions()
         getBundleFromOrderConfirmation()
+    }
 
+    private fun showExistingPreference() {
+        userModel = mUserPreference.getUser()
+        if (!userModel.isLogin) {
+            startActivity(Intent(activity, LoginActivity::class.java))
+            activity?.finish()
+        }
     }
 
     private fun setupView() {
@@ -75,7 +97,6 @@ class RiwayatFragment : Fragment() {
     }
 
     private fun showBottomSheet(historyModel: HistoryModel) {
-
         val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         val bottomSheetView =
@@ -117,13 +138,76 @@ class RiwayatFragment : Fragment() {
         closeIcon?.setOnClickListener {
             bottomSheetDialog.dismiss()
         }
+
+        val uploadBtn = bottomSheetView.findViewById<MaterialButton>(R.id.unggahBukti)
+        uploadBtn.setOnClickListener {
+            startGallery()
+        }
     }
 
-    private fun showExistingPreference() {
-        userModel = mUserPreference.getUser()
-        if (!userModel.isLogin) {
-            startActivity(Intent(activity, LoginActivity::class.java))
-            activity?.finish()
+    private fun startGallery() {
+        val intent = Intent()
+        intent.action = ACTION_GET_CONTENT
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Pilih gambar")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val selectedImg: Uri = result.data?.data as Uri
+            val myFile = uriToFile(selectedImg, requireContext())
+            getFile = myFile
+            uploadImage()
+        }
+    }
+
+    private fun uploadImage() {
+        if (getFile != null) {
+            val file = reduceFileImage(getFile as File)
+            Log.d("tespreviewimage", file.toString())
+            val folder =
+                "transactions/${userModel.id}".toRequestBody("text/plain".toMediaType())
+            val requestImageFile = file.asRequestBody("image/*".toMediaTypeOrNull())
+            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+                "file",
+                file.name,
+                requestImageFile
+            )
+
+            val client = ApiConfig.getApiService().uploadFile(imageMultipart, folder)
+            client.enqueue(object : Callback<UploadFileToStorageResponse> {
+                override fun onResponse(
+                    call: Call<UploadFileToStorageResponse>,
+                    response: Response<UploadFileToStorageResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            val url = responseBody.data.url
+                            Log.d("urlupload", url)
+                            Toast.makeText(context, responseBody.message, Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(context, response.message().toString(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<UploadFileToStorageResponse>, t: Throwable) {
+                    Toast.makeText(context, "Gagal instance Retrofit", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+        } else {
+            Toast.makeText(
+                context,
+                "Silakan masukkan berkas gambar terlebih dahulu.",
+                Toast.LENGTH_SHORT
+            ).show()
+
         }
     }
 
