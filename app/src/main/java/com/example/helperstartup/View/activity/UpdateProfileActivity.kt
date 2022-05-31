@@ -6,9 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.ChangeProfileResponse
-import com.example.helperstartup.Model.Service.request.ProfileChange
+import com.example.helperstartup.Model.service.ApiConfig
+import com.example.helperstartup.Model.service.ResponseApi.ChangeProfileResponse
+import com.example.helperstartup.Model.service.request.ProfileChange
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.databinding.ActivityUpdateProfileBinding

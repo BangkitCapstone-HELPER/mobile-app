@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Catering.keranjang.OrderConfirmationActivity">
+    tools:context=".View.catering.keranjang.OrderConfirmationActivity">
 
     <ScrollView
         android:id="@+id/containerInfo"
@@ -22,7 +22,7 @@
 
             <include
                 android:id="@+id/cardMenu"
-                layout="@layout/menu_home_component" />
+                layout="@layout/component_menu_home" />
 
             <LinearLayout
                 android:layout_width="match_parent"

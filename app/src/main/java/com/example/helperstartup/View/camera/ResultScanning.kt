@@ -3,18 +3,11 @@ package com.example.helperstartup.View.camera
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.ResponseMenu
-import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
+import com.example.helperstartup.Model.service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.R
-import com.example.helperstartup.View.Adapter.MenuAdapter
-import com.example.helperstartup.View.Adapter.ScanningAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.helperstartup.View.adapter.ScanningAdapter
 
 class ResultScanning : AppCompatActivity() {
 

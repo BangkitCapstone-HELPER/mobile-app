@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
-import com.example.helperstartup.View.Dashboard.Dashboard
+import com.example.helperstartup.View.dashboard.Dashboard
 
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var mUserPreference: UserPreference

@@ -10,9 +10,9 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.RegisterResponse
-import com.example.helperstartup.Model.Service.request.UserRegister
+import com.example.helperstartup.Model.service.ApiConfig
+import com.example.helperstartup.Model.service.ResponseApi.RegisterResponse
+import com.example.helperstartup.Model.service.request.UserRegister
 import com.example.helperstartup.R
 import com.example.helperstartup.databinding.ActivityRegisterBinding
 import retrofit2.Call

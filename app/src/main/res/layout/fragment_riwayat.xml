@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".View.Catering.riwayat.RiwayatFragment"
+    tools:context=".View.catering.riwayat.RiwayatFragment"
     android:background="@color/gray_soft">
 
     <androidx.recyclerview.widget.RecyclerView

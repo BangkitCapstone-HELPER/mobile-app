@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.ChangePasswordResponse
-import com.example.helperstartup.Model.Service.request.PasswordChange
+import com.example.helperstartup.Model.service.ApiConfig
+import com.example.helperstartup.Model.service.ResponseApi.ChangePasswordResponse
+import com.example.helperstartup.Model.service.request.PasswordChange
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
 import com.example.helperstartup.databinding.ActivityChangePasswordBinding
