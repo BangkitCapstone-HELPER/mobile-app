@@ -22,12 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         app:tabMode="scrollable"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageSlider"
-        app:tabTextColor="@android:color/white"
-        app:tabIndicatorColor="@color/white"
+        app:tabTextColor="@color/primary_green"
+        app:tabIndicatorColor="@color/primary_green"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager

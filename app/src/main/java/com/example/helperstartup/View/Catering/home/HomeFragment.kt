@@ -71,10 +71,12 @@ class HomeFragment : Fragment() {
                     }
                 }
                 else {
+                    textNoData.setVisibility(View.VISIBLE)
                     Toast.makeText(context, "Error" , Toast.LENGTH_LONG).show()
                 }
             }
             override fun onFailure(call: Call<ResponseMenu>, t: Throwable) {
+                textNoData.setVisibility(View.VISIBLE)
                 Toast.makeText(context, "Error" , Toast.LENGTH_LONG).show()
             }
         })

@@ -1,6 +1,5 @@
 package com.example.helperstartup.View.Catering.home
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import com.example.helperstartup.R
 import com.example.helperstartup.View.Adapter.TabLayoutAdapter
 import com.example.helperstartup.View.Catering.keranjang.OrderConfirmationActivity
 import com.google.android.material.tabs.TabLayout
-
 
 class DetailMenu : AppCompatActivity() {
     private lateinit var imageSlider : ImageSlider

@@ -20,6 +20,9 @@ class JumatFragment : Fragment() {
     private lateinit var listMenu : RecyclerView
     private var getData : DataItem? = null
     private lateinit var priceText : TextView
+    private lateinit var namaPaket : TextView
+    private lateinit var descPaket : TextView
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,15 +38,19 @@ class JumatFragment : Fragment() {
         getData = activity?.sendDataMenu()
         listMenu = view.findViewById(R.id.rvMenu)
         priceText = view.findViewById(R.id.priceText)
+        namaPaket = view.findViewById(R.id.judulPaket)
+        descPaket = view.findViewById(R.id.descPaket)
+        namaPaket.text = getData?.title
+        descPaket.text = getData?.description
         priceText.text = "Rp " + getData?.price.toString()
         var menuText : TextView = view.findViewById(R.id.textMenu)
-        menuText.text = "Menu hari " + getData?.dayMenus?.get(2)?.day + " :"
+        menuText.text = "Menu hari " + getData?.dayMenus?.get(4)?.day + " :"
         showRecyclerList()
     }
 
     private fun showRecyclerList() {
         listMenu.layoutManager = LinearLayoutManager(context)
-        val listMenuAdapter = ListMenuAdapter(getData?.dayMenus?.get(2)?.items)
+        val listMenuAdapter = ListMenuAdapter(getData?.dayMenus?.get(4)?.items)
         listMenu.adapter = listMenuAdapter
     }
 }
