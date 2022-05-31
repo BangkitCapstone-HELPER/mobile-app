@@ -33,7 +33,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textKandungan"
             tools:itemCount="3"
-            tools:listitem="@layout/result_scanning_component" />
+            tools:listitem="@layout/component_result_scanning" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

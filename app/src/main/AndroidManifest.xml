@@ -21,7 +21,7 @@
         <activity
             android:name=".View.activity.ProfileActivity"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard" />
+            android:parentActivityName=".View.dashboard.Dashboard" />
         <activity
             android:name=".View.activity.ChangePasswordActivity"
             android:exported="false"
@@ -29,20 +29,20 @@
         <activity
             android:name=".View.camera.ResultScanning"
             android:exported="false"
-            android:parentActivityName=".View.Catering.Menu.MenuCateringActivity" />
+            android:parentActivityName=".View.catering.Menu.MenuCateringActivity" />
         <activity
             android:name=".View.camera.AddStoryActivity"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard" />
+            android:parentActivityName=".View.dashboard.Dashboard" />
         <activity
             android:name=".View.camera.Camera"
             android:exported="false" />
         <activity
-            android:name=".View.Catering.home.DetailMenu"
+            android:name=".View.catering.home.DetailMenu"
             android:exported="false"
-            android:parentActivityName=".View.Catering.Menu.MenuCateringActivity" />
+            android:parentActivityName=".View.catering.Menu.MenuCateringActivity" />
         <activity
-            android:name=".View.Catering.keranjang.OrderConfirmationActivity"
+            android:name=".View.catering.keranjang.OrderConfirmationActivity"
             android:exported="false" />
         <activity
             android:name=".View.activity.RegisterActivity"
@@ -51,19 +51,19 @@
             android:name=".View.activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".View.Dashboard.ArticleActivity"
+            android:name=".View.dashboard.ArticleActivity"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard" />
+            android:parentActivityName=".View.dashboard.Dashboard" />
         <activity
-            android:name=".View.Catering.Menu.MenuCateringActivity"
+            android:name=".View.catering.Menu.MenuCateringActivity"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard" />
+            android:parentActivityName=".View.dashboard.Dashboard" />
         <activity
-            android:name=".View.HandlingError.PageNotFound"
+            android:name=".View.handlingError.PageNotFound"
             android:exported="false"
-            android:parentActivityName=".View.Dashboard.Dashboard" />
+            android:parentActivityName=".View.dashboard.Dashboard" />
         <activity
-            android:name=".View.Dashboard.Dashboard"
+            android:name=".View.dashboard.Dashboard"
             android:exported="false" />
         <activity
             android:name=".View.activity.SplashScreenActivity"

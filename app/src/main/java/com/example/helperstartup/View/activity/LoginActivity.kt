@@ -10,11 +10,11 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.Toast
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.LoginApiResponse
-import com.example.helperstartup.Model.Service.ResponseApi.UserInfo
+import com.example.helperstartup.Model.service.ApiConfig
+import com.example.helperstartup.Model.service.ResponseApi.LoginApiResponse
+import com.example.helperstartup.Model.service.ResponseApi.UserInfo
 import com.example.helperstartup.R
-import com.example.helperstartup.View.Dashboard.Dashboard
+import com.example.helperstartup.View.dashboard.Dashboard
 import com.example.helperstartup.databinding.ActivityLoginBinding
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference

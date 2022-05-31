@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_soft"
-    tools:context=".View.Catering.home.HomeFragment">
+    tools:context=".View.catering.home.HomeFragment">
 
     <ProgressBar
         android:id="@+id/progresbar"
@@ -37,6 +37,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:itemCount="4"
-        tools:listitem="@layout/menu_home_component" />
+        tools:listitem="@layout/component_menu_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

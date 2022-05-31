@@ -15,12 +15,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import com.example.helperstartup.Model.Service.ApiConfig
-import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
+import com.example.helperstartup.Model.service.ApiConfig
+import com.example.helperstartup.Model.service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.uriToFile
-import com.example.helperstartup.View.Dashboard.Dashboard
+import com.example.helperstartup.View.dashboard.Dashboard
 import com.example.helperstartup.databinding.ActivityAddStoryBinding
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody

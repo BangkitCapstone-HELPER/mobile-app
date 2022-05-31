@@ -8,7 +8,7 @@
     android:background="@drawable/bottom_sheet_background"
     android:padding="16dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
-    tools:context=".View.Catering.riwayat.RiwayatFragment">
+    tools:context=".View.catering.riwayat.RiwayatFragment">
 
 
     <LinearLayout

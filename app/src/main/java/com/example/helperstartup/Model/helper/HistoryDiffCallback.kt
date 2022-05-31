@@ -1,7 +1,7 @@
 package com.example.helperstartup.Model.helper
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.helperstartup.Model.Data.HistoryModel
+import com.example.helperstartup.Model.data.HistoryModel
 
 class HistoryDiffCallback(
     private val mOldHistory: List<HistoryModel>,
