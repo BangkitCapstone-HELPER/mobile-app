@@ -22,6 +22,7 @@ import com.example.helperstartup.Model.Service.ResponseApi.FileUploadResponse
 import com.example.helperstartup.Model.Service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
+import com.example.helperstartup.Model.rotateBitmap
 import com.example.helperstartup.Model.uriToFile
 import com.example.helperstartup.View.Catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.Dashboard.Dashboard
@@ -119,7 +120,12 @@ class CameraFragment : Fragment() {
             val myFile = File(currentPhotoPath)
             getFile = myFile
 
-            val result = BitmapFactory.decodeFile(getFile?.path)
+//            val result = BitmapFactory.decodeFile(getFile?.path)
+//            Silakan gunakan kode ini jika mengalami perubahan rotasi
+            val result = rotateBitmap(
+                BitmapFactory.decodeFile(myFile.path),
+                true
+            )
             binding.previewImageView.setImageBitmap(result)
             binding.textView2.setVisibility(View.GONE)
             binding.imageView2.setVisibility(View.GONE)

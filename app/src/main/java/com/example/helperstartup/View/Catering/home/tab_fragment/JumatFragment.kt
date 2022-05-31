@@ -1,6 +1,5 @@
 package com.example.helperstartup.View.Catering.home.tab_fragment
 
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
