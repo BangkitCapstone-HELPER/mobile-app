@@ -62,5 +62,6 @@
     <!-- Popup modal -->
     <string name="success_order">Yeay, Pesananmu Berhasil. Silakan Lakukan Konfirmasi Pembayaran!</string>
     <string name="fail_order">Oops, Pesananmu gagal</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

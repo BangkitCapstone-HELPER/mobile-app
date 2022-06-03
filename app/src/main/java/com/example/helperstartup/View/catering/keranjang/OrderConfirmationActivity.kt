@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -15,6 +16,7 @@ import com.example.helperstartup.Model.helper.formatRupiah
 import com.example.helperstartup.Model.service.ApiConfig
 import com.example.helperstartup.Model.service.request.PostTransaction
 import com.example.helperstartup.R
+import com.example.helperstartup.View.activity.MapsActivity
 import com.example.helperstartup.View.catering.Menu.MenuCateringActivity
 import com.example.helperstartup.ViewModel.OrderConfirmationViewModel
 import com.example.helperstartup.databinding.ActivityOrderConfirmationBinding
@@ -183,6 +185,12 @@ class OrderConfirmationActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                 }
+            }
+
+            selectLocationBtn.setOnClickListener {
+                Log.d("Bukalokasi", "Masuk sini")
+                val intent = Intent(this@OrderConfirmationActivity, MapsActivity::class.java)
+                startActivity(intent)
             }
         }
     }
