@@ -21,10 +21,16 @@ import com.example.helperstartup.View.catering.Menu.MenuCateringActivity
 import com.example.helperstartup.ViewModel.OrderConfirmationViewModel
 import com.example.helperstartup.databinding.ActivityOrderConfirmationBinding
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointForward
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 class OrderConfirmationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderConfirmationBinding
@@ -33,7 +39,8 @@ class OrderConfirmationActivity : AppCompatActivity() {
     private val viewModel: OrderConfirmationViewModel by viewModels()
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
-
+    private var builder = MaterialDatePicker.Builder.datePicker()
+    private var calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +86,6 @@ class OrderConfirmationActivity : AppCompatActivity() {
         }
 
         data.price?.let { viewModel.updateTotalPrice(it) }
-
     }
 
     private fun toggleButton(btn: MaterialButton, state: Boolean) {
@@ -191,6 +197,32 @@ class OrderConfirmationActivity : AppCompatActivity() {
                 Log.d("Bukalokasi", "Masuk sini")
                 val intent = Intent(this@OrderConfirmationActivity, MapsActivity::class.java)
                 startActivity(intent)
+            }
+
+
+            // date picker
+            val today = MaterialDatePicker.todayInUtcMilliseconds()
+            calendar.clear()
+            calendar.timeInMillis = today
+            val constraintBuilder = CalendarConstraints.Builder()
+            constraintBuilder.setValidator(DateValidatorPointForward.now())
+            constraintBuilder.setStart(today)
+            builder.setTitleText("Pilih tanggal mulai")
+            builder.setSelection(today)
+            builder.setCalendarConstraints(constraintBuilder.build())
+            val materialDatePicker = builder.build()
+
+            chooseDateBtn.setOnClickListener {
+                materialDatePicker.show(supportFragmentManager, "DATE_PICKER")
+            }
+
+            materialDatePicker.addOnPositiveButtonClickListener {
+                dateTextView.text = materialDatePicker.headerText
+//                if (materialDatePicker.selection != null) {
+//                    val msDiff = materialDatePicker.selection!! - today
+//                    val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
+//                    dateTextView.text = daysDiff.toString()
+//                }
             }
         }
     }
