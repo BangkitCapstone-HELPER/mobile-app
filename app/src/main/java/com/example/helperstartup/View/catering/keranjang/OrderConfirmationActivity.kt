@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import com.example.helperstartup.Model.service.ResponseApi.DataItem
 import com.example.helperstartup.Model.service.ResponseApi.PostTransactionResponse
 import com.example.helperstartup.Model.User
@@ -28,6 +29,7 @@ import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
@@ -39,7 +41,7 @@ class OrderConfirmationActivity : AppCompatActivity() {
     private val viewModel: OrderConfirmationViewModel by viewModels()
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
-    private var builder = MaterialDatePicker.Builder.datePicker()
+    private var builder = MaterialDatePicker.Builder.dateRangePicker()
     private var calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -207,22 +209,33 @@ class OrderConfirmationActivity : AppCompatActivity() {
             val constraintBuilder = CalendarConstraints.Builder()
             constraintBuilder.setValidator(DateValidatorPointForward.now())
             constraintBuilder.setStart(today)
-            builder.setTitleText("Pilih tanggal mulai")
-            builder.setSelection(today)
+            builder.setTitleText("Pilih tanggal mulai dan berakhir")
+            builder.setSelection(
+                Pair(
+                    MaterialDatePicker.thisMonthInUtcMilliseconds(),
+                    MaterialDatePicker.todayInUtcMilliseconds()
+                )
+            )
+
             builder.setCalendarConstraints(constraintBuilder.build())
             val materialDatePicker = builder.build()
 
             chooseDateBtn.setOnClickListener {
-                materialDatePicker.show(supportFragmentManager, "DATE_PICKER")
+                materialDatePicker.show(supportFragmentManager, "DATERANGE_PICKER")
             }
 
             materialDatePicker.addOnPositiveButtonClickListener {
-                dateTextView.text = materialDatePicker.headerText
-//                if (materialDatePicker.selection != null) {
-//                    val msDiff = materialDatePicker.selection!! - today
-//                    val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
-//                    dateTextView.text = daysDiff.toString()
-//                }
+                val formatter = SimpleDateFormat("dd/MM/yyyy")
+                val startDate = Date(materialDatePicker.selection?.first!!)
+                val endDate = Date(materialDatePicker.selection?.second!!)
+                dateTextView.text = "${formatter.format(startDate)} - ${formatter.format(endDate)}"
+                if (materialDatePicker.selection != null) {
+                    val msDiff =
+                        materialDatePicker.selection?.second!! - materialDatePicker.selection?.first!!
+                    val daysDiff = 1 + TimeUnit.MILLISECONDS.toDays(msDiff).toInt()
+                    viewModel.counter.value = daysDiff
+                    data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
+                }
             }
         }
     }
