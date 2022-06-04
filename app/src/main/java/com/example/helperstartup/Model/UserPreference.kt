@@ -23,6 +23,12 @@ class UserPreference(context: Context) {
         editor.apply()
     }
 
+    fun updateImage(image : String) {
+        val editor = preferences.edit()
+        editor.putString(IMAGE, image)
+        editor.apply()
+    }
+
     fun getUser(): User {
         val model = User("", "", "", false, "", "", 0)
         model.name = preferences.getString(NAME, "").toString()
