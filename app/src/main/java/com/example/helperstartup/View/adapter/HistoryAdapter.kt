@@ -69,7 +69,7 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                     .resize(300, 300)
                     .centerCrop()
                     .into(historyImageView)
-                historyDate.text = historyModel.date?.let { formatDate(it) } ?: ""
+                historyDate.text = historyModel.date?.let { "Dibuat tgl ${formatDate(it)}" } ?: ""
 
                 historyPrice.text = formatRupiah(historyModel.price)
 

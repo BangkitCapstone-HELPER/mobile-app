@@ -10,4 +10,6 @@ data class PostTransaction(
     val is_noon : Boolean,
     val lat : Double?,
     val lng : Double?,
+    val start_date : String?,
+    val end_date : String?
 )

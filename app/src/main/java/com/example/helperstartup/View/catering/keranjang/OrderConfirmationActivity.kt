@@ -41,6 +41,8 @@ class OrderConfirmationActivity : AppCompatActivity() {
     private val viewModel: OrderConfirmationViewModel by viewModels()
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
+    private var startDate: String? = null
+    private var endDate: String? = null
     private var builder = MaterialDatePicker.Builder.dateRangePicker()
     private var calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
 
@@ -73,9 +75,9 @@ class OrderConfirmationActivity : AppCompatActivity() {
         }
 
         // Create the observer which updates the UI.
-        viewModel.counter.observe(this) {
-            binding.tvCounter.text = it.toString()
-        }
+//        viewModel.counter.observe(this) {
+//            binding.tvCounter.text = it.toString()
+//        }
 
         viewModel.totalPrice.observe(this) {
             binding.tvTotalPrice.text = "Total ${formatRupiah(it)}"
@@ -104,16 +106,16 @@ class OrderConfirmationActivity : AppCompatActivity() {
 
     private fun setupAction() {
         with(binding) {
-            minusitemBtn.setOnClickListener {
-                if (viewModel.counter.value!! > 1) {
-                    viewModel.counter.value = viewModel.counter.value?.minus(1)
-                    data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
-                }
-            }
-            additemBtn.setOnClickListener {
-                viewModel.counter.value = viewModel.counter.value?.plus(1)
-                data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
-            }
+//            minusitemBtn.setOnClickListener {
+//                if (viewModel.counter.value!! > 1) {
+//                    viewModel.counter.value = viewModel.counter.value?.minus(1)
+//                    data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
+//                }
+//            }
+//            additemBtn.setOnClickListener {
+//                viewModel.counter.value = viewModel.counter.value?.plus(1)
+//                data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
+//            }
 
             buttonPagi.setOnClickListener {
                 tempTimeSelectionList = viewModel.timeSelectionList.value!!
@@ -146,22 +148,29 @@ class OrderConfirmationActivity : AppCompatActivity() {
             }
 
             checkoutButton.setOnClickListener {
+                val dateValid = startDate != null && endDate != null
+                if (!dateValid) {
+                    Toast.makeText(this@OrderConfirmationActivity, "Pilih tanggal mulai dan berakhir terlebih dahulu", Toast.LENGTH_LONG).show()
+                }
+
                 tempTimeSelectionList = viewModel.timeSelectionList.value!!
                 val predicate: (Boolean) -> Boolean = { it }
                 val countTrue = tempTimeSelectionList.count(predicate)
-                if (countTrue > 0 && viewModel.counter.value!! > 0) {
+                if (countTrue > 0 && viewModel.counter.value!! > 0 && dateValid) {
                     val client = ApiConfig.getApiService().postTransaction(
                         auth = "bearer ${userModel.token}",
                         PostTransaction(
                             data.id,
                             viewModel.counter.value,
                             viewModel.totalPrice.value,
-                            binding.editTextCatatan.toString(),
+                            binding.editTextCatatan.text.toString(),
                             tempTimeSelectionList[0],
                             tempTimeSelectionList[1],
                             tempTimeSelectionList[2],
                             null,
-                            null
+                            null,
+                            startDate,
+                            endDate
                         )
                     )
 
@@ -171,12 +180,13 @@ class OrderConfirmationActivity : AppCompatActivity() {
                             response: Response<PostTransactionResponse>
                         ) {
                             if (response.isSuccessful) {
-                              startHistoryFragment(true)
+                                startHistoryFragment(true)
                             } else {
                                 // pesanan gagal
                                 startHistoryFragment(false)
                             }
                         }
+
                         override fun onFailure(call: Call<PostTransactionResponse>, t: Throwable) {
                             Toast.makeText(
                                 this@OrderConfirmationActivity,
@@ -226,9 +236,9 @@ class OrderConfirmationActivity : AppCompatActivity() {
 
             materialDatePicker.addOnPositiveButtonClickListener {
                 val formatter = SimpleDateFormat("dd/MM/yyyy")
-                val startDate = Date(materialDatePicker.selection?.first!!)
-                val endDate = Date(materialDatePicker.selection?.second!!)
-                dateTextView.text = "${formatter.format(startDate)} - ${formatter.format(endDate)}"
+                startDate = formatter.format(Date(materialDatePicker.selection?.first!!))
+                endDate = formatter.format(Date(materialDatePicker.selection?.second!!))
+                dateTextView.text = "${startDate} - ${endDate}"
                 if (materialDatePicker.selection != null) {
                     val msDiff =
                         materialDatePicker.selection?.second!! - materialDatePicker.selection?.first!!
@@ -240,7 +250,7 @@ class OrderConfirmationActivity : AppCompatActivity() {
         }
     }
 
-    private fun startHistoryFragment(isSuccess : Boolean) {
+    private fun startHistoryFragment(isSuccess: Boolean) {
         val intent = Intent(this@OrderConfirmationActivity, MenuCateringActivity::class.java)
         intent.putExtra("isSuccess", isSuccess)
         startActivity(intent)

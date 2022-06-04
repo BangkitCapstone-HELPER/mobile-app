@@ -108,9 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins"
-                android:text="2022-12-30"
+                android:text="Dipesan tgl 22 Mei 2022"
                 android:textColor="@color/font_blue_light"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/history_price"
                 app:layout_constraintStart_toStartOf="parent" />

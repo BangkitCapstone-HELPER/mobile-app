@@ -14,7 +14,7 @@ fun getCurrentDate(): String {
 
 fun formatDate (date : String): String {
     val localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ISO_DATE_TIME)
-    val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.getDefault())
+    val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.getDefault())
     return formatter.format(localDateTime).toString()
 }
 

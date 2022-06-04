@@ -108,6 +108,7 @@
                         android:textAllCaps="false"
                         android:textSize="12sp"
                         app:cornerRadius="8dp"
+                        app:icon="@drawable/ic_baseline_edit_calendar_24"
                         app:strokeColor="@color/primary_green" />
 
                     <com.google.android.material.textview.MaterialTextView
@@ -116,63 +117,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:textSize="14sp"
                         android:layout_marginLeft="10dp"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        android:textSize="14sp" />
                 </LinearLayout>
-
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/textBlueTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/jumlah_hari" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/minusitemBtn"
-                        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins"
-                        android:textAllCaps="false"
-                        android:textSize="12sp"
-                        app:cornerRadius="10dp"
-                        app:icon="@drawable/ic_baseline_horizontal_rule_24"
-                        app:strokeColor="@color/primary_green" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvCounter"
-                        style="@style/textBlueTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="@string/counter"
-                        android:textColor="@color/primary_green"
-                        android:textSize="24sp" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/additemBtn"
-                        style="@style/Widget.App.Button.OutlinedButton.IconOnly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/poppins"
-                        android:textAllCaps="false"
-                        android:textSize="12sp"
-                        app:cornerRadius="10dp"
-                        app:icon="@drawable/ic_baseline_add_24"
-                        app:strokeColor="@color/primary_green" />
-                </LinearLayout>
-
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/textBlueTitle"
@@ -233,7 +181,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp" />
             </LinearLayout>
-
 
         </LinearLayout>
     </ScrollView>
