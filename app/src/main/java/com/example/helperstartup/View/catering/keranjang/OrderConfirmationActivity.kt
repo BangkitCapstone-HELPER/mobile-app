@@ -21,6 +21,7 @@ import com.example.helperstartup.View.activity.MapsActivity
 import com.example.helperstartup.View.catering.Menu.MenuCateringActivity
 import com.example.helperstartup.ViewModel.OrderConfirmationViewModel
 import com.example.helperstartup.databinding.ActivityOrderConfirmationBinding
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -37,6 +38,8 @@ import kotlin.collections.ArrayList
 class OrderConfirmationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOrderConfirmationBinding
     private lateinit var data: DataItem
+    private var location : LatLng? = null
+    private var address : String? = null
     private lateinit var tempTimeSelectionList: ArrayList<Boolean>
     private val viewModel: OrderConfirmationViewModel by viewModels()
     private lateinit var mUserPreference: UserPreference
@@ -48,6 +51,12 @@ class OrderConfirmationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Retrieve location and camera position from saved instance state.
+        if (savedInstanceState != null) {
+            data = savedInstanceState.getParcelable(KEY_DATA_ITEM)!!
+        }
+
         binding = ActivityOrderConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mUserPreference = UserPreference(this)
@@ -57,12 +66,35 @@ class OrderConfirmationActivity : AppCompatActivity() {
         setupAction()
     }
 
+    /**
+     * Saves the state of the map when the activity is paused.
+     */
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable(KEY_DATA_ITEM, data)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        location = intent.getParcelableExtra(KEY_LOCATION)
+        address = intent.getStringExtra(KEY_ADDRESS_STRING)
+        if (location != null) {
+            Toast.makeText(this, location.toString(), Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun setupActionBar() {
         supportActionBar?.title = "Konfirmasi Pesanan"
     }
 
     private fun setupView() {
-        data = intent.getParcelableExtra("dataItem")!!
+
+        try {
+            data = intent.getParcelableExtra("dataItem")!!
+        } catch (e : Exception) {
+            Log.d("exception_data_item", e.message.toString())
+        }
+
         with(binding) {
             Picasso.get().load(data.dayMenus?.get(0)?.image)
                 .placeholder(R.drawable.loading_image)
@@ -254,5 +286,11 @@ class OrderConfirmationActivity : AppCompatActivity() {
         val intent = Intent(this@OrderConfirmationActivity, MenuCateringActivity::class.java)
         intent.putExtra("isSuccess", isSuccess)
         startActivity(intent)
+    }
+
+    companion object {
+        private const val KEY_LOCATION = "location"
+        private const val KEY_ADDRESS_STRING = "address"
+        private const val KEY_DATA_ITEM = "data_item"
     }
 }

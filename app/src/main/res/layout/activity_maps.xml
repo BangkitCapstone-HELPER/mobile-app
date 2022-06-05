@@ -8,13 +8,23 @@
     android:layout_height="match_parent"
     tools:context=".View.activity.MapsActivity">
 
-    <Button
+
+    <TextView
+        android:id="@+id/tvHintMaps"
+        style="@style/textDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|top"
-        android:text="Demo Button"
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
-        android:paddingRight="10dp"/>
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="30dp"
+        android:text="@string/hint_maps"
+        android:textStyle="bold" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSendLocation"
+        style="@style/ButtonGeneral"
+        map:icon="@drawable/ic_baseline_arrow_forward_24"
+        map:iconGravity="textEnd"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/pilih_lokasi" />
 </fragment>
