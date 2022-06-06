@@ -36,14 +36,14 @@ import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 class OrderConfirmationActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityOrderConfirmationBinding
-    private lateinit var data: DataItem
-    private var location : LatLng? = null
-    private var address : String? = null
-    private lateinit var tempTimeSelectionList: ArrayList<Boolean>
     private val viewModel: OrderConfirmationViewModel by viewModels()
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
+    private lateinit var binding: ActivityOrderConfirmationBinding
+    private lateinit var data: DataItem
+    private var location: LatLng? = null
+    private var address: String? = null
+    private lateinit var tempTimeSelectionList: ArrayList<Boolean>
     private var startDate: String? = null
     private var endDate: String? = null
     private var builder = MaterialDatePicker.Builder.dateRangePicker()
@@ -51,11 +51,6 @@ class OrderConfirmationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Retrieve location and camera position from saved instance state.
-        if (savedInstanceState != null) {
-            data = savedInstanceState.getParcelable(KEY_DATA_ITEM)!!
-        }
 
         binding = ActivityOrderConfirmationBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -66,33 +61,28 @@ class OrderConfirmationActivity : AppCompatActivity() {
         setupAction()
     }
 
-    /**
-     * Saves the state of the map when the activity is paused.
-     */
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putParcelable(KEY_DATA_ITEM, data)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        location = intent.getParcelableExtra(KEY_LOCATION)
-        address = intent.getStringExtra(KEY_ADDRESS_STRING)
-        if (location != null) {
-            Toast.makeText(this, location.toString(), Toast.LENGTH_LONG).show()
-        }
-    }
-
     private fun setupActionBar() {
         supportActionBar?.title = "Konfirmasi Pesanan"
     }
 
     private fun setupView() {
-
+        tempTimeSelectionList = viewModel.timeSelectionList.value!!
         try {
-            data = intent.getParcelableExtra("dataItem")!!
-        } catch (e : Exception) {
-            Log.d("exception_data_item", e.message.toString())
+            data = intent.getParcelableExtra(KEY_ITEM)!!
+            startDate = intent.getStringExtra(KEY_START_DATE)
+            endDate = intent.getStringExtra(KEY_END_DATE)
+            tempTimeSelectionList =
+                intent.getSerializableExtra(KEY_TIME_SELECTIONS) as ArrayList<Boolean>
+            viewModel.timeSelectionList.value = tempTimeSelectionList
+            address = intent.getStringExtra(KEY_ADDRESS_STRING)
+            binding.tvDisplayAddress.text = address
+            location = intent.getParcelableExtra(KEY_LOCATION)
+            viewModel.counter.value = intent.getIntExtra(KEY_COUNTER, 1)
+
+            Toast.makeText(this@OrderConfirmationActivity, address.toString(), Toast.LENGTH_LONG)
+                .show()
+        } catch (e: Exception) {
+            Log.d("exception_get_data_intent", e.message.toString())
         }
 
         with(binding) {
@@ -106,10 +96,11 @@ class OrderConfirmationActivity : AppCompatActivity() {
             cardMenu.descHome.text = data.description
         }
 
-        // Create the observer which updates the UI.
-//        viewModel.counter.observe(this) {
-//            binding.tvCounter.text = it.toString()
-//        }
+        data.price?.let { viewModel.updateTotalPrice(it) }
+
+        if (startDate != null && endDate != null) {
+            binding.dateTextView.text = "$startDate - $endDate"
+        }
 
         viewModel.totalPrice.observe(this) {
             binding.tvTotalPrice.text = "Total ${formatRupiah(it)}"
@@ -120,8 +111,6 @@ class OrderConfirmationActivity : AppCompatActivity() {
             toggleButton(binding.buttonSiang, it[1])
             toggleButton(binding.buttonMalam, it[2])
         }
-
-        data.price?.let { viewModel.updateTotalPrice(it) }
     }
 
     private fun toggleButton(btn: MaterialButton, state: Boolean) {
@@ -138,17 +127,6 @@ class OrderConfirmationActivity : AppCompatActivity() {
 
     private fun setupAction() {
         with(binding) {
-//            minusitemBtn.setOnClickListener {
-//                if (viewModel.counter.value!! > 1) {
-//                    viewModel.counter.value = viewModel.counter.value?.minus(1)
-//                    data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
-//                }
-//            }
-//            additemBtn.setOnClickListener {
-//                viewModel.counter.value = viewModel.counter.value?.plus(1)
-//                data.price?.let { it1 -> viewModel.updateTotalPrice(it1) }
-//            }
-
             buttonPagi.setOnClickListener {
                 tempTimeSelectionList = viewModel.timeSelectionList.value!!
 
@@ -182,25 +160,45 @@ class OrderConfirmationActivity : AppCompatActivity() {
             checkoutButton.setOnClickListener {
                 val dateValid = startDate != null && endDate != null
                 if (!dateValid) {
-                    Toast.makeText(this@OrderConfirmationActivity, "Pilih tanggal mulai dan berakhir terlebih dahulu", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@OrderConfirmationActivity,
+                        "Pilih tanggal mulai dan berakhir terlebih dahulu",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                if (address == null) {
+                    Toast.makeText(
+                        this@OrderConfirmationActivity,
+                        "Pilih lokasi pengiriman terlebih dahulu",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
                 tempTimeSelectionList = viewModel.timeSelectionList.value!!
                 val predicate: (Boolean) -> Boolean = { it }
-                val countTrue = tempTimeSelectionList.count(predicate)
-                if (countTrue > 0 && viewModel.counter.value!! > 0 && dateValid) {
+                val countTrue = tempTimeSelectionList.count(predicate) > 0
+                if (!countTrue) {
+                    Toast.makeText(
+                        this@OrderConfirmationActivity,
+                        "Mohon pilih waktu antar terlebih dahulu",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                if (countTrue && viewModel.counter.value!! > 0 && dateValid && location != null) {
                     val client = ApiConfig.getApiService().postTransaction(
                         auth = "bearer ${userModel.token}",
                         PostTransaction(
                             data.id,
                             viewModel.counter.value,
                             viewModel.totalPrice.value,
-                            binding.editTextCatatan.text.toString(),
+                            "Alamat : ${address}\n\n Catatan : ${binding.editTextCatatan.text.toString()}",
                             tempTimeSelectionList[0],
                             tempTimeSelectionList[1],
                             tempTimeSelectionList[2],
-                            null,
-                            null,
+                            location!!.latitude,
+                            location!!.longitude,
                             startDate,
                             endDate
                         )
@@ -228,21 +226,19 @@ class OrderConfirmationActivity : AppCompatActivity() {
                             startHistoryFragment(false)
                         }
                     })
-                } else {
-                    Toast.makeText(
-                        this@OrderConfirmationActivity,
-                        "Mohon pilih waktu antar terlebih dahulu",
-                        Toast.LENGTH_LONG
-                    ).show()
                 }
             }
 
             selectLocationBtn.setOnClickListener {
-                Log.d("Bukalokasi", "Masuk sini")
                 val intent = Intent(this@OrderConfirmationActivity, MapsActivity::class.java)
+                intent.putExtra(KEY_ITEM, data)
+                intent.putExtra(KEY_START_DATE, startDate)
+                intent.putExtra(KEY_END_DATE, endDate)
+                intent.putExtra(KEY_TIME_SELECTIONS, tempTimeSelectionList)
+                intent.putExtra(KEY_COUNTER, viewModel.counter.value)
+                intent.putExtra(KEY_LOCATION, location)
                 startActivity(intent)
             }
-
 
             // date picker
             val today = MaterialDatePicker.todayInUtcMilliseconds()
@@ -267,10 +263,10 @@ class OrderConfirmationActivity : AppCompatActivity() {
             }
 
             materialDatePicker.addOnPositiveButtonClickListener {
-                val formatter = SimpleDateFormat("dd/MM/yyyy")
+                val formatter = SimpleDateFormat("MM/dd/yyyy")
                 startDate = formatter.format(Date(materialDatePicker.selection?.first!!))
                 endDate = formatter.format(Date(materialDatePicker.selection?.second!!))
-                dateTextView.text = "${startDate} - ${endDate}"
+                dateTextView.text = "$startDate - $endDate"
                 if (materialDatePicker.selection != null) {
                     val msDiff =
                         materialDatePicker.selection?.second!! - materialDatePicker.selection?.first!!
@@ -289,8 +285,12 @@ class OrderConfirmationActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val KEY_ITEM = "dataItem"
         private const val KEY_LOCATION = "location"
         private const val KEY_ADDRESS_STRING = "address"
-        private const val KEY_DATA_ITEM = "data_item"
+        private const val KEY_START_DATE = "startDate"
+        private const val KEY_END_DATE = "endDate"
+        private const val KEY_COUNTER = "counter"
+        private const val KEY_TIME_SELECTIONS = "timeSelections"
     }
 }

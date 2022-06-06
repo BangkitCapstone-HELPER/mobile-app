@@ -122,6 +122,8 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
+
+
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/textBlueTitle"
                     android:layout_width="match_parent"
@@ -145,6 +147,18 @@
                     app:cornerRadius="4dp"
                     app:icon="@drawable/ic_baseline_location_on_24"
                     app:iconTint="@color/font_blue" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvDisplayAddress"
+                    android:textColor="@color/font_blue_light"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="12sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="2dp"
+                    android:text="@string/alamat_hint" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/textBlueTitle"

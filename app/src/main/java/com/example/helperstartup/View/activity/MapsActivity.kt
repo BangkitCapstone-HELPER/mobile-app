@@ -7,9 +7,11 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.helperstartup.Model.service.ResponseApi.DataItem
 import com.example.helperstartup.R
 import com.example.helperstartup.View.catering.keranjang.OrderConfirmationActivity
 import com.example.helperstartup.databinding.ActivityMapsBinding
@@ -22,6 +24,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -40,6 +43,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var selectedAddressLocation: String? = null
     private var selectedMarker: Marker? = null
 
+    // from orderActivity
+    private lateinit var data: DataItem
+    private lateinit var tempTimeSelectionList: ArrayList<Boolean>
+    private var startDate: String? = null
+    private var endDate: String? = null
+    private var counter: Int = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,6 +62,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupView()
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -71,20 +83,40 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onSaveInstanceState(outState)
     }
 
+    private fun setupView() {
+        try {
+            data = intent.getParcelableExtra(KEY_ITEM)!!
+            startDate = intent.getStringExtra(KEY_START_DATE)
+            endDate = intent.getStringExtra(KEY_END_DATE)
+            tempTimeSelectionList =
+                intent.getSerializableExtra(KEY_TIME_SELECTIONS) as ArrayList<Boolean>
+            counter = intent.getIntExtra(KEY_COUNTER, 1)
+            selectedLocation = intent.getParcelableExtra(KEY_LOCATION)
+            Log.d("teslocation", selectedLocation.toString())
+        } catch (e: Exception) {
+            Log.d("exception_get_data_intent", e.message.toString())
+        }
+    }
+
     override fun onMapReady(googleMap: GoogleMap) {
+        mMap = googleMap
         mMap = googleMap
         setupControls(mMap)
 
         getMyLocation()
 
-        selectedLocation = defaultLocation
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation!!, DEFAULT_ZOOM))
-//        selectedMarker = mMap.addMarker(
-//            MarkerOptions()
-//                .position(lastKnownLocation!!)
-//                .title("Dicoding Space")
-//                .snippet("Batik Kumeli No.50")
-//        )
+        if (selectedLocation == null) {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, DEFAULT_ZOOM))
+        } else {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation!!, DEFAULT_ZOOM))
+            selectedMarker = mMap.addMarker(
+                MarkerOptions()
+                    .position(selectedLocation!!)
+                    .title("Titik Antar")
+                    .snippet(selectedLocation.toString())
+            )
+        }
+
 
 
         mMap.setOnMapClickListener { latLng ->
@@ -98,7 +130,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 MarkerOptions()
                     .position(latLng)
                     .title("Titik Antar")
-                    .snippet("${selectedAddressLocation}")
+                    .snippet("$selectedAddressLocation")
             )
 
             selectedLocation = latLng
@@ -114,10 +146,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isZoomGesturesEnabled = true
 
         binding.btnSendLocation.setOnClickListener {
-            val intent = Intent(this@MapsActivity, OrderConfirmationActivity::class.java)
-            intent.putExtra(KEY_LOCATION, selectedLocation)
-            intent.putExtra(KEY_ADDRESS_STRING, selectedAddressLocation)
-            startActivity(intent)
+            if (selectedLocation == null) {
+                Toast.makeText(
+                    this@MapsActivity,
+                    "Pilih titik antar terlebih dahulu",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                val intent = Intent(this@MapsActivity, OrderConfirmationActivity::class.java)
+                intent.putExtra(KEY_LOCATION, selectedLocation)
+                intent.putExtra(KEY_ADDRESS_STRING, selectedAddressLocation)
+                intent.putExtra(KEY_ITEM, data)
+                intent.putExtra(KEY_START_DATE, startDate)
+                intent.putExtra(KEY_END_DATE, endDate)
+                intent.putExtra(KEY_TIME_SELECTIONS, tempTimeSelectionList)
+                intent.putExtra(KEY_COUNTER, counter)
+                startActivity(intent)
+            }
         }
     }
 
@@ -172,6 +217,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         private const val KEY_CAMERA_POSITION = "camera_position"
         private const val KEY_LOCATION = "location"
         private const val KEY_ADDRESS_STRING = "address"
+        private const val KEY_COUNTER = "counter"
+        private const val KEY_ITEM = "dataItem"
+        private const val KEY_START_DATE = "startDate"
+        private const val KEY_END_DATE = "endDate"
+        private const val KEY_TIME_SELECTIONS = "timeSelections"
 
     }
 }
