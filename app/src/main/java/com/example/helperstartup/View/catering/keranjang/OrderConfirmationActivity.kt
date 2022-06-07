@@ -263,7 +263,7 @@ class OrderConfirmationActivity : AppCompatActivity() {
             }
 
             materialDatePicker.addOnPositiveButtonClickListener {
-                val formatter = SimpleDateFormat("MM/dd/yyyy")
+                val formatter = SimpleDateFormat("yyyy-MM-dd")
                 startDate = formatter.format(Date(materialDatePicker.selection?.first!!))
                 endDate = formatter.format(Date(materialDatePicker.selection?.second!!))
                 dateTextView.text = "$startDate - $endDate"
