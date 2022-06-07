@@ -102,6 +102,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap = googleMap
         setupControls(mMap)
+        mMap.setPadding(0,0,0, binding.btnSendLocation.height+10)
 
         getMyLocation()
 
