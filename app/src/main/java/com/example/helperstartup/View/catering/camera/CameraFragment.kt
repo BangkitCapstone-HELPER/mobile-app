@@ -157,7 +157,7 @@ class CameraFragment : Fragment() {
                             binding.progresbar.visibility = View.GONE
                             Toast.makeText(
                                 context,
-                                "Success ke kirim",
+                                "Berhasil ke kirim",
                                 Toast.LENGTH_SHORT
                             ).show()
                             val intent = Intent(context, ResultScanning::class.java)
@@ -169,7 +169,7 @@ class CameraFragment : Fragment() {
                         binding.progresbar.visibility = View.GONE
                         Toast.makeText(
                             context,
-                            "error gak kekirim",
+                            "Gambar tidak berhasil dikirim",
                             Toast.LENGTH_SHORT
                         ).show()
                         Log.i("data foto", "gak kekirim")
@@ -180,9 +180,10 @@ class CameraFragment : Fragment() {
                     binding.progresbar.visibility = View.GONE
                     Toast.makeText(
                         context,
-                        "error gak kekirim 2",
+                        "Gambar tidak berhasil dikirim",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Log.d("uploadscanner", t.message.toString())
                     Log.i("data foto", "gak kekirim 2")
                 }
             })

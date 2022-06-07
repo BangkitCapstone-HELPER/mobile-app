@@ -39,10 +39,10 @@ data class TransactionResponseItem(
     val remaining: Int,
 
     @field:SerializedName("lng")
-    val lng: Int? = null,
+    val lng: Double? = null,
 
     @field:SerializedName("lat")
-    val lat: Int? = null,
+    val lat: Double? = null,
 
     @field:SerializedName("upload")
     val upload: String? = null,

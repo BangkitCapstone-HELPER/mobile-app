@@ -57,7 +57,7 @@ interface ApiService {
 
     // camera - post
     @Multipart
-    @POST("/function-1")
+    @POST("file/predict/")
     fun uploadImage(
         @Part file: MultipartBody.Part
     ): Call<ResponseUploadScanner>
