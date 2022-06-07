@@ -85,11 +85,6 @@ class LoginActivity : AppCompatActivity() {
                                         responseBody?.data?.user?.id ?: 0
                                     )
 
-                                    Toast.makeText(
-                                        this@LoginActivity,
-                                        "Selamat datang " + responseBody?.data?.user?.name.toString(),
-                                        Toast.LENGTH_SHORT
-                                    ).show()
                                     val intent =
                                         Intent(this@LoginActivity, Dashboard::class.java)
                                     intent.flags =
