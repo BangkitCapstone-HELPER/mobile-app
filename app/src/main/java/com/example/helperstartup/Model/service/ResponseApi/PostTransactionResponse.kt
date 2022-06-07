@@ -31,7 +31,7 @@ data class DataTransaction(
 	val address: String,
 
 	@field:SerializedName("lng")
-	val lng: Int,
+	val lng: Double,
 
 	@field:SerializedName("upload")
 	val upload: String,
@@ -67,7 +67,7 @@ data class DataTransaction(
 	val menuId: Int,
 
 	@field:SerializedName("lat")
-	val lat: Int,
+	val lat: Double,
 
 	@field:SerializedName("status")
 	val status: String

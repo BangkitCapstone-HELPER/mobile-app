@@ -81,7 +81,6 @@ class UpdateProfileActivity : AppCompatActivity() {
                         ).show()
                         response.body()?.data?.phoneNumber?.let { mUserPreference.updatePhone(it) }
                         userModel = mUserPreference.getUser()
-                        Log.d("checkUpdate", "Bener update ga ya " + userModel.phoneNumber)
                         startActivity(
                             Intent(
                                 this@UpdateProfileActivity,
@@ -111,6 +110,5 @@ class UpdateProfileActivity : AppCompatActivity() {
         } else {
             binding.phoneEditText.error = "Minimal 8 karakter"
         }
-
     }
 }

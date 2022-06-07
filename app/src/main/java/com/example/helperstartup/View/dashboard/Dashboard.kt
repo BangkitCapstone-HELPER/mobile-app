@@ -67,6 +67,7 @@ class Dashboard : AppCompatActivity() {
                 .placeholder(R.drawable.img_placeholder)
                 .error(R.drawable.img_placeholder)
                 .centerCrop()
+                .resize(150, 150)
                 .into(profileImage)
         } else {
             profileImage.setImageResource(R.drawable.img_placeholder)
