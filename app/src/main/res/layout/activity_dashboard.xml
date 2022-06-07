@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".View.dashboard.Dashboard">
 
     <LinearLayout
@@ -19,6 +18,7 @@
             android:id="@+id/appBarProfile">
 
             <androidx.constraintlayout.widget.Group
+                android:id="@+id/group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -37,7 +37,7 @@
                 style="@style/textDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:text="Welcome Back !"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,9 +48,10 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/octocat"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/textWelcome"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textGreeting"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -59,58 +60,14 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textLocation"
-                style="@style/textDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Alamat"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.cardview.widget.CardView
-                app:layout_constraintTop_toBottomOf="@id/textLocation"
-                android:id="@+id/card_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/gray_soft"
-                    android:orientation="horizontal"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@color/gray_soft"
-                        android:src="@drawable/ic_baseline_location_on_24" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:baselineAligned="false"
-                        android:text="Cisitu Lama, Bandung"
-                        android:textColor="@color/font_blue_light"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
                 android:id="@+id/feature"
                 style="@style/textBlueTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="Fitur"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_location" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 app:layout_constraintTop_toBottomOf="@id/feature"
@@ -283,7 +240,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Artikel"
+                android:text="Rekomendasi Makanan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/card_feature" />
@@ -298,6 +255,38 @@
                 tools:itemCount="10"
                 tools:listitem="@layout/component_article" />
 
+            <TextView
+                android:id="@+id/titleArticle2"
+                style="@style/textBlueTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="232dp"
+                android:text="Tips dan trik"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleArticle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/article_rv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal"
+                android:paddingBottom="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleArticle2"
+                tools:itemCount="10"
+                tools:listitem="@layout/component_article" />
+
+            <ProgressBar
+                android:id="@+id/progresbar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleArticle2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

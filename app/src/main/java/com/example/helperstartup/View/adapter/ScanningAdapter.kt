@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.helperstartup.Model.service.ResponseApi.DataItems
 import com.example.helperstartup.Model.service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.R
+import com.squareup.picasso.Picasso
 
 class ScanningAdapter(private val listMenu: ResponseUploadScanner) : RecyclerView.Adapter<ScanningAdapter.ListViewHolder>() {
 
@@ -32,12 +33,12 @@ class ScanningAdapter(private val listMenu: ResponseUploadScanner) : RecyclerVie
         private var kaloriScan: TextView = itemView.findViewById(R.id.kaloriScan)
 
         fun bind(dataMenu: DataItems?) {
-//            Picasso.get().load(dataMenu.image).into(photoScan);
+            Picasso.get().load(dataMenu?.image).into(photoScan);
             titleScan.text = dataMenu?.name
             karbohidratScan.text = "Karbohidrat : " + dataMenu?.carbohydrate
             proteinScan.text = "Protein : " + dataMenu?.protein
             fatScan.text = "Lemak : " + dataMenu?.fat
-            kaloriScan.text = "Karbohidrat : " + dataMenu?.calorie
+            kaloriScan.text = "Kalori : " + dataMenu?.calorie
         }
     }
 }

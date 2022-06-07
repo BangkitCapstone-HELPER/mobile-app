@@ -35,6 +35,7 @@ class Dashboard : AppCompatActivity() {
     private lateinit var mUserPreference: UserPreference
     private lateinit var userModel: User
     private lateinit var listArticle : RecyclerView
+    private lateinit var listArticle2 : RecyclerView
     private var listData = ArrayList<ArticleModel>()
     private lateinit var buttonCatering : CardView
     private lateinit var buttonKost : CardView
@@ -42,6 +43,7 @@ class Dashboard : AppCompatActivity() {
     private lateinit var buttonChatbot : CardView
     private lateinit var textViewProfile : TextView
     private lateinit var progressBar : ProgressBar
+    private lateinit var progressBar2 : ProgressBar
     private lateinit var textGreeting : TextView
     private lateinit var profileImage : CircleImageView
 
@@ -53,12 +55,14 @@ class Dashboard : AppCompatActivity() {
         setupView()
 
         listArticle = findViewById(R.id.article_rv)
+        listArticle2 = findViewById(R.id.article_rv2)
         buttonCatering = findViewById(R.id.card_catering)
         buttonKost = findViewById(R.id.card_kost)
         buttonShop = findViewById(R.id.card_shop)
         buttonChatbot = findViewById(R.id.card_chatbot)
         textViewProfile = findViewById(R.id.textGreeting)
         progressBar = findViewById(R.id.progresbar)
+        progressBar2 = findViewById(R.id.progresbar2)
         textGreeting = findViewById(R.id.textGreeting)
         profileImage = findViewById(R.id.profilPicture)
 
@@ -75,8 +79,10 @@ class Dashboard : AppCompatActivity() {
         textGreeting.text = "Hi, " + userModel.name
 
         progressBar.setVisibility(View.VISIBLE);
+        progressBar2.setVisibility(View.VISIBLE);
         setListenerButton()
         fetchListStories()
+        fetchListStories2()
     }
 
     private fun setListenerButton() {
@@ -143,11 +149,40 @@ class Dashboard : AppCompatActivity() {
                     }
                 }
                 else {
-                    Toast.makeText(this@Dashboard, "Error" , Toast.LENGTH_LONG).show()
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
                 }
             }
             override fun onFailure(call: Call<ResponseArticle>, t: Throwable) {
-                Toast.makeText(this@Dashboard, "Error" , Toast.LENGTH_LONG).show()
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun fetchListStories2() {
+        val client = ApiConfig.getApiService().getArticle2()
+        client.enqueue(object : Callback<ResponseArticle> {
+            override fun onResponse(
+                call: Call<ResponseArticle>,
+                response: Response<ResponseArticle>
+            ) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        Log.i("data", responseBody.status.toString())
+                        progressBar2.setVisibility(View.GONE);
+                        setListArticle2(responseBody)
+                    }
+                }
+                else {
+                    progressBar2.setVisibility(View.GONE);
+                    Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
+                }
+            }
+            override fun onFailure(call: Call<ResponseArticle>, t: Throwable) {
+                progressBar2.setVisibility(View.GONE);
+                Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
             }
         })
     }
@@ -167,9 +202,30 @@ class Dashboard : AppCompatActivity() {
         showRecyclerList()
     }
 
+    private fun setListArticle2(listArticle: ResponseArticle?) {
+        if (listArticle?.data == null) {
+            Toast.makeText(this, "Data null", Toast.LENGTH_LONG).show()
+        }
+        else {
+            listArticle.data.forEach { i ->
+                val stories = ArticleModel(i?.title, i?.guid, i?.enclosure?._url)
+                listData.add(stories)
+            }
+        }
+
+        Log.i("data", listData.toString())
+        showRecyclerList2()
+    }
+
     private fun showRecyclerList() {
         listArticle.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         val listArticleAdapter = ArticleAdapter(listData)
         listArticle.adapter = listArticleAdapter
+    }
+
+    private fun showRecyclerList2() {
+        listArticle2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val listArticleAdapter = ArticleAdapter(listData)
+        listArticle2.adapter = listArticleAdapter
     }
 }

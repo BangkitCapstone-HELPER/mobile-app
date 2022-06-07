@@ -51,6 +51,10 @@ interface ApiService {
     @GET("article/")
     fun getArticle(): Call<ResponseArticle>
 
+    // article 2
+    @GET("article2/")
+    fun getArticle2(): Call<ResponseArticle>
+
     // menu - home
     @GET("menu/")
     fun getMenu(): Call<ResponseMenu>

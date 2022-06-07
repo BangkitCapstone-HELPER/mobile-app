@@ -117,12 +117,12 @@ class CameraFragment : Fragment() {
             val myFile = File(currentPhotoPath)
             getFile = myFile
 
-//            val result = BitmapFactory.decodeFile(getFile?.path)
+            val result = BitmapFactory.decodeFile(getFile?.path)
 //            Silakan gunakan kode ini jika mengalami perubahan rotasi
-            val result = rotateBitmap(
-                BitmapFactory.decodeFile(myFile.path),
-                true
-            )
+//            val result = rotateBitmap(
+//                BitmapFactory.decodeFile(myFile.path),
+//                true
+//            )
             binding.previewImageView.setImageBitmap(result)
             binding.textView2.setVisibility(View.GONE)
             binding.imageView2.setVisibility(View.GONE)

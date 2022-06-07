@@ -24,21 +24,19 @@
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_dashboard.xml" value="0.2871376811594203" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_detail_menu.xml" value="0.25" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_maps.xml" value="0.2015625" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_menu_catering.xml" value="0.18819655521783182" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_order_confirmation.xml" value="0.1" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_order_confirmation.xml" value="0.22" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_page_not_found.xml" value="0.2015625" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_profile.xml" value="0.33" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_result_scanning.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/activity_splash_screen.xml" value="0.2015625" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/article_component.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_bottom_sheet_transaction.xml" value="0.18819655521783182" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_menu.xml" value="0.38697916666666665" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_menu_home.xml" value="0.38697916666666665" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_popup.xml" value="0.21671826625386997" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/component_popup_fail.xml" value="0.2015625" />
-        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.5" />
+        <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_item_row_history.xml" value="0.18819655521783182" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/components_list_item_bank_accounts.xml" value="0.18819655521783182" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_home.xml" value="0.2" />
         <entry key="..\:/Data/Personal/Kuliah/Bangkit/Project/mobile-app/app/src/main/res/layout/fragment_profile.xml" value="0.38697916666666665" />
@@ -76,6 +74,7 @@
         <entry key="app/src/main/res/layout/component_menu_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/component_popup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/component_popup_fail.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/component_result_scanning.xml" value="0.20885416666666667" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_image_slider.xml" value="0.1398148148148148" />
