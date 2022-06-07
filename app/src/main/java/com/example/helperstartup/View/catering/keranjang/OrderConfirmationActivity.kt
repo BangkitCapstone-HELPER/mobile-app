@@ -223,6 +223,7 @@ class OrderConfirmationActivity : AppCompatActivity() {
                                 "Terjadi kesalahan pada jaringan",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Log.d("errorPostTransaction", t.message.toString())
                             startHistoryFragment(false)
                         }
                     })
