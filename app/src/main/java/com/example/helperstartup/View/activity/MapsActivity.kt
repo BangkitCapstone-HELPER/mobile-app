@@ -163,6 +163,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 intent.putExtra(KEY_TIME_SELECTIONS, tempTimeSelectionList)
                 intent.putExtra(KEY_COUNTER, counter)
                 startActivity(intent)
+                finish()
             }
         }
     }

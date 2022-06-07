@@ -267,7 +267,7 @@ class OrderConfirmationActivity : AppCompatActivity() {
                 val formatter = SimpleDateFormat("yyyy-MM-dd")
                 startDate = formatter.format(Date(materialDatePicker.selection?.first!!))
                 endDate = formatter.format(Date(materialDatePicker.selection?.second!!))
-                dateTextView.text = "$startDate - $endDate"
+                dateTextView.text = "$startDate s.d $endDate"
                 if (materialDatePicker.selection != null) {
                     val msDiff =
                         materialDatePicker.selection?.second!! - materialDatePicker.selection?.first!!

@@ -20,9 +20,14 @@
             android:orientation="vertical"
             android:paddingTop="4dp">
 
-            <include
-                android:id="@+id/cardMenu"
-                layout="@layout/component_menu_home" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp">
+                <include
+                    android:id="@+id/cardMenu"
+                    layout="@layout/component_menu_home" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,19 +128,17 @@
                 </LinearLayout>
 
 
-
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/textBlueTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="2dp"
                     android:text="@string/alamat" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/selectLocationBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
                     android:backgroundTint="@color/gray_soft"
                     android:elevation="2dp"
                     android:fontFamily="@font/poppins"
@@ -151,14 +154,13 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvDisplayAddress"
-                    android:textColor="@color/font_blue_light"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="12sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="2dp"
-                    android:text="@string/alamat_hint" />
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/font_blue_light"
+                    android:textSize="12sp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     style="@style/textBlueTitle"
@@ -226,6 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:layout_marginLeft="8dp"
             android:gravity="start"
             android:text="@string/example_total_price" />
 
