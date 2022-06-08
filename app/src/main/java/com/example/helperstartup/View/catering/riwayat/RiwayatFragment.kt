@@ -311,8 +311,6 @@ class RiwayatFragment : Fragment() {
         } else {
             val listHistory = arrayListOf<HistoryModel>()
             transactionResponse.data.forEach {
-                val remaining =
-                    if (it.remaining == 0) "Sudah selesai" else "${it.remaining} hari tersisa"
                 listHistory.add(
                     HistoryModel(
                         it.id,
@@ -320,7 +318,7 @@ class RiwayatFragment : Fragment() {
                         it.menu.title,
                         it.status,
                         it.menu.description,
-                        remaining,
+                        it.remaining,
                         it.createdAt,
                         it.amount
                     )

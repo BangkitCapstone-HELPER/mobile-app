@@ -10,7 +10,7 @@ data class HistoryModel(
     val title: String?,
     val status: String?,
     val description: String?,
-    val expiredTime : String?,
+    val expiredTime : Int?,
     val date: String?,
     val price: Int
 ) : Parcelable

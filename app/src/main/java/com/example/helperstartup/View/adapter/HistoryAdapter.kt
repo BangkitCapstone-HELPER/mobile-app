@@ -72,14 +72,13 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                 historyDate.text = historyModel.date?.let { "Dibuat tgl ${formatDate(it)}" } ?: ""
 
                 historyPrice.text = formatRupiah(historyModel.price)
-
-                historyExpiredText.text = historyModel.expiredTime ?: ""
             }
-            changeStatus(historyModel.status, binding)
+            binding.historyExpiredText.text =  if (historyModel.expiredTime == 0) "Sudah selesai" else "${historyModel.expiredTime} hari tersisa"
+            changeStatus(historyModel.status, historyModel.expiredTime,  binding)
         }
     }
 
-    fun changeStatus(status: String?, binding: ComponentsItemRowHistoryBinding) {
+    fun changeStatus(status: String?, remaining : Int?,  binding: ComponentsItemRowHistoryBinding) {
         when (status) {
             "pending" -> {
                 binding.cardStatus.setBackgroundColor(
@@ -89,6 +88,11 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                     )
                 )
                 binding.cardTextName.text = "Pembayaran"
+                if (remaining == 0) {
+                    binding.historyExpiredText.text = "Hari terakhir pembayaran"
+                } else {
+                    binding.historyExpiredText.text = "${remaining?.plus(1)} hari tersisa"
+                }
             }
             "completed" -> {
                 binding.cardStatus.setBackgroundColor(
@@ -98,6 +102,7 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                     )
                 )
                 binding.cardTextName.text = "Selesai"
+                binding.historyExpiredText.text = ""
             }
             "cancelled" -> {
                 binding.cardStatus.setBackgroundColor(
@@ -107,6 +112,7 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                     )
                 )
                 binding.cardTextName.text = "Gagal"
+                binding.historyExpiredText.text = ""
             }
             "ongoing" -> {
                 binding.cardStatus.setBackgroundColor(
