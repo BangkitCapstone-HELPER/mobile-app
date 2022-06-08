@@ -20,6 +20,7 @@ import com.example.helperstartup.Model.service.ResponseApi.ResponseArticle
 import com.example.helperstartup.R
 import com.example.helperstartup.Model.User
 import com.example.helperstartup.Model.UserPreference
+import com.example.helperstartup.Model.service.ResponseApi.ResponseArticle2
 import com.example.helperstartup.View.activity.LoginActivity
 import com.example.helperstartup.View.adapter.ArticleAdapter
 import com.example.helperstartup.View.catering.Menu.MenuCateringActivity
@@ -37,6 +38,7 @@ class Dashboard : AppCompatActivity() {
     private lateinit var listArticle : RecyclerView
     private lateinit var listArticle2 : RecyclerView
     private var listData = ArrayList<ArticleModel>()
+    private var listData2 = ArrayList<ArticleModel>()
     private lateinit var buttonCatering : CardView
     private lateinit var buttonKost : CardView
     private lateinit var buttonShop : CardView
@@ -162,10 +164,10 @@ class Dashboard : AppCompatActivity() {
 
     private fun fetchListStories2() {
         val client = ApiConfig.getApiService().getArticle2()
-        client.enqueue(object : Callback<ResponseArticle> {
+        client.enqueue(object : Callback<ResponseArticle2> {
             override fun onResponse(
-                call: Call<ResponseArticle>,
-                response: Response<ResponseArticle>
+                call: Call<ResponseArticle2>,
+                response: Response<ResponseArticle2>
             ) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()
@@ -180,7 +182,7 @@ class Dashboard : AppCompatActivity() {
                     Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
                 }
             }
-            override fun onFailure(call: Call<ResponseArticle>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseArticle2>, t: Throwable) {
                 progressBar2.setVisibility(View.GONE);
                 Toast.makeText(this@Dashboard, "Tidak dapat memuat artikel" , Toast.LENGTH_LONG).show()
             }
@@ -202,18 +204,18 @@ class Dashboard : AppCompatActivity() {
         showRecyclerList()
     }
 
-    private fun setListArticle2(listArticle: ResponseArticle?) {
+    private fun setListArticle2(listArticle: ResponseArticle2?) {
         if (listArticle?.data == null) {
             Toast.makeText(this, "Data null", Toast.LENGTH_LONG).show()
         }
         else {
             listArticle.data.forEach { i ->
                 val stories = ArticleModel(i?.title, i?.guid, i?.enclosure?._url)
-                listData.add(stories)
+                listData2.add(stories)
             }
         }
 
-        Log.i("data", listData.toString())
+        Log.i("data", listData2.toString())
         showRecyclerList2()
     }
 
@@ -225,7 +227,7 @@ class Dashboard : AppCompatActivity() {
 
     private fun showRecyclerList2() {
         listArticle2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val listArticleAdapter = ArticleAdapter(listData)
+        val listArticleAdapter = ArticleAdapter(listData2)
         listArticle2.adapter = listArticleAdapter
     }
 }

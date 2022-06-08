@@ -65,11 +65,13 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_menu_catering.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_menu_detail.xml" value="0.10843373493975904" />
+        <entry key="app/src/main/res/layout/activity_order_confirmation.xml" value="0.12314814814814815" />
         <entry key="app/src/main/res/layout/activity_page_not_found.xml" value="0.15384615384615385" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.39114583333333336" />
         <entry key="app/src/main/res/layout/activity_result_scanning.xml" value="0.14444444444444443" />
         <entry key="app/src/main/res/layout/article_component.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/card_component.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/component_fail_camera.xml" value="0.12314814814814815" />
         <entry key="app/src/main/res/layout/component_menu.xml" value="0.1675925925925926" />
         <entry key="app/src/main/res/layout/component_menu_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/component_popup.xml" value="0.25" />

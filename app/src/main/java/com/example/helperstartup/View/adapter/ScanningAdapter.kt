@@ -19,10 +19,10 @@ class ScanningAdapter(private val listMenu: ResponseUploadScanner) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(listMenu.data?.get(position))
+        holder.bind(listMenu.data?.data?.get(position))
     }
 
-    override fun getItemCount(): Int = listMenu.data!!.size
+    override fun getItemCount(): Int = listMenu.data?.data!!.size
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private var photoScan: ImageView = itemView.findViewById(R.id.photoScan)
