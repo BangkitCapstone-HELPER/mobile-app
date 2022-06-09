@@ -66,6 +66,13 @@ interface ApiService {
         @Part file: MultipartBody.Part
     ): Call<ResponseUploadScanner>
 
+    // camera - post
+    @Multipart
+    @POST("")
+    fun uploadImage2(
+        @Part file: MultipartBody.Part
+    ): Call<ResponseUploadScanner2>
+
     // new Transaction
     @Headers("Content-Type: application/json")
     @POST("transaction/")
