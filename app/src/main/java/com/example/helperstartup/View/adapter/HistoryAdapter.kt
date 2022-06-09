@@ -73,7 +73,7 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
 
                 historyPrice.text = formatRupiah(historyModel.price)
             }
-            binding.historyExpiredText.text =  if (historyModel.expiredTime == 0) "Sudah selesai" else "${historyModel.expiredTime} hari tersisa"
+            binding.historyExpiredText.text =  if (historyModel.expiredTime!! <= 0) "Sudah selesai" else "${historyModel.expiredTime} hari tersisa"
             changeStatus(historyModel.status, historyModel.expiredTime,  binding)
         }
     }
@@ -90,8 +90,11 @@ class HistoryAdapter(private val onItemClicked: (HistoryModel) -> Unit) :
                 binding.cardTextName.text = "Pembayaran"
                 if (remaining == 0) {
                     binding.historyExpiredText.text = "Hari terakhir pembayaran"
-                } else {
+                } else if (remaining!! > 0) {
                     binding.historyExpiredText.text = "${remaining?.plus(1)} hari tersisa"
+                } else {
+                    // negatif
+                    binding.historyExpiredText.text = "Sudah selesai"
                 }
             }
             "completed" -> {
