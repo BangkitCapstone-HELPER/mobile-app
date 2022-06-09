@@ -48,12 +48,12 @@ interface ApiService {
 
 
     // article
-    @GET("article/")
+    @GET("recommendation/")
     fun getArticle(): Call<ResponseArticle>
 
     // article 2
-    @GET("article2/")
-    fun getArticle2(): Call<ResponseArticle>
+    @GET("article/")
+    fun getArticle2(): Call<ResponseArticle2>
 
     // menu - home
     @GET("menu/")
@@ -65,6 +65,13 @@ interface ApiService {
     fun uploadImage(
         @Part file: MultipartBody.Part
     ): Call<ResponseUploadScanner>
+
+    // camera - post
+    @Multipart
+    @POST("")
+    fun uploadImage2(
+        @Part file: MultipartBody.Part
+    ): Call<ResponseUploadScanner2>
 
     // new Transaction
     @Headers("Content-Type: application/json")

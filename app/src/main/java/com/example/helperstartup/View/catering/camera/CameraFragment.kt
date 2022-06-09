@@ -1,9 +1,12 @@
 package com.example.helperstartup.View.catering.camera
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -22,6 +25,7 @@ import com.example.helperstartup.Model.service.ResponseApi.ResponseUploadScanner
 import com.example.helperstartup.Model.createCustomTempFile
 import com.example.helperstartup.Model.reduceFileImage
 import com.example.helperstartup.Model.rotateBitmap
+import com.example.helperstartup.R
 import com.example.helperstartup.View.catering.Menu.MenuCateringActivity
 import com.example.helperstartup.View.camera.ResultScanning
 import com.example.helperstartup.databinding.FragmentCameraBinding
@@ -153,6 +157,7 @@ class CameraFragment : Fragment() {
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
+                        Log.i("data", responseBody.toString())
                         if (responseBody != null) {
                             binding.progresbar.visibility = View.GONE
                             Toast.makeText(
@@ -160,16 +165,25 @@ class CameraFragment : Fragment() {
                                 "Berhasil ke kirim",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val intent = Intent(context, ResultScanning::class.java)
-                            intent.putExtra("message", responseBody)
-                            startActivity(intent)
-                            requireActivity().finish()
+                            if (responseBody.data?.data?.size == 0) {
+                                var mDialog: Dialog
+                                mDialog = Dialog(requireContext())
+                                mDialog.setContentView(R.layout.component_popup_fail_camera)
+                                mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                                mDialog.show()
+                            }
+                            else {
+                                val intent = Intent(context, ResultScanning::class.java)
+                                intent.putExtra("message", responseBody)
+                                startActivity(intent)
+                                requireActivity().finish()
+                            }
                         }
                     } else {
                         binding.progresbar.visibility = View.GONE
                         Toast.makeText(
                             context,
-                            "Gambar tidak berhasil dikirim",
+                            "Gambar tidak berhasil dikirim 1",
                             Toast.LENGTH_SHORT
                         ).show()
                         Log.i("data foto", "gak kekirim")
@@ -180,7 +194,7 @@ class CameraFragment : Fragment() {
                     binding.progresbar.visibility = View.GONE
                     Toast.makeText(
                         context,
-                        "Gambar tidak berhasil dikirim",
+                        "Gambar tidak berhasil dikirim 2",
                         Toast.LENGTH_SHORT
                     ).show()
                     Log.d("uploadscanner", t.message.toString())
