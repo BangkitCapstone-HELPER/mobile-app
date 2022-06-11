@@ -27,7 +27,7 @@ Feature to display the nutrition of the food. This feature takes advantage of ma
 - Click the button to open camera
 - Put camera in front of the  food you want to know the nutrition
 - Preview the result and click the "upload photo" button
-- Wait for the result and after all done Serantau will show the nutrition 
+- Wait for the result and after all done Serantau will show list of food in the photo with its nutrition 
 
 ## Permissions & Requirements
 
