@@ -8,9 +8,26 @@ This repository is Serantau Android application that build using Kotlin.
 ## Features
 
 Currently Serantau has 2 main features those are
-- Catering
+#### Catering
 The feature where "Rantauers" or overseas person to order food regularly. 
-- Scan food nutrition
+How do user order catering ?
+- Login with their respective account or register if dont have it
+- Go to catering menu
+- Choose the desired menu to order
+- Fill order information (time delivery (08.00, 13.00, 17.00), address, order start date and order end date, notes)
+- In "riwayat" tab, click on item with "pembayaran" status, and upload proof of payment. Maximum h-1 of order start date
+- Wait verification by Serantau Team and will notify if its already done
+- Enjoy food
+
+#### Scan food nutrition
+Feature to display the nutrition of the food. This feature takes advantage of machine learning in its implementation.
+- Login with their respective account or register if dont have it
+- Go to catering menu
+- Open "scanning" tab
+- Click the button to open camera
+- Put camera in front of the  food you want to know the nutrition
+- Preview the result and click the "upload photo" button
+- Wait for the result and after all done Serantau will show the nutrition 
 
 ## Permissions & Requirements
 
