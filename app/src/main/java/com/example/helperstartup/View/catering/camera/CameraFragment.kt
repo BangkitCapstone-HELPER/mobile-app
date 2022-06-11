@@ -186,6 +186,7 @@ class CameraFragment : Fragment() {
                             "Gambar tidak berhasil dikirim 1",
                             Toast.LENGTH_SHORT
                         ).show()
+
                         Log.i("data foto", "gak kekirim")
                     }
                 }
@@ -194,9 +195,10 @@ class CameraFragment : Fragment() {
                     binding.progresbar.visibility = View.GONE
                     Toast.makeText(
                         context,
-                        "Gambar tidak berhasil dikirim 2",
+                        "Gambar tidak berhasil dikirim, terjadi kesalahan dalam jaringan",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Toast.makeText(context, t.message.toString(), Toast.LENGTH_LONG).show()
                     Log.d("uploadscanner", t.message.toString())
                     Log.i("data foto", "gak kekirim 2")
                 }

@@ -55,6 +55,7 @@ class RiwayatFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
     private var getFile: File? = null
     private var clickedTransaction: HistoryModel? = null
+    private lateinit var bottomSheetDialog: BottomSheetDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -106,7 +107,7 @@ class RiwayatFragment : Fragment() {
 
     private fun showBottomSheet(historyModel: HistoryModel) {
         clickedTransaction = historyModel
-        val bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
+        bottomSheetDialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialogTheme)
 
         val bottomSheetView =
             LayoutInflater.from(context).inflate(
@@ -204,12 +205,14 @@ class RiwayatFragment : Fragment() {
                         Toast.makeText(context, response.message().toString(), Toast.LENGTH_SHORT)
                             .show()
                         showLoading(false)
+                        bottomSheetDialog.dismiss()
                     }
                 }
 
                 override fun onFailure(call: Call<UploadFileToStorageResponse>, t: Throwable) {
                     Toast.makeText(context, "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show()
                     showLoading(false)
+                    bottomSheetDialog.dismiss()
                 }
             })
 
@@ -250,12 +253,14 @@ class RiwayatFragment : Fragment() {
                             .show()
                         showLoading(false)
                     }
+                    bottomSheetDialog.dismiss()
                 }
 
                 override fun onFailure(call: Call<PatchTransactionResponse>, t: Throwable) {
                     Toast.makeText(context, "Terdapat kesalahan jaringan", Toast.LENGTH_SHORT)
                         .show()
                     showLoading(false)
+                    bottomSheetDialog.dismiss()
                 }
 
             })
