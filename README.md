@@ -8,10 +8,34 @@ This repository is Serantau Android application that build using Kotlin.
 ## Features
 Currently Serantau has 2 main features those are
 - Catering
+The feature where "Rantauers" or overseas person to order food regularly. 
 - Scan food nutrition
 
 ## Permissions & Requirements
 
+### Permissions 
+- Camera
+- Internet
+- Coarse location
+- Fine location
+
+### Requirements
+- Tools : Android Studio
+- Kotlin
+- Gradle ^7.1.3
+- JVM
+- MinSDK 26
+- Target SDK 32
+
 ## Dependencies
+- Android core ktx
+- Livedata-ktx and LiveModel-ktx
+- Material design
+- Retrofit (Manage API)
+- Picasso (for image purpose)
+- de.hdohenof (Image circle)
+- com.github.denzcoskun:ImageSlideshow (image slider)
+- Camerax
+- com.ismaeldivita.chipnavigation (bottom navigation)
 
 ## Screenshot
