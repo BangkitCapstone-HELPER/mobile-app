@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 class ApiConfig {
     companion object {
-        private const val baseUrl = "https://backend-vv4osgbu6q-as.a.run.app/api/v1/"
+        private const val baseUrl = "https://serantau-mttriw3ttq-uc.a.run.app/api/v1/"
         fun getApiService(): ApiService {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
